@@ -35,18 +35,20 @@
 - Not done: the figures have not been tried on a phone, only in a Chrome
   that emulates one (`scripts/test_touch.js`).
 
-## Found while writing, not acted on
+## Found while writing
 
 - **fontTools and kurbo: a sentence in the documentation of the error factor
-  is wrong for four to eight quadratics.** The docstring of
-  `spline_error_factor` (and the doc comment of the kurbo port) says the
-  polynomial of the pieces in between is "largest for k = 1, at
-  v = sqrt(c/3)". That is so from n = 9. For n from 4 to 8 the largest value
-  of the second piece is where it meets the first piece (v = -1/2), which is
-  larger than the value at sqrt(c/3). The number returned is right for every
-  n, because the first piece's maximum is larger than both up to n = 54; only
-  the sentence is off. The note has it right (section 3). A comment-only fix
-  for both pull requests.
+  was wrong for three to eight quadratics.** Acted on, 2026-11-23, at
+  Behdad's "fix the comments". The docstring of `spline_error_factor` (and
+  the doc comment of the kurbo port) said the polynomial of the pieces in
+  between is "largest for k = 1, at v = sqrt(c/3)". That is so from n = 9.
+  For fewer the largest value of the second piece is where it meets the
+  first piece (v = -1/2), which is larger than the value at sqrt(c/3) and
+  below the first piece's largest. The number returned is right for every
+  n; only the sentence was off. Fixed by fontTools commit 41b05dbf2 in pull
+  request 4452 and kurbo commit e44347f in pull request 625, comment only.
+  The measurements here were made at 4201aba56 and 5f6ba66, one commit
+  before each; the code is the same.
 - Compiled with fused multiply-add (`gcc -mfma`), fontTools' cu2qu differs
   from pure Python in the last bit on non-integer input; see
   `notes/fonttools.md`. Not in the note.
