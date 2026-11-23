@@ -16,6 +16,21 @@
   "proposed". Change the wording when they are merged, and the two reference
   entries with them.
 
+## Once the note is live
+
+Behdad: "after we publish, put links in fonttools / kurbo / harfbuzz (merged)
+PRs." One line added to each description, above the closing line:
+
+- fontTools 4452: "The derivation, the bounds for other weights and the
+  measurements are written up at https://behdad.org/doc/cu2qu."
+- kurbo 625, at the end: "The math is written up at
+  https://behdad.org/doc/cu2qu."
+- HarfBuzz 6879: "The construction and its error are written up at
+  https://behdad.org/doc/cu2qu."; 6880: "The derivation is written up at
+  https://behdad.org/doc/cu2qu#error."; 6881: "The bound is derived in
+  https://behdad.org/doc/cu2qu#single."; 6882: "The identity and the bound
+  are written up at https://behdad.org/doc/cu2qu#renderers."
+
 ## Found while writing, not acted on
 
 - **fontTools and kurbo: a sentence in the documentation of the error factor
