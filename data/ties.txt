@@ -1,0 +1,22 @@
+before: f3f799e1b (pure Python)
+after:  4201aba56 (pure Python)
+
+third difference       tolerance   cubics |  accepted  rejected did not return | after
+54 x tolerance               0.5      600 |       600         0              0 | all 2 quadratics
+54 x tolerance                 1      600 |       600         0              0 | all 2 quadratics
+54 x tolerance                 2      600 |       600         0              0 | all 2 quadratics
+54 x tolerance                 4      600 |       600         0              0 | all 2 quadratics
+54 x tolerance                 8      600 |       600         0              0 | all 2 quadratics
+54 x tolerance               all     3000 |      3000         0              0 |
+
+128 x tolerance              0.5      600 |       136       464              0 | all 3 quadratics
+128 x tolerance                1      600 |       139       461              0 | all 3 quadratics
+128 x tolerance                2      600 |       182       418              0 | all 3 quadratics
+128 x tolerance                4      600 |       196       404              0 | all 3 quadratics
+128 x tolerance                8      600 |       202       398              0 | all 3 quadratics
+128 x tolerance              all     3000 |       855      2145              0 |
+
+843.75 x tolerance             4     2100 |       925      1153             22 | all 6 quadratics
+843.75 x tolerance             8     2100 |       924      1137             39 | all 6 quadratics
+843.75 x tolerance           all     4200 |      1849      2290             61 |
+

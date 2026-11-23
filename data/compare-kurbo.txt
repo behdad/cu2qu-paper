@@ -1,0 +1,11 @@
+kurbo:     5f6ba6679123dac135c68422cc8fb36cd9bdd606
+fontTools: 4201aba561b1bb846c1f33f9b6b72753c0731cab (pure Python)
+77533 cubics
+tolerance 1: 336214 points; splines with a different number of points: 0; with the same number and a different bit: 0
+tolerance 0.5: 375096 points; splines with a different number of points: 0; with the same number and a different bit: 0
+tolerance 0.1: 527406 points; splines with a different number of points: 0; with the same number and a different bit: 0
+
+within rounding of a limit, at a tolerance of 1:
+  [(0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (73.3702892310282, 104.88470173554994)]
+  third difference: sqrt(x*x + y*y) = 128.0, hypot(x, y) = 128.00000000000003
+  kurbo 3 quadratics, fontTools 4

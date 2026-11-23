@@ -10,6 +10,7 @@ tolerance 1
   quadratics per cubic: before 2.3364, after 2.3364
   results that differ: 3 of 77533
   splines whose number is not the closed form's: before 3, after 0
+  single quadratics after: 4893; cubics that the closed form of its error decides otherwise: 0
 
 tolerance 0.5
   differs: [(228, 452), (332, 452), (384, 360), (384, 240)]  |d3| / tolerance = 128: 4 -> 3 quadratics
@@ -22,8 +23,10 @@ tolerance 0.5
   quadratics per cubic: before 2.8380, after 2.8379
   results that differ: 7 of 77533
   splines whose number is not the closed form's: before 7, after 0
+  single quadratics after: 1865; cubics that the closed form of its error decides otherwise: 0
 
 tolerance 0.1
   quadratics per cubic: before 4.8023, after 4.8023
   results that differ: 0 of 77533
   splines whose number is not the closed form's: before 0, after 0
+  single quadratics after: 225; cubics that the closed form of its error decides otherwise: 0

@@ -12,7 +12,8 @@
   as its tagline: "The error of cu2qu's spline in closed form."
 - The stylesheet link in the page is `../style.css?v=589bd39f2d`. The value
   is the first ten digits of `git hash-object style.css` in the homepage
-  checkout; it changes when the stylesheet does.
+  checkout; it changes when the stylesheet does. The figure script is linked
+  the same way; `build.sh` sets that one, and `check_page.py` checks it.
 - Section 8 says fontTools pull request 4452 and kurbo pull request 625 are
   "proposed". Change the wording when they are merged, and the two reference
   entries with them.
@@ -26,6 +27,13 @@
   harfbuzz (merged) PRs"), one line was added to the description of each of
   fontTools 4452, kurbo 625 and HarfBuzz 6879, 6880, 6881 and 6882, pointing
   to the note (6880, 6881 and 6882 at the sections they use).
+
+## Done after the two reviews (2026-11-23)
+
+- See `reviews.md`. Two versions of the page followed the reviews; each
+  needs deploying by Behdad.
+- Not done: the figures have not been tried on a phone, only in a Chrome
+  that emulates one (`scripts/test_touch.js`).
 
 ## Found while writing, not acted on
 

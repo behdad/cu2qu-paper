@@ -1,0 +1,12 @@
+before: a5f97ff4070773fe01be92c6a607120e49da4e6f
+after: 5f6ba6679123dac135c68422cc8fb36cd9bdd606
+cargo 1.99.0 (5f94df478 2026-08-27)
+
+         accuracy     instructions  ns per call quadratics/cubic
+before   1                    2228        166.6           2.3364
+after    1                     714         56.0           2.3364
+before   0.5                  3180        231.3           2.8380
+after    0.5                   756         55.3           2.8379
+
+accuracy 1: -68.0%
+accuracy 0.5: -76.2%

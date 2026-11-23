@@ -1,11 +1,11 @@
 Kinks at smooth joints of interpolated instances: cubic masters, cu2qu, rounding
 ==================================================================================
 
-data       /home/behdad/.cache/cu2qu-work/agent-kinks/data (24 sources)
-fontTools  4.68.1.dev0, /home/behdad/fonttools/Lib/fontTools/cu2qu/cu2qu.py
+data       ~/.cache/cu2qu-work/agent-kinks/data (24 sources)
+fontTools  4.68.1.dev0, ~/fonttools/Lib/fontTools/cu2qu/cu2qu.py
            compiled: False; sha256 of cu2qu.py 26d9fc6fb83a37c02cdfd55432ab4e4211f746f15dde73d95e34abbcaa3f5425
            HEAD of that checkout: ref: refs/heads/cu2qu-compute-n
-python     3.14.7, numpy 2.5.5
+python     3.14.7, numpy 2.3.5
 
 What is measured
 
@@ -188,9 +188,12 @@ What is measured
 
   largest conv: the largest change by conversion, in degrees, over all instances.
   regular instances: the same, leaving out the instances in which a control point next to
-    the joint is at the joint (the handles of the two masters cancel), for the cubic or the
+    the joint is at the joint (a handle of no length in the instance), for the cubic or the
     quadratic, so that a direction comes from a point further away.
   irregular joints: the joints that have such an instance (223 joint-instance pairs in all).
+    At 50 of them no master's cubic has a control point at the joint: the handles of two
+    masters cancel in the instance. At 19 every master's cubic has one there: the handle has
+    no length in any master, and nothing cancels. At 0 some masters have one.
   joints with a change by conversion above 0.1, 0.5, 1 degree: 29, 29, 28 over all instances;
     0, 0, 0 over regular instances.
   for scale, the cubic instances themselves: K_c is above 0.1, 0.5, 1 degree in some instance

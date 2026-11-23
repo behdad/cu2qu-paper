@@ -246,7 +246,7 @@ for _ in range(300):
 ok("phi_k at u = 1/2 -+ sqrt(3)/6, identities of the sqrt(3)/36 bound", worst, 1e-12)
 
 
-# five quadratics with both tangents kept: best weights (1, a, 0, -a, -1)
+# five quadratics with both derivatives kept: best weights (1, s, 0, -s, -1)
 def five(a):
     return max_phi(5, [1.0, a, 0.0, -a, -1.0], 20000)
 
@@ -260,14 +260,76 @@ for _ in range(80):
     else:
         lo = m1
 a5 = (lo + hi) / 2
-assert abs(a5 - (-0.933394)) < 2e-5 and abs(five(a5) - 0.151879) < 2e-6, (a5, five(a5))
-print(LINE.format("n = 5, both tangents kept: best weights (1, a, 0, -a, -1)", "a = %.5f, max |phi| = %.6f" % (a5, five(a5))))
-# asymmetric weights do not do better (convexity and symmetry say so; here by search)
-best = min(max_phi(5, [1.0, a5 + rnd.gauss(0, 0.05), rnd.gauss(0, 0.05), -a5 + rnd.gauss(0, 0.05), -1.0], 4000) for _ in range(3000))
-assert best >= five(a5) - 2e-6, best
-print(LINE.format("... and perturbed weights are no better", "least found %.6f" % best))
+assert abs(a5 - (-0.933394)) < 2e-5 and abs(five(a5) - M.best_error_factor(5)) < 2e-8, (a5, five(a5))
+print(LINE.format("n = 5, both derivatives kept: best weights (1, s, 0, -s, -1)", "s = %.5f, max |phi| = %.6f" % (a5, five(a5))))
 assert abs(max_phi(4, [1, 1 / 3, -1 / 3, -1], 20000) - M.error_factor(4)) < 1e-9
 print(LINE.format("the ramp for n = 4 is (1, 1/3, -1/3, -1): %.4f against 4/27 = %.4f" % (M.error_factor(4), 4 / 27), "ok"))
+
+# the best weights for every n up to 16, by linear programming (needs scipy)
+try:
+    import best_weights
+except ImportError:
+    print(LINE.format("best weights by linear programming", "skipped: no scipy"))
+else:
+    worst = 0.0
+    for n in range(2, 17):
+        factor, weights = best_weights.best(n)
+        assert abs(max_phi(n, list(weights), 4000) - factor) < 1e-7, n
+        worst = max(worst, abs(factor - M.best_error_factor(n)))
+        # no random weights with both ends kept do better
+        for _ in range(60):
+            trial = [1.0] + [w + rnd.gauss(0, 0.03) for w in weights[1:-1]] + [-1.0]
+            assert max_phi(n, trial, 400) >= factor - 1e-5, (n, trial)
+    ok("best weights with both ends kept, n = 2..16: the table in cu2qu_math", worst, 1e-9)
+    odd = [M.best_error_factor(n) for n in range(3, 16, 2)]
+    assert all(x > y > 4 / 27 for x, y in zip(odd, odd[1:]))
+    print(LINE.format("... for odd n: decreasing towards 4/27", ", ".join("%.4f" % x for x in odd)))
+
+# keeping only the direction of the end tangent: the point may slide along it
+cubic = (0j, 1 + 1j, 1 + 1j, 2 + 0j)
+d3 = abs(M.third_difference(cubic))
+
+
+def slid(c, n, mu):
+    """The ramp spline with its first and last off-curve points moved along
+    the cubic's end tangents by mu times the handles."""
+    off = M.spline(c, n)
+    off[0] += mu * (c[1] - c[0])
+    off[-1] -= mu * (c[3] - c[2])
+    return off
+
+
+def equal_parameter_error(c, off):
+    n = len(off)
+    quads = M.spline_quadratics(c, off)
+    return max(abs(M.quadratic_at(quads[k], i / 400) - M.cubic_at(c, (k + i / 400) / n)) for k in range(n) for i in range(401))
+
+
+best = min(equal_parameter_error(cubic, slid(cubic, 2, mu / 1000)) for mu in range(-200, 201))
+assert best < (4 / 27) * d3 / 8 * 0.95, best
+single = equal_parameter_error(cubic, [1 + 1j])
+assert abs(single - 0.25) < 1e-6 and single < (4 / 27) * d3
+print(LINE.format("tangent kept, handle not: (0,0) (1,1) (1,1) (2,0) gets within", "%.5f < %.5f = (4/27)|d3|/8 with two; %.2f < %.3f with one" % (best, (4 / 27) * d3 / 8, single, (4 / 27) * d3)))
+# ... but not when the handles are at right angles to the third difference
+arch = (0j, 1j, 1 + 1j, 1 + 0j)
+d3 = M.third_difference(arch)
+assert abs((arch[1] - arch[0]).real * d3.real + (arch[1] - arch[0]).imag * d3.imag) < 1e-12
+for n in (2, 3, 4):
+    least = min(equal_parameter_error(arch, slid(arch, n, mu / 500)) for mu in range(-150, 151))
+    assert least >= M.best_error_factor(n) * abs(d3) / n**3 * (1 - 1e-4), (n, least)  # sampled
+print(LINE.format("... an arch with handles across d3: sliding never beats the best weights", "ok"))
+
+# L grows: Phi grows more slowly than n^3
+worst = 0.0
+for n in range(2, 5000):
+    first = lambda m: (4 / 27) * (1 + (m - 2) / (4 * (m - 1))) ** 3  # noqa: E731
+    assert abs(first(n + 1) / first(n) - (1 + 1 / (n * (5 * n - 6))) ** 3) < 1e-12
+    if n >= 4:
+        second = lambda m: (m - 3) / (4 * (m - 1)) + 2 * ((m - 3) / (12 * (m - 1))) ** 1.5  # noqa: E731
+        assert second(n + 1) / second(n) < (1 + 2 / (n * (n - 3))) ** 1.5 * (1 + 1e-12)
+        assert (1 + 2 / (n * (n - 3))) ** 1.5 < (1 + 1 / n) ** 3
+    assert M.error_factor(n + 1) / M.error_factor(n) < ((n + 1) / n) ** 3
+print(LINE.format("Phi(n+1)/Phi(n) < ((n+1)/n)^3, and the two factors given for it", "ok, n up to 5000"))
 
 # --- 7. The spline's points -------------------------------------------------
 worst_on = worst_handle = worst_lin = 0.0
@@ -310,4 +372,104 @@ bound = M.single_quadratic_bound(circle)
 parabola_mid = abs(M.quadratic_at((circle[0], complex(1, 1), circle[3]), 0.5)) - 1
 assert abs(bound - 0.0607) < 5e-4 and abs(parabola_mid - (3 * math.sqrt(2) / 4 - 1)) < 1e-12
 print(LINE.format("quarter circle: bound %.4f R; the parabola is %.4f R outside at its middle" % (bound, parabola_mid), "ok"))
+# two masters whose curves are the same sets, and their instance halfway
+m1c = (0j, 1 / 3 + 0j, 2 / 3 + 0j, 1 + 0j)
+m1q = (0j, 0.1 + 0j, 1 + 0j)
+m2c = (0j, 1j / 3, 2j / 3, 1j)
+m2q = (0j, 0.5j, 1j)
+for c, q in ((m1c, m1q), (m2c, m2q)):
+    # both are the straight segment between the same end points
+    for i in range(101):
+        for z in (M.cubic_at(c, i / 100), M.quadratic_at(q, i / 100)):
+            along = (z - c[0]) / (c[3] - c[0])
+            assert abs(along.imag) < 1e-12 and -1e-12 <= along.real <= 1 + 1e-12
+half_q = tuple((a + b) / 2 for a, b in zip(m1q, m2q))
+assert half_q == (0j, 0.05 + 0.25j, 0.5 + 0.5j)
+bulge = max(abs((M.quadratic_at(half_q, i / 1000) * (1 - 1j)).imag) / math.sqrt(2) for i in range(1001))
+assert abs(bulge - 0.0707) < 1e-4
+print(LINE.format("two masters, each quadratic on its cubic; halfway it is off by", "%.4f" % bulge))
+
+# the offset of Theorem 4 vanishes at the middle when l1 + l2 = 4/3 - 3/16 (l1 - l2)^2
+for _ in range(200):
+    l1, l2 = rnd.uniform(0, 2), rnd.uniform(0, 2)
+    e = 0.5 * (l1 / 2 - 1 / 3) + 0.5 * (1 / 3 - l2 / 2)
+    assert abs((l1 + l2 - 4 / 3 + 3 * e * e) - (l1 + l2 - 4 / 3 + 3 / 16 * (l1 - l2) ** 2)) < 1e-12
+print(LINE.format("rho(1/2) = 0 exactly when l1 + l2 = 4/3 - (3/16)(l1 - l2)^2", "ok"))
+
+
+# the bound of Theorem 4 against the measured distance, for handle fractions
+# all over its range, the ends 0 and 2 included
+def set_distance(f, g):
+    worst = 0.0
+    for source, target in ((f, g), (g, f)):
+        worst = max(worst, float(np.abs(source[::8, None] - target[None, :]).min(axis=1).max()))
+    return worst
+
+
+ts = np.linspace(0, 1, 2401)
+least_slack = math.inf
+largest_ratio = 0.0
+fractions = [(0.0, 0.0), (0.0, 2.0), (2.0, 2.0), (0.0, 4 / 3), (2 / 3, 2 / 3), (0.27, 0.97)]
+fractions += [(rnd.uniform(0, 2), rnd.uniform(0, 2)) for _ in range(300)]
+for l1, l2 in fractions:
+    c0, q, c3 = rc(), rc(), rc()
+    a, z = q - c0, c3 - q
+    cubic = (c0, c0 + l1 * a, c3 - l2 * z, c3)
+    bound = M.distance_bound(l1, l2, a, z)
+    assert bound is not None
+    cubic_points = np.array([M.cubic_at(cubic, t) for t in ts])
+    quadratic_points = np.array([M.quadratic_at((c0, q, c3), t) for t in ts])
+    measured = set_distance(cubic_points, quadratic_points)
+    # the samples are within half a step of the curves
+    step = max(np.abs(np.diff(cubic_points)).max(), np.abs(np.diff(quadratic_points)).max())
+    assert measured <= bound + step, (l1, l2, measured, bound)
+    least_slack = min(least_slack, bound - measured + step)
+    if l1 == l2 == 2 / 3:
+        assert bound < 1e-12
+assert M.distance_bound(-0.01, 1, 1j, 1 + 0j) is None and M.distance_bound(1, 2.01, 1j, 1 + 0j) is None
+print(LINE.format("the bound of Theorem 4 is never below the measured distance, l1, l2 in [0, 2]", "ok, 306 cubics"))
+
+# a quadratic that passes at equal parameters has e1 and e2 within 2 sqrt(3)
+# of the tolerance; so a tangent turned around takes a short handle
+us = np.linspace(0, 1, 4001)
+worst = 0.0
+for _ in range(400):
+    e1, e2 = rc(), rc()
+    if rnd.random() < 0.1:
+        e2 = -e1  # the case that reaches the bound
+    largest = float(np.abs(3 * us * (1 - us) * ((1 - us) * e1 + us * e2)).max())
+    worst = max(worst, max(abs(e1), abs(e2)) / largest)
+assert 2 * math.sqrt(3) - 1e-3 < worst <= 2 * math.sqrt(3) * (1 + 1e-6), worst  # the largest error is sampled
+turned = (0j, 2 + 0j, -2 + 0j, 8 - 2j)
+q = M.tangent_intersection(turned)
+assert q == -2 + 0j  # behind c0: the quadratic leaves c0 away from c1
+e1 = (turned[0] + 2 * q) / 3 - turned[1]
+e2 = (2 * q + turned[3]) / 3 - turned[2]
+largest = float(np.abs(3 * us * (1 - us) * ((1 - us) * e1 + us * e2)).max())
+assert largest <= 1 and abs(turned[1] - turned[0]) == 2
+print(LINE.format("|e1|, |e2| <= 2 sqrt(3) x the largest equal-parameter error", "largest ratio %.4f; a handle of 2 turned around at error %.3f" % (worst, largest)))
+
+# FontForge's observation, for the points where the end tangents of each
+# piece meet: the joints are near the middle of them, not at it
+lopsided = (0j, 10 + 120j, 300 + 150j, 320 + 0j)
+worst_meeting = worst_halfway = 0.0
+for n in (2, 3, 4, 8):
+    pieces = [M.split_cubic(lopsided, k / n, (k + 1) / n) for k in range(n)]
+    meet = [M.tangent_intersection(p) for p in pieces]
+    half = [sum(M.tangent_candidates(p)) / 2 for p in pieces]
+    for k in range(1, n):
+        worst_meeting = max(worst_meeting, abs((meet[k - 1] + meet[k]) / 2 - pieces[k][0]))
+        worst_halfway = max(worst_halfway, abs((half[k - 1] + half[k]) / 2 - pieces[k][0]))
+assert worst_meeting > 3 and worst_halfway < 1e-10
+print(LINE.format("joints are midway between halfway points; between tangent intersections only nearly", "off by up to %.2f units on an arch 320 wide" % worst_meeting))
+
+# constants of the related work
+assert abs(M.error_factor(2) / 8 - 1 / 54) < 1e-15  # Truong, Yuksel and Seiler's eq. 29
+assert abs(1 / (12 * math.sqrt(3)) - math.sqrt(3) / 36) < 1e-15 and abs((12 * math.sqrt(3)) ** 2 - 432) < 1e-9
+# Chebyshev: t^3 minus its best quadratic on [0, 1] is T3(2t - 1) / 32
+cheb = 32 * us**3 - 48 * us**2 + 18 * us - 1
+assert abs(np.abs(cheb).max() - 1) < 1e-12
+assert [round(float(32 * t**3 - 48 * t**2 + 18 * t - 1)) for t in (0, 0.25, 0.75, 1)] == [-1, 1, -1, 1]
+assert abs(math.sqrt(3) / 36 - 1 / (32 * math.cos(math.pi / 6) ** 3)) < 1e-15
+print(LINE.format("1/54 = Phi(2)/8; 432 = (12 sqrt(3))^2; end points free: 1/32, kept: sqrt(3)/36", "ok"))
 print("all checks passed")

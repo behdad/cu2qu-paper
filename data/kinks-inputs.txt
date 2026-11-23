@@ -1,0 +1,30 @@
+name                     masters  glyphs  segments  upem  from
+cantarell                      3    1322     21528  1000  /usr/share/fonts/abattis-cantarell-vf-fonts/Cantarell-VF.otf
+notokufiarabic                 4     257      4007  1000  ~/noto-source/src/NotoKufiArabic.glyphs
+notoloopedthai                 6     201      4373  1000  ~/noto-source/src/NotoLoopedThai.glyphs
+notonaskharabic                2     343      6154  1000  ~/noto-source/src/NotoNaskhArabic.glyphs
+notosans                      16    1689     23779  1000  ~/noto-source/master_ufo/NotoSans.designspace
+notosansarabic                 8     288      4600  1000  ~/noto-source/master_ufo/NotoSansArabic.designspace; skipped: {"incompatible contour count": 1}
+notosansbengali                5     532     16091  1000  ~/noto-source/src/NotoSansBengali.glyphs
+notosanscjk                    2   65535   3743421  1000  /usr/share/fonts/google-noto-sans-cjk-vf-fonts/NotoSansCJK-VF.ttc
+notosansdevanagari             8     574     12963  1000  ~/noto-source/src/NotoSansDevanagari.glyphs
+notosansethiopic               8     328      4188  1000  ~/noto-source/src/NotoSansEthiopic.glyphs
+notosansitalic                16    1676     24262  1000  ~/noto-source/src/NotoSans-ItalicMM.glyphs
+notosanskannada                7     396      9727  1000  ~/noto-source/src/NotoSansKannada.glyphs
+notosansmono                   8    2100     27081  1000  ~/noto-source/src/NotoSansMono-MM.glyphs
+notosansmyanmar                8     531     10304  1000  ~/noto-source/src/NotoSansMyanmar-MM.glyphs
+notosanssinhala                7     540     16537  1000  ~/noto-source/src/NotoSansSinhala.glyphs
+notosanstelugu                 7     542     12859  1000  ~/noto-source/src/NotoSansTelugu.glyphs
+notoserif                     16    1689     30428  1000  ~/noto-source/src/NotoSerif-MM.glyphs
+notoserifcjk                   2   65535   5727739  1000  /usr/share/fonts/google-noto-serif-cjk-vf-fonts/NotoSerifCJK-VF.ttc
+notoserifdevanagari            8     554     12279  1000  ~/noto-source/src/NotoSerifDevanagari-MM.glyphs; skipped: {"incompatible contour count": 3}
+notoserifdisplayitalic         8    1680     30486  1000  ~/noto-source/src/NotoSerifDisplay-ItalicMM.glyphs
+notoserifethiopic              6     405      6917  1000  ~/noto-source/src/NotoSerifEthiopic.glyphs
+notoserifitalic                8    1739     32217  1000  ~/noto-source/src/NotoSerif-ItalicMM.glyphs
+notoserifkhmer                 6     355     11669  1000  ~/noto-source/src/NotoSerifKhmer.glyphs
+notoseriftibetan               4    1887     83916  1000  ~/noto-source/src/NotoSerifTibetan.glyphs
+
+/usr/share/fonts/abattis-cantarell-vf-fonts/Cantarell-VF.otf: package abattis-cantarell-vf-fonts-0.301-15.fc43.noarch
+/usr/share/fonts/google-noto-sans-cjk-vf-fonts/NotoSansCJK-VF.ttc: package google-noto-sans-cjk-vf-fonts-2.004-10.fc43.noarch
+/usr/share/fonts/google-noto-serif-cjk-vf-fonts/NotoSerifCJK-VF.ttc: package google-noto-serif-cjk-vf-fonts-2.003-3.fc43.noarch
+~/noto-source: git@github.com:googlefonts/noto-source at ec575e4a32479faae41f314da4d3e9c2eb107d21 (2022-06-22)

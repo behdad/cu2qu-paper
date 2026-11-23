@@ -29,6 +29,8 @@ The formulas
   them, on random cubics and random weights, against fine grids, and in exact
   rational arithmetic where the statement is an identity of polynomials.
   Output: `data/check_math.txt`.
+- `best_weights.py`: the best weights of section 4, by linear programming
+  (needs scipy). Output: `data/best-weights.txt`.
 
 The fonts
 
@@ -41,8 +43,13 @@ The fonts
 fontTools, before and after
 
 - `compare_revs.py`: runs two revisions of fontTools' cu2qu on the cubics and
-  compares their results with each other and with the formula.
+  compares their results with each other and with the formulas: the number
+  of quadratics, and the closed form of the single quadratic's error.
   Output: `data/compare-fonttools.txt`.
+- `compare_revs_masters.py`: the same comparison on groups of compatible
+  masters, converted together. Output: `data/compare-fonttools-masters.txt`.
+- `ties.py`: what the recursive test did with splines exactly at a limit:
+  accepted, rejected, or did not return. Output: `data/ties.txt`.
 - `perf_fonttools.py`: instructions and time per call for the two revisions,
   compiled with Cython and in pure Python; uses `cu2qu_workload.py` and
   `perf`. Output: `data/perf-fonttools.txt`.
@@ -52,12 +59,27 @@ fontTools, before and after
 The revisions compared are f3f799e1b (main) and 4201aba56
 (https://github.com/fonttools/fonttools/pull/4452).
 
+kurbo, before and after
+
+- `check_endless_kurbo.py`: the same inputs, and kurbo's own, in
+  `CubicBez::approx_spline`. Output: `data/endless-kurbo.txt`.
+- `compare_kurbo.py`: kurbo's results against fontTools', bit for bit.
+  Output: `data/compare-kurbo.txt`.
+- `perf_kurbo.py`: instructions per call. Output: `data/perf-kurbo.txt`.
+
+The revisions are a5f97ff40 (main) and 5f6ba6679
+(https://github.com/linebender/kurbo/pull/625). The three scripts export
+them from a kurbo checkout and build small programs against them with cargo.
+
 Masters
 
 - `kinks.py`: smooth joints of interpolated instances, before and after
-  conversion, on the masters of 24 variable-font sources. Its input is those
+  conversion, on the masters of 24 variable fonts. Its input is those
   masters as arrays, which are not here (272 MB); see `notes/kinks.md`.
-  Output: `data/kinks.txt`.
+  Output: `data/kinks.txt`, and with `--smooth-within 1`,
+  `data/kinks-within-one-degree.txt`.
+- `kinks_inputs.py`: where those arrays came from, with versions.
+  Output: `data/kinks-inputs.txt`.
 
 The page
 
@@ -68,12 +90,19 @@ The page
   Output: `data/check_js.txt`.
 - `check_page.py`: checks that the page is well formed and that its tables
   and quoted numbers are the ones in `data/`; with `--links`, that every
-  link answers.
-- `test_interaction.py`: moves every slider and drags points in a headless
-  Chrome, and prints what the figures report.
+  link answers with a page.
+- `check_layout.py`: lays the page out at phone, print and desktop widths in
+  a headless Chrome, and looks for what does not fit.
+- `test_interaction.py`: moves every slider, drags points and presses the
+  reset buttons in a headless Chrome, with events it makes up, and checks
+  what the figures report. Output: `data/interaction.txt`.
+- `test_touch.js`: drags the control points with real touches, in a Chrome
+  that emulates a phone, and with a real mouse.
 
-They need Python 3 with numpy and fontTools; node for the figures; Cython
-and `perf` for `perf_fonttools.py`; google-chrome for `test_interaction.py`.
+They need Python 3 with numpy and fontTools; scipy for `best_weights.py`;
+node for the figures (22 or later for `test_touch.js`); Cython and `perf`
+for `perf_fonttools.py`; cargo and `perf` for the kurbo scripts;
+google-chrome for the last three.
 
 ## Working on the note
 
@@ -86,10 +115,10 @@ To look at it, serve the homepage checkout:
     python3 -m http.server 8000 --bind 127.0.0.1 --directory ~/behdad.org
     # http://localhost:8000/doc/cu2qu.html
 
-Other checks, not part of `build.sh`:
+`build.sh` also runs the three browser checks if there is a google-chrome.
+Not part of it, because it asks other people's servers:
 
     python3 scripts/check_page.py ~/behdad.org/doc/cu2qu.html data --links
-    python3 scripts/test_interaction.py ~/behdad.org/doc/cu2qu.html
 
 ## Rerunning the measurements
 
@@ -105,8 +134,22 @@ From `scripts/`, with the paths of the machine the note was written on:
     python3 perf_fonttools.py ~/fonttools f3f799e1b 4201aba56 ../data/cubics.json \
         WORKDIR PYTHON-WITH-CYTHON > ../data/perf-fonttools.txt
     python3 check_endless.py ~/fonttools f3f799e1b 4201aba56 > ../data/endless.txt
-    PYTHONPATH=~/fonttools/Lib python3 kinks.py MASTERS-DIR > ../data/kinks.txt
+    python3 ties.py ~/fonttools f3f799e1b 4201aba56 > ../data/ties.txt
+    python3 best_weights.py --table > ../data/best-weights.txt
 
-`measure.py --hausdorff` takes a few minutes; `perf_fonttools.py` builds
-fontTools twice with Cython. If a number changes, `check_page.py` says which
-sentence or table cell of the page no longer agrees.
+    python3 check_endless_kurbo.py ~/kurbo a5f97ff 5f6ba66 WORKDIR > ../data/endless-kurbo.txt
+    python3 compare_kurbo.py ~/kurbo 5f6ba66 ~/fonttools 4201aba56 ../data/cubics.json \
+        WORKDIR > ../data/compare-kurbo.txt
+    python3 perf_kurbo.py ~/kurbo a5f97ff 5f6ba66 ../data/cubics.json WORKDIR \
+        > ../data/perf-kurbo.txt
+
+    PYTHONPATH=~/fonttools/Lib python3 kinks.py MASTERS-DIR > ../data/kinks.txt
+    PYTHONPATH=~/fonttools/Lib python3 kinks.py MASTERS-DIR --smooth-within 1 \
+        > ../data/kinks-within-one-degree.txt
+    python3 kinks_inputs.py MASTERS-DIR > ../data/kinks-inputs.txt
+    python3 compare_revs_masters.py ~/fonttools f3f799e1b 4201aba56 MASTERS-DIR \
+        > ../data/compare-fonttools-masters.txt
+
+`measure.py --hausdorff` takes about twenty minutes; `perf_fonttools.py`
+builds fontTools twice with Cython. If a number changes, `check_page.py` says
+which sentence or table cell of the page no longer agrees.

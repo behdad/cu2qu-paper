@@ -41,7 +41,7 @@ for (const name of F.names) {
   }
   out = out.replace(re, (m, a, b) => a + block + "\n" + b);
   if (name === "construction") report.construction = { n: drawn.n, d3: drawn.d3, formula: drawn.formula, measured: drawn.measured };
-  if (name === "count") report.count = { ends: drawn.ends };
+  if (name === "count") report.count = { ends: drawn.ends, percentiles: F.figures.count.percentiles };
   if (name === "kink") report.kink = { angles: drawn.angles };
   if (name === "pace") report.pace = drawn.numbers;
 }

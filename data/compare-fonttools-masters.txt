@@ -1,0 +1,28 @@
+before: f3f799e1b
+after:  4201aba56
+source                       groups   differ  quadratics before -> after
+cantarell                      8881        0  
+notokufiarabic                 2167        0  
+notoloopedthai                 2419        0  
+notonaskharabic                5022        0  
+notosans                       9402        0  
+notosansarabic                 3236        0  
+notosansbengali                8650        0  
+notosanscjk                 1061820       75  4 -> 3: 75
+notosansdevanagari             6646        0  
+notosansethiopic               1476        0  
+notosansitalic                10010        0  
+notosanskannada                6991        0  
+notosansmono                   9379        0  
+notosansmyanmar                7258        0  
+notosanssinhala               11912        0  
+notosanstelugu                 9053        0  
+notoserif                     12802        0  
+notoserifcjk                2327253       67  4 -> 3: 67
+notoserifdevanagari            6144        0  
+notoserifdisplayitalic        14324        0  
+notoserifethiopic              3610        0  
+notoserifitalic               15277        0  
+notoserifkhmer                 6811        0  
+notoseriftibetan              39109        0  
+total                       3589652      142  4 -> 3: 142

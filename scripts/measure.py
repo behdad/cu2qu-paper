@@ -113,6 +113,20 @@ def hb_single_bound(c):
     return 3 / 16 * m * abs(a - z), q
 
 
+def hb_draws_line(c, tol):
+    """HarfBuzz's GPU library draws a cubic as a line, before its converter is
+    reached, when both control points are within the tolerance of the line
+    through the end points (hb_gpu_draw_t::acc_cubic_to)."""
+    c0, c1, c2, c3 = c
+    chord = c3 - c0
+    length_sq = dot(chord, chord)
+    if not length_sq > 0:
+        return False
+    cross1 = cross(c1 - c0, chord)
+    cross2 = cross(c2 - c0, chord)
+    return cross1 * cross1 / length_sq <= tol * tol and cross2 * cross2 / length_sq <= tol * tol
+
+
 # ------------------------------------------------------------ numbers of pieces
 
 
@@ -127,17 +141,9 @@ def n_midpoint(d3, tol):
 
 
 def n_best_weights(d3, tol):
-    """The least n >= 2 for the best weights that keep both end tangents:
-    pairs for even n, (1, 0, -1) for three, a block of five and pairs for odd
-    n from five."""
+    """The least n >= 2 for the best weights that keep both end handles."""
     for n in range(2, 1000):
-        if n % 2 == 0:
-            factor = 4 / 27
-        elif n == 3:
-            factor = 27 / 128
-        else:
-            factor = M.BEST_ODD_FACTOR[5]
-        if d3 <= tol * n * n * n / factor:
+        if d3 <= tol * n * n * n / M.best_error_factor(n):
             return n
     return 0
 
@@ -317,7 +323,7 @@ def main():
 
     def scheme(name, fn):
         counts[name] = [[fn(i, t) for i in range(total)] for t in TOLERANCES]
-        print("%-58s %10.4f %10.4f %10.4f" % (name, *(mean(v) for v in counts[name])))
+        print("%-58s %10.6f %10.6f %10.6f" % (name, *(mean(v) for v in counts[name])))
         out[name] = [mean(v) for v in counts[name]]
 
     def is_single(i, t):
@@ -327,6 +333,15 @@ def main():
     scheme("the same with the best weights (sec. 4)", lambda i, t: 1 if is_single(i, t) else n_best_weights(d3[i], t))
     scheme("HarfBuzz: one by the bound of sec. 7, else the ramp", lambda i, t: 1 if hb[i] is not None and hb[i][0] <= t else n_ramp(d3[i], t))
     scheme("mid-point (kurbo to_quads, lyon)", lambda i, t: n_midpoint(d3[i], t))
+
+    # HarfBuzz itself never gives its converter a cubic that is nearly straight
+    lines = [[hb_draws_line(c, t) for c in cubics] for t in TOLERANCES]
+    print("\nHarfBuzz draws a line where both control points are within tolerance of the chord's line")
+    print("%-58s %10s %10s %10s" % ("cubics", *("%d (%.1f%%)" % (sum(v), 100 * sum(v) / total) for v in lines)))
+    hb_name = "HarfBuzz: one by the bound of sec. 7, else the ramp"
+    with_lines = [mean([1 if line else n for line, n in zip(v, w)]) for v, w in zip(lines, counts[hb_name])]
+    print("%-58s %10.6f %10.6f %10.6f" % ("segments per cubic with those as one line", *with_lines))
+    out["hb lines"] = [sum(v) for v in lines]
 
     name = "cu2qu: one if it fits at equal parameters, else the ramp"
     print("\ncu2qu, share of cubics by number of quadratics (1 / 2 / 3 / 4 / 5 and more), percent")
@@ -371,16 +386,19 @@ def main():
 def measure_hausdorff(cubics, d3, single, hb, eq_counts, out):
     """For every cubic, the distance as sets of points to the single quadratic
     and to the ramp spline of every n up to what cu2qu uses at the finest
-    tolerance."""
+    tolerance; and to HarfBuzz's single quadratic, which differs from cu2qu's
+    where a control point is on its end point."""
     total = len(cubics)
     finest = eq_counts[-1]
     table = []
+    hb_distance = []
     for i, c in enumerate(cubics):
         row = {}
         for n in range(1, max(finest[i], 2) + 1):
             quads = ramp_quadratics(c, n)
             row[n] = math.inf if quads is None else hausdorff(c, quads)
         table.append(row)
+        hb_distance.append(None if hb[i] is None else hausdorff(c, [(c[0], hb[i][1], c[3])]))
         if i % 10000 == 0:
             print("  ... %d" % i, file=sys.stderr)
 
@@ -394,25 +412,44 @@ def measure_hausdorff(cubics, d3, single, hb, eq_counts, out):
             assert n is not None, (i, t, row)
             v.append(n)
         least.append(v)
-    print("%-58s %10.4f %10.4f %10.4f" % ("cu2qu's constructions, least n within tolerance", *(mean(v) for v in least)))
+    print("%-58s %10.6f %10.6f %10.6f" % ("cu2qu's constructions, least n within tolerance", *(mean(v) for v in least)))
     out["least n by distance"] = [mean(v) for v in least]
     fill = []
     for t, v in zip(TOLERANCES, eq_counts):
         fill.append(mean([table[i][n] / t for i, n in enumerate(v)]))
-    print("%-58s %10.3f %10.3f %10.3f" % ("cu2qu's output: distance / tolerance, mean", *fill))
+    print("%-58s %10.6f %10.6f %10.6f" % ("cu2qu's output: distance / tolerance, mean", *fill))
     out["fill"] = fill
     one = [sum(1 for row in table if row[1] <= t) for t in TOLERANCES]
     print("%-58s %10s %10s %10s" % ("one quadratic within tolerance", *("%d (%.1f%%)" % (v, 100 * v / total) for v in one)))
     out["one by distance"] = one
+    # how much of what the equal-parameter test costs is in cubics that one
+    # quadratic would do for
+    share = []
+    for v, w in zip(eq_counts, least):
+        saved = sum(a - b for a, b in zip(v, w))
+        share.append(100 * sum(a - b for a, b in zip(v, w) if b == 1) / saved)
+    print("%-58s %10.1f %10.1f %10.1f" % ("share of that saving in cubics that take one, percent", *share))
+
+    # HarfBuzz's own single quadratic
+    one_hb = [sum(1 for h in hb_distance if h is not None and h <= t) for t in TOLERANCES]
+    print("%-58s %10s %10s %10s" % ("HarfBuzz's quadratic within tolerance", *("%d (%.1f%%)" % (v, 100 * v / total) for v in one_hb)))
+    # HarfBuzz as it is for one quadratic, with its splines accepted by distance
+    beyond = []
+    for t, v in zip(TOLERANCES, eq_counts):
+        w = []
+        for i, row in enumerate(table):
+            if hb[i] is not None and hb[i][0] <= t:
+                w.append(1)
+            else:
+                w.append(next((n for n in sorted(row) if n >= 2 and row[n] <= t), v[i]))
+        beyond.append(mean(w))
+    print("%-58s %10.6f %10.6f %10.6f" % ("HarfBuzz, its splines accepted by distance", *beyond))
 
     # the bound of sec. 7 must never be below the measured distance
     worst = 0.0
     ratios = []
-    for row, b in zip(table, hb):
+    for b, measured in zip(hb, hb_distance):
         if b is None:
-            continue
-        measured = hausdorff_single(row)
-        if measured is None:
             continue
         ratios.append(b[0] / measured if measured > 1e-9 else 1.0)
         worst = max(worst, measured - b[0])

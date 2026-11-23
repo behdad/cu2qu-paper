@@ -6,6 +6,7 @@ and "he" is Behdad.
 
 - `decisions.md`: what was decided about the note and the page, and why.
 - `todo.md`: what is left, and things found on the way that were not acted on.
+- `reviews.md`: what the two adversarial reviews found, and what was done.
 - `kinks.md`: the two measurements of kinks at smooth joints of interpolated
   masters.
 - `research-agents.md`: the reports of three research runs (other converters

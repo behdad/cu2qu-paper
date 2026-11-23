@@ -1,0 +1,31 @@
+live figures: 5
+construction 0: third difference 1146, tolerance 10.0: 3 quadratics. Largest distance at equal parameters: 8.96 by the formula, 8.96 measured.
+construction slider starts at 50
+construction tolerance least: third difference 1146, tolerance 2.0: 6 quadratics. Largest distance at equal parameters: 1.36 by the formula, 1.36 measured.
+construction tolerance most: third difference 1146, tolerance 50.0: 2 quadratics. Largest distance at equal parameters: 21.23 by the formula, 21.23 measured.
+construction with the slider back: as at first
+construction after the other button: as at first
+construction after dragging c1: third difference 879, tolerance 10.0: 3 quadratics. Largest distance at equal parameters: 6.86 by the formula, 6.86 measured.
+construction after a move without a button: unchanged
+construction after a lost release: let go
+construction after reset: as at first, slider 50
+error: Φ(2) = 4/27; Φ(3) = 27/128; Φ(12) = 0.274
+error after reset: as at first
+count at first: Move the slider, or the pointer over the plot, to read it.
+count, slider at 369: third difference / tolerance = 127.9: cu2qu 3, best weights 3, mid-point 2 quadratics.
+count, slider at 370: third difference / tolerance = 128.8: cu2qu 4, best weights 4, mid-point 2 quadratics.
+count at 128.5: third difference / tolerance = 128.5: cu2qu 4, best weights 4, mid-point 2 quadratics., slider 370
+count at 127.5: third difference / tolerance = 127.5: cu2qu 3, best weights 3, mid-point 2 quadratics.
+count a hair above 128: third difference / tolerance = 128.01: cu2qu 4, best weights 4, mid-point 2 quadratics.
+count after leaving: stays
+kink 0.5: master 1; halfway; master 2; in both masters; smooth; a corner of 16°
+kink 0: master 1; at master 1; master 2; in both masters; smooth; smooth
+kink 0.25: master 1; 0.25 of the way; master 2; in both masters; smooth; a corner of 15°
+kink after reset: as at first
+pace 0: handles 0.27 and 0.97 of the way, 1.24 together. At equal parameters 70.7 apart; as curves 0.74; the bound 2.41.
+pace sliders go to 1.33 and 1.33
+pace 2/3, 2/3: handles 0.67 and 0.67 of the way, 1.33 together. At equal parameters 0.0 apart; as curves 0.00; the bound 0.00.
+pace 0, 1.33: handles 0.00 and 1.33 of the way, 1.33 together. At equal parameters 129.7 apart; as curves 29.38; the bound 32.18.
+pace 1.33, 1.33: handles 1.33 and 1.33 of the way, 2.66 together. At equal parameters 129.4 apart; as curves 129.35; the bound 161.53. Control points inside the drawing.
+pace after dragging c1 back: handles 0.44 and 0.67 of the way, 1.11 together. At equal parameters 37.0 apart; as curves 21.15; the bound 22.10. sliders 0.44 0.67
+pace after reset: as at first, sliders 0.27 0.97

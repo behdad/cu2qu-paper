@@ -1,0 +1,375 @@
+Kinks at smooth joints of interpolated instances: cubic masters, cu2qu, rounding
+==================================================================================
+
+data       ~/.cache/cu2qu-work/agent-kinks/data (24 sources)
+fontTools  4.68.1.dev0, ~/fonttools/Lib/fontTools/cu2qu/cu2qu.py
+           compiled: False; sha256 of cu2qu.py 26d9fc6fb83a37c02cdfd55432ab4e4211f746f15dde73d95e34abbcaa3f5425
+           HEAD of that checkout: ref: refs/heads/cu2qu-compute-n
+python     3.14.7, numpy 2.3.5
+
+What is measured
+
+  tolerance    0.001 x units per em, the same for all masters
+  conversion   curves_to_quadratic([the segment in each master], [tolerance] * M) for every
+               cubic segment; n = points per master - 2 (n = 1: a single quadratic). Lines stay.
+  joint        the start point of a segment, between the segment before it in its contour
+               (incoming) and the segment itself (outgoing). All contours in the data are closed.
+  direction    incoming: the joint minus the nearest earlier control point of the incoming
+               segment that is not at the joint (cubic: p2, else p1, else p0; quadratic spline:
+               the last off-curve point, else the ones before it in turn, else p0; line: p0).
+               Outgoing: likewise forwards (p1, else p2, else p3; first off-curve point, ...).
+               Undefined if the whole segment is at the joint.
+               'At the joint': in masters, equal; in instances, within 1e-09 units.
+  kink K       the angle between the two directions, 0 to 180 degrees, without a sign
+  smooth       NOT THE EXACT TEST: a side is a cubic, and in every master both directions
+               are defined and the kink is at most 1 degrees (--smooth-within).
+  instances    (1 - t) x master i + t x master j for every pair i < j and t in 1/4, 1/2, 3/4;
+               all pairs, no sampling
+  K_c K_q K_r  the kink in the instance of the cubic masters; of the quadratic masters; of the
+               quadratic masters with every off-curve coordinate rounded by otRound (on-curve
+               points are the cubic's and are not rounded)
+  changes      by conversion: max over instances of |K_q - K_c|
+               by rounding:   max over instances of |K_r - K_q|
+               (an instance where one of the two kinks is undefined is left out)
+
+1. Sources and conversion
+
+  source                  masters  instances  glyphs  segments   cubics  single (n=1)   share
+  ----------------------  -------  ---------  ------  --------  -------  ------------  ------
+  cantarell                     3          9    1310     21528     8881            37   0.42%
+  notokufiarabic                4         18     257      4007     2167           329  15.18%
+  notoloopedthai                6         45     201      4373     2419            65   2.69%
+  notonaskharabic               2          3     343      6154     5022          1270  25.29%
+  notosans                     16        360    1689     23779     9402            94   1.00%
+  notosansarabic                8         84     288      4600     3236            20   0.62%
+  notosansbengali               5         30     532     16091     8650            77   0.89%
+  notosanscjk                   2          3   65524   3743421  1061820         14587   1.37%
+  notosansdevanagari            8         84     574     12963     6646            43   0.65%
+  notosansethiopic              8         84     328      4188     1476             0   0.00%
+  notosansitalic               16        360    1676     24262    10010           104   1.04%
+  notosanskannada               7         63     396      9727     6991            34   0.49%
+  notosansmono                  8         84    2100     27081     9379           210   2.24%
+  notosansmyanmar               8         84     531     10304     7258            73   1.01%
+  notosanssinhala               7         63     540     16537    11912            56   0.47%
+  notosanstelugu                7         63     542     12859     9053            55   0.61%
+  notoserif                    16        360    1689     30428    12802           133   1.04%
+  notoserifcjk                  2          3   65324   5727739  2327253        428843  18.43%
+  notoserifdevanagari           8         84     554     12279     6144           220   3.58%
+  notoserifdisplayitalic        8         84    1680     30486    14324           184   1.28%
+  notoserifethiopic             6         45     405      6917     3610            19   0.53%
+  notoserifitalic               8         84    1739     32217    15277           163   1.07%
+  notoserifkhmer                6         45     355     11669     6811             6   0.09%
+  notoseriftibetan              4         18    1887     83916    39109          1334   3.41%
+  total                                       150464   9877525  3589652        447956  12.48%
+
+  glyphs: those with at least one segment in the data. instances: pairs of masters x 3.
+  single: cubic segments that became a single quadratic (in every master: n is shared).
+
+2. Joints
+
+  source                   joints  with a cubic side   smooth  not H/V  next to a single   share  not H/V  undefined
+  ----------------------  -------  -----------------  -------  -------  ----------------  ------  -------  ---------
+  cantarell                 21528              11395     7539      160                37   0.49%        0          0
+  notokufiarabic             4007               2907     2154      141               526  24.42%       10          0
+  notoloopedthai             4373               3121     2157       24                66   3.06%        0          0
+  notonaskharabic            6154               5721     2470      334              1259  50.97%      120          0
+  notosans                  23779              12514     7561      479               106   1.40%        2          2
+  notosansarabic             4600               4029     2345      191                20   0.85%        0          0
+  notosansbengali           16091              11965     5747      286                77   1.34%        0          0
+  notosanscjk             3743421            1597094   260400    15951             11334   4.35%     1509       1224
+  notosansdevanagari        12963               8598     4675      102                44   0.94%        0          6
+  notosansethiopic           4188               2147     1577       63                 0   0.00%        0          0
+  notosansitalic            24262              13067     7290      889               114   1.56%        0          6
+  notosanskannada            9727               8475     5580      154                34   0.61%        0          0
+  notosansmono              27081              12463     7948      566               208   2.62%        9          0
+  notosansmyanmar           10304               8976     6449      170                80   1.24%        0          0
+  notosanssinhala           16537              15052     9193      382                69   0.75%       12          0
+  notosanstelugu            12859              11190     7363      373                55   0.75%        0          2
+  notoserif                 30428              17713    12592      685               146   1.16%        4          8
+  notoserifcjk            5727739            3626428   738566    75477            207957  28.16%    33104        118
+  notoserifdevanagari       12279               7810     4408      122               250   5.67%        1          6
+  notoserifdisplayitalic    30486              18794    12391     2040               213   1.72%        9          6
+  notoserifethiopic          6917               5183     3550      174                17   0.48%        0          0
+  notoserifitalic           32217              20098    12404     1636               181   1.46%        5         13
+  notoserifkhmer            11669               8608     6096      494                 9   0.15%        0          0
+  notoseriftibetan          83916              58482    19946      175              1263   6.33%        0          0
+  total                   9877525            5491830  1150401   101068            224065  19.48%    34785       1391
+
+  next to a single: smooth joints with a single quadratic on at least one side (on both
+    sides: 3439 of the 224065).
+  not H/V: of the column before, the joints that are not H/V. A joint is H/V if both its
+    directions are horizontal in every master, or both vertical in every master: 1049333 of the
+    1150401 smooth joints. In an instance the control points next to such a joint stay on that
+    line through it, converted or not, so its kink is 0, or 180 where the two sides fold onto
+    each other, unless a control point reaches the joint or the joint is not on integers.
+    Of the H/V joints, 72 have a K_c above 0.1 degree in some instance, 29 a change by
+    conversion above 0.1, and 76 a change by rounding above 0.1.
+  undefined: joints with a cubic side that are not counted as smooth because a direction
+    is undefined in some master (a side has zero length there); 150 of the 1391 are
+    smooth in all the masters where both directions are defined.
+
+3. Smooth joints next to a single quadratic: joints whose change is above 0.1, 0.5, 1 degree
+
+  source                  joints  conv >0.1  >0.5  >1  largest  round >0.1   >0.5     >1  largest
+  ----------------------  ------  ---------  ----  --  -------  ----------  -----  -----  -------
+  cantarell                   37          0     0   0        0           0      0      0        0
+  notokufiarabic             526          3     2   2   1.6619          10      6      2   1.3514
+  notoloopedthai              66          0     0   0        0           0      0      0        0
+  notonaskharabic           1259          8     0   0   0.2372         110     39     14   8.1301
+  notosans                   106          0     0   0   0.0089           2      0      0   0.4442
+  notosansarabic              20          0     0   0        0           0      0      0        0
+  notosansbengali             77          0     0   0        0           0      0      0        0
+  notosanscjk              11334        301    38  22   4.4304        1415   1186   1030  16.3139
+  notosansdevanagari          44          0     0   0        0           0      0      0        0
+  notosansethiopic             0          0     0   0        -           0      0      0        -
+  notosansitalic             114          0     0   0        0           0      0      0        0
+  notosanskannada             34          0     0   0        0           0      0      0        0
+  notosansmono               208          0     0   0   0.0315           7      0      0   0.4398
+  notosansmyanmar             80          0     0   0        0           0      0      0        0
+  notosanssinhala             69          0     0   0  5.2e-14           7      4      1   2.6375
+  notosanstelugu              55          0     0   0        0           0      0      0        0
+  notoserif                  146          0     0   0  3.3e-14           1      1      0   0.5900
+  notoserifcjk            207957       4638   507   9   1.7899       27326  21283  17913   7.1250
+  notoserifdevanagari        250          0     0   0   0.0813           1      1      0   0.8132
+  notoserifdisplayitalic     213          0     0   0   0.0030           4      3      0   0.8321
+  notoserifethiopic           17          0     0   0        0           0      0      0        0
+  notoserifitalic            181          1     0   0   0.2062           2      2      0   0.5900
+  notoserifkhmer               9          0     0   0        0           0      0      0        0
+  notoseriftibetan          1263          0     0   0  2.0e-15           0      0      0  2.0e-15
+  total                   224065       4951   547  33   4.4304       28885  22525  18960  16.3139
+
+  total, as shares of the 224065 joints: conversion 2.21%, 0.24%, 0.01%; rounding 12.89%, 10.05%, 8.46%
+  of the 34785 that are not H/V (see 2): conversion 4951, 547, 33 (14.23%, 1.57%, 0.09%), largest 4.4304;
+    rounding 28885, 22525, 18960 (83.04%, 64.75%, 54.51%), largest 16.3139
+    50th, 90th, 99th percentile of the change over these joints: conversion 0.0319, 0.1579, 0.6625;
+    rounding 1.3032, 2.7427, 4.0593 degrees
+  of the 189280 that are H/V: conversion 0, 0, 0, largest 1.8e-12; rounding 0, 0, 0, largest 1.8e-12
+  none of these joints has an instance in which a control point next to the joint is at the
+    joint, for the cubic or the quadratic (compare 4).
+  for comparison only: if the kinks carried a sign (a left or a right turn) and the changes
+    were differences of signed angles, the totals would be: conversion 4963, 569, 160, largest 4.4304;
+    rounding 28890, 23282, 20092, largest 16.3139.
+  for scale, the cubic instances themselves: K_c is above 0.1, 0.5, 1 degree in some instance
+    at 30891, 15655, 1217 of these joints, largest 180.0000.
+  not an instance, but what the instances are made of: in some master itself, |K_q - K_c| (not
+    rounded) is above 0.1, 0.5, 1 degree at 1, 1, 1 of these joints, largest 180.0000 (see 5).
+
+4. Smooth joints not next to a single quadratic
+
+  source                  joints  largest conv  regular instances  irregular joints  round >0.1   >0.5     >1   largest
+  ----------------------  ------  ------------  -----------------  ----------------  ----------  -----  -----  --------
+  cantarell                 7502       3.3e-13            3.3e-13                 0         157     68      0    0.9906
+  notokufiarabic            1628       3.1e-13            3.1e-13                 0         129     98     41    4.7636
+  notoloopedthai            2091       6.4e-13            6.4e-13                 0          20     18      7    2.0262
+  notonaskharabic           1211       3.1e-13            3.1e-13                 0         205    106     45    6.5819
+  notosans                  7455      180.0000            2.2e-12                 9         451    277    158  180.0000
+  notosansarabic            2325       8.0e-13            8.0e-13                 0         175    117     40    5.0932
+  notosansbengali           5670       1.8e-13            1.8e-13                 0         286    231    139    2.6370
+  notosanscjk             249066       1.4e-12            1.4e-12                20       12470   5767   3180   16.7626
+  notosansdevanagari        4631       1.8e-13            1.8e-13                 0         102     82     41    3.5133
+  notosansethiopic          1577       5.3e-14            5.3e-14                 0          63     50     12    2.2393
+  notosansitalic            7176       1.0e-12            1.0e-12                 0         859    600    199    4.0445
+  notosanskannada           5546       1.1e-12            1.1e-12                 0         154    112     79    2.2926
+  notosansmono              7740       7.3e-13            7.3e-13                 0         536    402    235    7.6961
+  notosansmyanmar           6369        4.9115            7.9e-13                 1         162    122     78  180.0000
+  notosanssinhala           9124       2.1e-13            2.1e-13                 0         367    331    143    2.4577
+  notosanstelugu            7308       4.0e-13            4.0e-13                 0         373    361    225    3.1568
+  notoserif                12446       30.9638            1.3e-12                22         630    504    298  180.0000
+  notoserifcjk            530609        2.2026            1.8e-12                18       37502  26077  14221  180.0000
+  notoserifdevanagari       4158       4.4e-13            4.4e-13                 0         120    113     86    3.5979
+  notoserifdisplayitalic   12178       1.0e-12            1.0e-12                 0        1999   1553    684    4.9291
+  notoserifethiopic         3533       8.4e-13            8.4e-13                 0         171    127     38    2.5731
+  notoserifitalic          12223       8.7e-13            8.7e-13                 0        1600   1195    459    7.2251
+  notoserifkhmer            6087       3.3e-12            3.3e-12                 0         490    377    236    3.8225
+  notoseriftibetan         18683       8.1e-13            8.1e-13                 0         177    117     34    2.0050
+  total                   926336      180.0000            3.3e-12                70       59198  38805  20678  180.0000
+
+  largest conv: the largest change by conversion, in degrees, over all instances.
+  regular instances: the same, leaving out the instances in which a control point next to
+    the joint is at the joint (a handle of no length in the instance), for the cubic or the
+    quadratic, so that a direction comes from a point further away.
+  irregular joints: the joints that have such an instance (226 joint-instance pairs in all).
+    At 50 of them no master's cubic has a control point at the joint: the handles of two
+    masters cancel in the instance. At 20 every master's cubic has one there: the handle has
+    no length in any master, and nothing cancels. At 0 some masters have one.
+  joints with a change by conversion above 0.1, 0.5, 1 degree: 29, 29, 28 over all instances;
+    0, 0, 0 over regular instances.
+  for scale, the cubic instances themselves: K_c is above 0.1, 0.5, 1 degree in some instance
+    at 63172, 35511, 8437 of these joints, largest 180.0000.
+  in some master itself, |K_q - K_c| (not rounded) is above 0.1, 0.5, 1 degree at 2, 2, 2
+    of these joints, largest 26.5651 (see 5).
+
+5. The worst joints for the change by conversion
+
+  Next to a single quadratic, the worst:
+
+    source notosanscjk, glyph uni5FDB
+    joint at the start of segment 928588 (incoming segment 928587); masters 0 and 1, t = 0.75
+      master 0 is at {"wght": 0.0}
+      master 1 is at {"wght": 1.0}
+      incoming segment (cubic, converted to 1 quadratic):
+        master 0   (838, -22) (828, -22) (820, -21) (813, -17)
+          quadratic  (838, -22) (821.75, -22) (813, -17)
+          rounded    (838, -22) (822, -22) (813, -17)
+        master 1   (841, 58) (837, 58) (833, 60) (831, 64)
+          quadratic  (841, 58) (834, 58) (831, 64)
+          rounded    (841, 58) (834, 58) (831, 64)
+      outgoing segment (cubic, converted to 1 quadratic):
+        master 0   (813, -17) (806, -13) (803, 9) (803, 46)
+          quadratic  (813, -17) (803, -11.2857) (803, 46)
+          rounded    (813, -17) (803, -11) (803, 46)
+        master 1   (831, 64) (829, 68) (829, 81) (829, 104)
+          quadratic  (831, 64) (829, 68) (829, 104)
+          rounded    (831, 64) (829, 68) (829, 104)
+      the instance:
+        incoming  (840.25, 38) (834.75, 38) (829.75, 39.75) (826.5, 43.75)
+          quadratic  (840.25, 38) (830.938, 38) (826.5, 43.75)
+          rounded    (840.25, 38) (831, 38) (826.5, 43.75)
+        outgoing  (826.5, 43.75) (823.25, 47.75) (822.5, 63) (822.5, 89.5)
+          quadratic  (826.5, 43.75) (822.5, 48.1786) (822.5, 89.5)
+          rounded    (826.5, 43.75) (822.5, 48.25) (822.5, 89.5)
+      K_c = 0.000000, K_q = 4.430388, K_r = 3.586497 degrees (recomputed one number at a time)
+      the joint's change by conversion is 4.430388; its change by rounding, over all instances, 1.739602
+      kink in each cubic master: 0 0
+      kink in each quadratic master, not rounded: 3.507e-15 0
+
+  Next to a single quadratic, the ten worst:
+
+  source            glyph  segment  n in/out  masters     t     K_c     K_q      K_r  conversion  rounding  irregular
+  -----------  ----------  -------  --------  -------  ----  ------  ------  -------  ----------  --------  ---------
+  notosanscjk     uni5FDB   928588       1/1      0,1  0.75       0  4.4304   3.5865      4.4304    1.7396          0
+  notosanscjk  glyph17523   928630       1/1      0,1  0.75       0  4.4304   3.5865      4.4304    1.7396          0
+  notosanscjk     uni4C16   479212       1/1      0,1  0.75       0  2.5766   3.1798      2.5766    1.6748          0
+  notosanscjk  glyph26970  1480973       1/2      0,1  0.75       0  2.5475   6.1279      2.5475    3.5804          0
+  notosanscjk  glyph62764  3655215       1/2      0,1  0.75       0  2.5323   6.0090      2.5323    3.4767          0
+  notosanscjk     uni9DF7  2831590       2/1      0,1  0.75  4.1347  6.1923   0.7848      2.0576    7.1694          0
+  notosanscjk  glyph10629   563965       1/2      0,1   0.5       0  1.8677   6.9112      1.8677    6.9539          0
+  notosanscjk  glyph62952  3667458       1/1      0,1  0.75       0  1.8498   5.0425      1.8498    3.1926          0
+  notosanscjk  glyph61910  3605359       1/2      0,1   0.5       0  1.8476   2.7263      1.8476    4.0821          0
+  notosanscjk  glyph08488   434658       1/2      0,1   0.5  2.7263  4.5739  17.1027      1.8476   16.3139          0
+
+  Not next to a single quadratic, the worst:
+
+    source notosans, glyph homotheticabovecomb
+    joint at the start of segment 12633 (incoming segment 12632); masters 7 and 15, t = 0.5
+      master 7 is at {"Contrast (Grotesque)": 0.0, "Weight": 1.0, "Width": -1.0}
+      master 15 is at {"Contrast (Grotesque)": 1.0, "Weight": 1.0, "Width": -1.0}
+      incoming segment (cubic, converted to 2 quadratics):
+        master 7   (-82, 683) (-81, 714) (-67, 719) (-60, 719)
+          quadratic  (-82, 683) (-81.25, 706.25) (-65.25, 719) (-60, 719)
+          rounded    (-82, 683) (-81, 706) (-65, 719) (-60, 719)
+        master 15  (79, 817) (79, 792) (68, 781) (57, 781)
+          quadratic  (79, 817) (79, 798.25) (65.25, 781) (57, 781)
+          rounded    (79, 817) (79, 798) (65, 781) (57, 781)
+      outgoing segment (cubic, converted to 4 quadratics):
+        master 7   (-60, 719) (-25, 719) (21, 684) (63, 684)
+          quadratic  (-60, 719) (-46.875, 719) (-17.0469, 708.427) (14.7969, 694.573) (47.25, 684) (63, 684)
+          rounded    (-60, 719) (-47, 719) (-17, 708) (15, 695) (47, 684) (63, 684)
+        master 15  (57, 781) (22, 781) (-25, 816) (-58, 816)
+          quadratic  (57, 781) (43.875, 781) (14.0729, 791.573) (-16.5729, 805.427) (-45.625, 816) (-58, 816)
+          rounded    (57, 781) (44, 781) (14, 792) (-17, 805) (-46, 816) (-58, 816)
+      the instance:
+        incoming  (-1.5, 750) (-1, 753) (0.5, 750) (-1.5, 750)
+          quadratic  (-1.5, 750) (-1.125, 752.25) (0, 750) (-1.5, 750)
+          rounded    (-1.5, 750) (-1, 752) (0, 750) (-1.5, 750)
+        outgoing  (-1.5, 750) (-1.5, 750) (-2, 750) (2.5, 750)
+          quadratic  (-1.5, 750) (-1.5, 750) (-1.48698, 750) (-0.888021, 750) (0.8125, 750) (2.5, 750)
+          rounded    (-1.5, 750) (-1.5, 750) (-1.5, 750) (-1, 750) (0.5, 750) (2.5, 750)
+      K_c = 0.000000, K_q = 180.000000, K_r = 180.000000 degrees (recomputed one number at a time)
+      the joint's change by conversion is 180.000000; its change by rounding, over all instances, 180.000000
+      in this instance a control point next to the joint is at the joint; the directions come from
+        control point number (counting from the joint) 1/2 of the incoming/outgoing cubic, 1/2
+        of the quadratics
+      kink in each cubic master: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+      kink in each quadratic master, not rounded: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+  Not next to a single quadratic, the ten worst:
+
+  source                   glyph  segment  n in/out  masters    t       K_c       K_q       K_r  conversion  rounding  irregular
+  ---------  -------------------  -------  --------  -------  ---  --------  --------  --------  ----------  --------  ---------
+  notosans   homotheticabovecomb    12633       2/4     7,15  0.5         0  180.0000  180.0000    180.0000  180.0000          6
+  notoserif        medievalcomma    19921       2/2      4,8  0.5  135.0000  165.9638   45.0000     30.9638  120.9638          5
+  notoserif      punctuselevatus    22815       2/2      4,8  0.5  135.0000  165.9638   45.0000     30.9638  120.9638          5
+  notosans   homotheticabovecomb    12629       2/4     3,15  0.5   49.3987   25.0169   20.5560     24.3818   90.0000          7
+  notosans   homotheticabovecomb    12630       4/2     5,11  0.5    3.3665   27.2161   26.5651     23.8497  180.0000          3
+  notoserif           onarrow-cy    21326       4/4     5,13  0.5  105.2551  124.5181  135.0000     19.2630  135.0000          1
+  notoserif        medievalcomma    19919       2/2     1,14  0.5   45.0000   63.4349   45.0000     18.4349  180.0000          5
+  notoserif      punctuselevatus    22813       2/2     1,14  0.5   45.0000   63.4349   45.0000     18.4349  180.0000          5
+  notoserif           onarrow-cy    21325       3/3     7,14  0.5  161.5651  143.1301  180.0000     18.4349  135.0000         23
+  notosans            betaSymbol     7187       3/2     3,14  0.5  180.0000  168.6901  170.5377     11.3099    8.7462          4
+
+  The worst of each source, of all its smooth joints:
+
+  source                                      glyph  segment  n in/out  masters     t       K_c       K_q       K_r  conversion  rounding  irregular
+  ----------------------  -------------------------  -------  --------  -------  ----  --------  --------  --------  ----------  --------  ---------
+  cantarell                              germandbls     7460       5/2      1,2  0.75         0   3.3e-13         0     3.3e-13   3.3e-13          0
+  notokufiarabic                        cuberoot-ar      506       3/1      0,3  0.75    4.6355    6.2974    4.9460      1.6619    1.3514          0
+  notoloopedthai                 thoNangmontho-thai     3542       5/2      3,4  0.25         0   6.4e-13         0     6.4e-13   6.4e-13          0
+  notonaskharabic                              _783      425       1/2      0,1   0.5    0.3071    0.5443    0.2090      0.2372    0.5591          0
+  notosans                      homotheticabovecomb    12633       2/4     7,15   0.5         0  180.0000  180.0000    180.0000  180.0000          6
+  notosansarabic                         yehTail-ar     4499       5/4      2,3  0.25         0   8.0e-13         0     8.0e-13   8.0e-13          0
+  notosansbengali                         nine.beng     8968       5/3      1,3  0.75         0   1.8e-13         0     1.8e-13   1.8e-13          0
+  notosanscjk                               uni5FDB   928588       1/1      0,1  0.75         0    4.4304    3.5865      4.4304    1.7396          0
+  notosansdevanagari                      nine.deva     8227       5/3      1,3  0.75         0   1.8e-13         0     1.8e-13   1.8e-13          0
+  notosansethiopic                          oneform     2718       0/3      3,7  0.25    0.1201    0.1201    0.3581     5.3e-14    0.5918          0
+  notosansitalic                            percent    17123       5/2    11,14  0.75         0   1.0e-12         0     1.0e-12   1.0e-12          0
+  notosanskannada            tayasubscriptaltUIknda     8018       5/2      3,6  0.75         0   1.1e-12         0     1.1e-12   1.1e-12          0
+  notosansmono                              Mscript     3953       1/3      0,4   0.5    0.4054    0.3739    0.0972      0.0315    0.3010          0
+  notosansmyanmar                    ta_wa_ovl.sub2     8793       3/3      2,5  0.25  121.6755  116.7640  180.0000      4.9115   63.2360          1
+  notosanssinhala                       mbarephsinh     7090       5/4      3,6  0.25         0   2.1e-13         0     2.1e-13   2.1e-13          0
+  notosanstelugu                      dzeevoweltelu     2626       5/2      1,2  0.75         0   4.0e-13         0     4.0e-13   4.0e-13          0
+  notoserif                           medievalcomma    19921       2/2      4,8   0.5  135.0000  165.9638   45.0000     30.9638  120.9638          5
+  notoserifcjk                           glyph17193  1260875       2/0      0,1  0.25         0    2.2026         0      2.2026    2.2026          1
+  notoserifdevanagari                 ninecomb-deva     8692       1/2      3,4   0.5    0.3537    0.2724    0.1510      0.0813    0.8132          0
+  notoserifdisplayitalic                 downancora    13389       2/1      0,4   0.5    0.2250    0.2220    0.2875      0.0030    0.8321          0
+  notoserifethiopic                    tha-ethiopic     5377       5/2      0,5  0.75         0   8.4e-13         0     8.4e-13   8.4e-13          0
+  notoserifitalic                         facsimile    16699       1/0      1,4   0.5    0.3649    0.1587    0.2546      0.2062    0.5787          0
+  notoserifkhmer                        uni178A17B6     1765       5/2      0,4  0.75         0   3.3e-12         0     3.3e-12   3.3e-12          0
+  notoseriftibetan        eeMatra_rjesSuNgaRo_tibet    15783       5/2      0,2  0.75         0   8.1e-13         0     8.1e-13   8.1e-13          0
+
+  segment: index of the outgoing segment in the source's arrays. n in/out: quadratics of the
+  incoming and outgoing segment (0: a line). K_c, K_q, K_r: at the instance of the largest
+  |K_q - K_c|. rounding: the joint's change by rounding, over all instances. irregular: the
+  joint's instances in which a control point next to the joint is at the joint.
+
+  Smooth joints where the conversion changes the kink of a master itself, with no instance
+  taken, by more than 0.1 degree (not rounded). At most ten, the worst first:
+
+  source                  glyph  segment  n in/out  master  K_c there  K_q there  conversion  next to a single
+  ---------------  ------------  -------  --------  ------  ---------  ---------  ----------  ----------------
+  notoserifcjk       glyph36167  2828277       0/1       1          0   180.0000           0               yes
+  notonaskharabic       uni06D9     3571       2/2       1          0    26.5651           0                no
+  notosansitalic   Lmiddletilde     3141       2/2      11          0    11.3099           0                no
+
+  K_c there, K_q there: the joint's kink in that cubic master and in that quadratic master.
+  conversion: the joint's change by conversion over the instances, as in the tables above.
+
+Notes
+
+  conversions that raised an exception: none
+  conversions that moved an end point: 0; smooth joints left out for a failed conversion: 0
+  largest n: 8
+  joints whose two segments do not meet exactly in every master: 0
+  largest kink of a smooth joint in a cubic master, as floating point computes it: 1.0000 degrees
+  joint-instance pairs measured: 19832100
+    with an undefined kink: cubic 31, quadratic 31, rounded 26
+  smooth joints with no instance where the change is defined: conversion 0, rounding 0
+  smooth joints where, in some instance, a direction came from a control point further away
+    because the one next to the joint was at the joint: cubic 70, quadratic 70, rounded 79
+    (of which next to a single quadratic: 0, 0, 0)
+  the 1e-09 threshold for 'at the joint' in instances: over all directions taken,
+    cubic     shortest distance counted as away from the joint 0.25, longest counted as at it 0
+    quadratic shortest distance counted as away from the joint 0.013, longest counted as at it 5.68e-14
+    rounded   shortest distance counted as away from the joint 0.25, longest counted as at it 0
+  control points with a coordinate that is not an integer: 2648, in 12 sources
+    smooth joints at such a point in some master: 2 next to a single quadratic (change by
+    rounding above 0.1 degree at 2 of them), 160 others (at 24). There, rounding moves the
+    off-curve points onto integers while the joint stays off them.
+  glyphs skipped when the masters were extracted (from the meta files): notosansarabic {"incompatible contour count": 1}; notoserifdevanagari {"incompatible contour count": 3}
+  glyph names without segments: cantarell 12; notosanscjk 11; notoserifcjk 211
+  units per em: [1000]; tolerance: [1.0]
+  cross-check: K_c, K_q, K_r of 5167 joints, in every instance and every master, recomputed one
+    number at a time from the definitions, converting again: largest difference 3.03e-15 degrees,
+    0 kinks defined in one computation and not in the other
+
+run time: 27 seconds with 24 processes (conversion 13, joints and instances 8, cross-check and details 5)

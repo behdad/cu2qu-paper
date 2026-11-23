@@ -11,10 +11,14 @@ fits although ruled out: 0
 
 quadratics per cubic
 tolerance                                                         1.0        0.5        0.1
-cu2qu: one if it fits at equal parameters, else the ramp       2.3364     2.8379     4.8023
-the same with the best weights (sec. 4)                        2.3225     2.7632     4.3058
-HarfBuzz: one by the bound of sec. 7, else the ramp            1.9977     2.5855     4.6728
-mid-point (kurbo to_quads, lyon)                               1.6881     1.9839     3.0368
+cu2qu: one if it fits at equal parameters, else the ramp     2.336399   2.837888   4.802342
+the same with the best weights (sec. 4)                      2.322482   2.763172   4.291360
+HarfBuzz: one by the bound of sec. 7, else the ramp          1.997691   2.585454   4.672772
+mid-point (kurbo to_quads, lyon)                             1.688120   1.983865   3.036823
+
+HarfBuzz draws a line where both control points are within tolerance of the chord's line
+cubics                                                     3255 (4.2%) 1596 (2.1%) 1121 (1.4%)
+segments per cubic with those as one line                    1.941870   2.525866   4.575845
 
 cu2qu, share of cubics by number of quadratics (1 / 2 / 3 / 4 / 5 and more), percent
   tolerance 1.0: 6.3 / 65.9 / 17.6 / 8.7 / 1.6   (most: 8)
@@ -36,8 +40,11 @@ mid-point spline: angle between the cubic's end tangents and the spline's
 
 distance as sets of points (Hausdorff), measured
 tolerance                                                         1.0        0.5        0.1
-cu2qu's constructions, least n within tolerance                1.7033     2.1075     3.6942
-cu2qu's output: distance / tolerance, mean                      0.272      0.339      0.454
+cu2qu's constructions, least n within tolerance              1.703275   2.107451   3.694233
+cu2qu's output: distance / tolerance, mean                   0.271907   0.338656   0.454375
 one quadratic within tolerance                             35496 (45.8%) 25303 (32.6%) 10460 (13.5%)
-bound of sec. 7 against the measured distance: below it by at most 6.39e-14 units; bound / measured median 1.10, 90th percentile 3.31 (73135 cubics)
+share of that saving in cubics that take one, percent            69.0       52.2       22.0
+HarfBuzz's quadratic within tolerance                      35852 (46.2%) 25815 (33.3%) 10775 (13.9%)
+HarfBuzz, its splines accepted by distance                   1.781577   2.199322   3.755949
+bound of sec. 7 against the measured distance: below it by at most 6.39e-14 units; bound / measured median 1.10, 90th percentile 3.36 (73924 cubics)
 measured distance above the equal-parameter distance by at most 3.27e-05 units (n >= 2)

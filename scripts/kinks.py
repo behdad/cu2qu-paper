@@ -491,6 +491,9 @@ class Source:
         # Instances in which, for the cubic or for the quadratic, a direction
         # did not come from the control point next to the joint.
         res["irregular"] = np.zeros(N, dtype=np.int64)
+        # Masters in which, for the cubic, a control point next to the joint
+        # is at the joint: the handle there has no length in that master.
+        res["bare_masters"] = np.zeros(N, dtype=np.int64)
         for v in VERSIONS:
             res["further_" + v] = np.zeros(N, dtype=bool)
             res["undefined_" + v] = np.zeros(N, dtype=np.int64)
@@ -523,7 +526,8 @@ class Source:
                     res["further_" + v][sl] = further[v].any(axis=1)
                     res["undefined_" + v][sl] = np.isnan(turn[v]).sum(axis=1)
                 # The masters themselves, with no interpolation.
-                turn, _ = self.turns(js, scratch, self.master_instances)
+                turn, further_master = self.turns(js, scratch, self.master_instances)
+                res["bare_masters"][sl] = further_master["c"].sum(axis=1)
                 Kc, Kq = np.abs(turn["c"]), np.abs(turn["q"])
                 res["Kc_master"][sl] = rowmax(Kc)[0]
                 res["conv_master"][sl], arg = rowmax(np.abs(Kq - Kc))
@@ -752,6 +756,8 @@ def process(path, pool, args):
         irregular_other=int((irregular & other).sum()),
         irregular_pairs_single=int(res["irregular"][single].sum()),
         irregular_pairs_other=int(res["irregular"][other].sum()),
+        irregular_other_bare_all=int((irregular & other & (res["bare_masters"] == src.M)).sum()),
+        irregular_other_bare_none=int((irregular & other & (res["bare_masters"] == 0)).sum()),
         nan_conv=int(np.isnan(res["conv"]).sum()),
         nan_rnd=int(np.isnan(res["rnd"]).sum()),
         undefined={v: int(res["undefined_" + v].sum()) for v in VERSIONS},
@@ -836,8 +842,9 @@ def report(results, args, seconds, out):
     out("Kinks at smooth joints of interpolated instances: cubic masters, cu2qu, rounding")
     out("=" * 82)
     out("")
-    out("data       %s (%d sources)" % (os.path.abspath(args.data_dir), len(results)))
-    out("fontTools  %s, %s" % (version, cu2qu_file))
+    home = os.path.expanduser("~")
+    out("data       %s (%d sources)" % (os.path.abspath(args.data_dir).replace(home, "~"), len(results)))
+    out("fontTools  %s, %s" % (version, cu2qu_file.replace(home, "~")))
     out("           compiled: %s; sha256 of cu2qu.py %s" % (compiled, digest))
     if branch:
         out("           HEAD of that checkout: %s" % branch)
@@ -1005,9 +1012,13 @@ def report(results, args, seconds, out):
     out("")
     out("  largest conv: the largest change by conversion, in degrees, over all instances.")
     out("  regular instances: the same, leaving out the instances in which a control point next to")
-    out("    the joint is at the joint (the handles of the two masters cancel), for the cubic or the")
+    out("    the joint is at the joint (a handle of no length in the instance), for the cubic or the")
     out("    quadratic, so that a direction comes from a point further away.")
     out("  irregular joints: the joints that have such an instance (%d joint-instance pairs in all)." % tot("irregular_pairs_other"))
+    bare_all, bare_none = tot("irregular_other_bare_all"), tot("irregular_other_bare_none")
+    out("    At %d of them no master's cubic has a control point at the joint: the handles of two" % bare_none)
+    out("    masters cancel in the instance. At %d every master's cubic has one there: the handle has" % bare_all)
+    out("    no length in any master, and nothing cancels. At %d some masters have one." % (tot("irregular_other") - bare_all - bare_none))
     out("  joints with a change by conversion above 0.1, 0.5, 1 degree: %d, %d, %d over all instances;" % (co[0], co[1], co[2]))
     out("    %d, %d, %d over regular instances." % (cr[0], cr[1], cr[2]))
     b = merged("base_other")

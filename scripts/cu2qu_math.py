@@ -122,17 +122,27 @@ def count(d3, tolerance, max_n=100):
     return 0
 
 
-# The best weights known that keep both end tangents (section 4 of the note):
-# +1, -1, ... for even n; (1, 0, -1) for three; for odd n from five, one block
-# (1, a, 0, -a, -1) with a = -0.9334 and pairs. check_math.py finds the block.
-FIVE_BLOCK_FACTOR = 0.151879364835661
-BEST_ODD_FACTOR = {3: 27 / 128, 5: FIVE_BLOCK_FACTOR}
+# The best weights that keep both end handles (s_0 = 1, s_{n-1} = -1; section 4
+# of the note). For an even n they are +1, -1, ..., with factor 4/27. For an
+# odd n they come from a linear program (best_weights.py); these are the
+# factors it finds, each the exact largest |phi| of the weights found. Beyond
+# fifteen the factor of fifteen is used, which a block of fifteen and pairs
+# reaches, and which is within 6e-6 of 4/27.
+BEST_ODD_FACTOR = {
+    3: 27 / 128,
+    5: 0.151879364858,
+    7: 0.149383547166,
+    9: 0.148243084812,
+    11: 0.148180401073,
+    13: 0.148150645744,
+    15: 0.148148997326,
+}
 
 
 def best_error_factor(n):
     if n % 2 == 0:
         return 4 / 27
-    return 27 / 128 if n == 3 else FIVE_BLOCK_FACTOR
+    return BEST_ODD_FACTOR[min(n, 15)]
 
 
 # --------------------------------------------------- the single quadratic
@@ -159,14 +169,11 @@ def handle_fractions(c, q):
     return l1, l2
 
 
-def single_quadratic_bound(c):
-    """An upper bound on the distance, as sets of points, between the cubic
-    and the quadratic (c0, q, c3) of its end tangents; or None when the
-    bound does not apply."""
-    q = tangent_intersection(c)
-    if q is None or q == c[0] or q == c[3]:
-        return None
-    l1, l2 = handle_fractions(c, q)
+def distance_bound(l1, l2, a, z):
+    """Theorem 4's bound on the distance, as sets of points, between the
+    quadratic with the legs a = q - c0 and z = c3 - q and the cubic whose
+    control points are l1 and l2 of the way along them; None unless
+    0 <= l1, l2 <= 2."""
     if not (0 <= l1 <= 2 and 0 <= l2 <= 2):
         return None
     p = l1 / 2 - 1 / 3
@@ -175,6 +182,15 @@ def single_quadratic_bound(c):
     e2_min = 0.0 if p * r <= 0 else min(p * p, r * r)
     g = l1 + l2 - 4 / 3
     m = max(abs(g + 3 * e2_max), abs(g + 3 * e2_min))
-    a = q - c[0]
-    z = c[3] - q
     return 3 / 16 * m * abs(a - z)
+
+
+def single_quadratic_bound(c):
+    """That bound for the quadratic (c0, q, c3) of the cubic's end tangents;
+    None when the tangents do not meet, or meet at an end point, or the
+    handle fractions are outside the theorem's range."""
+    q = tangent_intersection(c)
+    if q is None or q == c[0] or q == c[3]:
+        return None
+    l1, l2 = handle_fractions(c, q)
+    return distance_bound(l1, l2, q - c[0], c[3] - q)

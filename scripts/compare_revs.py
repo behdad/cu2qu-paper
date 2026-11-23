@@ -7,8 +7,9 @@ Usage: compare_revs.py REPO REV_BEFORE REV_AFTER cubics.json
 The two revisions of Lib/fontTools/cu2qu/{cu2qu,errors}.py are read out of
 the git repository REPO (nothing is checked out) and run in pure Python.
 For tolerances 1, 0.5 and 0.1 this prints the quadratics per cubic of each,
-the cubics whose results differ, and whether the number of quadratics is the
-one cu2qu_math.count() gives.
+the cubics whose results differ, whether the number of quadratics is the
+one cu2qu_math.count() gives, and whether a single quadratic is returned
+exactly when the closed form of its error (measure.py) is within tolerance.
 """
 
 import importlib
@@ -19,6 +20,7 @@ import sys
 import tempfile
 
 import cu2qu_math as M
+import measure
 
 TOLERANCES = (1.0, 0.5, 0.1)
 
@@ -48,7 +50,7 @@ def main():
     cubics = [[tuple(p) for p in c] for c in json.load(open(path))]
     print("%d cubics" % len(cubics))
     for tol in TOLERANCES:
-        total_a = total_b = differ = off_formula_a = off_formula_b = 0
+        total_a = total_b = differ = off_formula_a = off_formula_b = off_single = singles = 0
         print("\ntolerance %g" % tol)
         for c in cubics:
             a = before.curve_to_quadratic(c, tol)
@@ -63,6 +65,12 @@ def main():
                 off_formula_a += 1
             if nb > 1 and nb != want:
                 off_formula_b += 1
+            # the single quadratic: the closed form of its error against the test
+            error = measure.single_equal_parameter_error(z)
+            fits = error is not None and error <= tol
+            singles += nb == 1
+            if fits != (nb == 1):
+                off_single += 1
             if a != b:
                 differ += 1
                 print("  differs: %s  |d3| / tolerance = %.17g: %d -> %d quadratics" % (c, d3 / tol, na, nb))
@@ -70,6 +78,7 @@ def main():
         print("  quadratics per cubic: before %.4f, after %.4f" % (total_a / n, total_b / n))
         print("  results that differ: %d of %d" % (differ, n))
         print("  splines whose number is not the closed form's: before %d, after %d" % (off_formula_a, off_formula_b))
+        print("  single quadratics after: %d; cubics that the closed form of its error decides otherwise: %d" % (singles, off_single))
 
 
 if __name__ == "__main__":

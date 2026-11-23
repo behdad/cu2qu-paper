@@ -3,4 +3,7 @@ the three counts for 3007 values of |d3| / tolerance: the same
 phi at 2000 points: largest difference 5.6e-17
 spline points, third differences and points of 1000 cubics: largest difference 2.8e-14
 the bound for one quadratic: the same for 628 cubics, and not applicable for the same 372
+the same bound from handle fractions: the same for 207 pairs, the ends 0 and 2 among them, and none outside for the same 100
+the single quadratic's error at equal parameters, sampled, against its closed form: 1000 cubics, largest relative difference 2.8e-06
+figure 1 says where one quadratic would do, and not where it would not
 cu2qu-figures.js agrees with cu2qu_math.py

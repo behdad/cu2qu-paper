@@ -1,0 +1,27 @@
+CubicBez((0, 0), (0, 0), (0, 0), (25, 0)).approx_spline(100/27)    [single quadratic, fontTools' tie]
+    before a5f97ff40         returns 4 points
+    after 5f6ba6679          returns 3 points
+CubicBez((-45, -3), (-30, -2), (0, 5), (0, 9)).approx_spline(20/3)    [single quadratic, fontTools' tie]
+    before a5f97ff40         returns 3 points
+    after 5f6ba6679          returns 3 points
+CubicBez((-31, 97), (-51, 93), (-91, 76), (-139, 52)).approx_spline(1.987615979999813)    [single quadratic, kurbo's tie]
+    before a5f97ff40         stack overflow, killed by SIGABRT
+    after 5f6ba6679          returns 3 points
+CubicBez((-20, 7), (-20, -27.5), (-12, -32.5), (4, -32)).approx_spline(3.5555555555555554)    [single quadratic, kurbo's tie]
+    before a5f97ff40         stack overflow, killed by SIGABRT
+    after 5f6ba6679          returns 3 points
+CubicBez((386, -158), (527, -28), (480, -99), (2270, 2329)).approx_spline(4)    [spline of six at its limit]
+    before a5f97ff40         stack overflow, killed by SIGABRT
+    after 5f6ba6679          returns 8 points
+CubicBez((-258, -394), (-148, -194), (-155, -13), (105, 661)).approx_spline(5)    [spline of three at its limit]
+    before a5f97ff40         returns 5 points
+    after 5f6ba6679          returns 5 points
+CubicBez((-22, 289), (31, 324), (-137, 476), (1499, 3445)).approx_spline(4)    [spline of six at its limit]
+    before a5f97ff40         returns 8 points
+    after 5f6ba6679          returns 8 points
+CubicBez((0, 0), (nan, 0), (1, 1), (2, 2)).approx_spline(1)    [NaN coordinate]
+    before a5f97ff40         stack overflow, killed by SIGABRT
+    after 5f6ba6679          returns None
+CubicBez((0, 0), (0, 100), (100, 200), (354, 300)).approx_spline(nan)    [NaN accuracy]
+    before a5f97ff40         stack overflow, killed by SIGABRT
+    after 5f6ba6679          returns None
