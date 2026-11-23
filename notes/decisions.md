@@ -22,7 +22,7 @@ What was decided while writing the note, by whom, and why. Dates are 2026.
   the web fonts had arrived. Its menu is off, so that 300 formulas are not 300
   tab stops.
 - **Live figures.** Behdad asked for interactive figures. One file,
-  `cu2qu.js`, draws all five and wires sliders and dragging; no library. It
+  `cu2qu-figures.js`, draws all five and wires sliders and dragging; no library. It
   is the only implementation: the copies in the page for readers without
   scripts are made by running the same file under node
   (`render_figures.js`), and `check_js.py` compares its formulas with the
@@ -34,10 +34,18 @@ What was decided while writing the note, by whom, and why. Dates are 2026.
 - **Where things live.** Behdad, in the end: the results go in the homepage
   checkout and may be committed there; the research and reproduction notes
   and code go in this repository, which he puts on GitHub himself. So the
-  page and `cu2qu.js` are only in the homepage checkout, this repository has
+  page and `cu2qu-figures.js` are only in the homepage checkout, this repository has
   no copy, and the page's Appendix B links here
   (`github.com/behdad/cu2qu-paper`). For a while the scripts were to be
   published next to the page instead (`doc/cu2qu-files/`); that was dropped.
+
+- **The script is `cu2qu-figures.js`, not `cu2qu.js`.** The public URL
+  `/doc/cu2qu` has no extension, and the server (Apache, MultiViews) picks
+  among the files named `cu2qu.*`. With `cu2qu.js` beside `cu2qu.html`, a
+  browser got the page but a client that accepts anything (curl, link-preview
+  bots) got the script, the smaller of the two. Found on the live site right
+  after the first deployment. A page's own files must not share its name;
+  the site's exports use `NAME-images/` for the same reason.
 
 ## Who wrote it
 

@@ -251,7 +251,7 @@ def main():
         if row[1:] != want:
             problems.append("Table 3, row %d: page %s, measured %s" % (i + 1, row[1:], want))
 
-    # --- the figures' numbers, as cu2qu.js computes them
+    # --- the figures' numbers, as cu2qu-figures.js computes them
     figures = json.load(open(os.path.join(data, "figures.json")))
     pace = figures["pace"]
     if (round(pace["equal"]), "%.1f" % pace["apart"], "%.1f" % pace["bound"]) != (71, "0.7", "2.4"):

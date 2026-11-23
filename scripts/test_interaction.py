@@ -4,7 +4,7 @@
 Usage: test_interaction.py page.html
 
 The page is served from its own directory's parent (so that ../style.css and
-cu2qu.js resolve), with a script added that moves every slider, drags
+cu2qu-figures.js resolve), with a script added that moves every slider, drags
 control points and moves the pointer over the plot, and writes down what the
 figures report. Needs google-chrome.
 """

@@ -6,7 +6,7 @@ build and check the page, the notes kept while working on it, and the
 earlier research tools.
 
 The note itself is not here. It lives in the homepage's repository, as
-`doc/cu2qu.html` with its figure script `doc/cu2qu.js`.
+`doc/cu2qu.html` with its figure script `doc/cu2qu-figures.js`.
 
 ## Layout
 
@@ -77,7 +77,7 @@ and `perf` for `perf_fonttools.py`; google-chrome for `test_interaction.py`.
 
 ## Working on the note
 
-Edit `doc/cu2qu.html` or `doc/cu2qu.js` in the homepage checkout, then
+Edit `doc/cu2qu.html` or `doc/cu2qu-figures.js` in the homepage checkout, then
 
     sh build.sh              # for ~/behdad.org; or: sh build.sh SITE
 

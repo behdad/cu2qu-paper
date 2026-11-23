@@ -1,6 +1,6 @@
 #!/bin/sh
 # Check the note and put its figures in, in the homepage checkout:
-# doc/cu2qu.html and doc/cu2qu.js.
+# doc/cu2qu.html and doc/cu2qu-figures.js.
 #
 # Usage: sh build.sh [SITE]        (SITE defaults to ~/behdad.org)
 #
@@ -12,7 +12,7 @@ set -e
 HERE=$(cd "$(dirname "$0")" && pwd)
 SITE=${1:-$HOME/behdad.org}
 PAGE=$SITE/doc/cu2qu.html
-JS=$SITE/doc/cu2qu.js
+JS=$SITE/doc/cu2qu-figures.js
 
 cd "$HERE/scripts"
 python3 check_math.py > "$HERE/data/check_math.txt"

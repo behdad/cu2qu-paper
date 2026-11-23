@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Check that cu2qu.js computes what cu2qu_math.py computes.
+"""Check that cu2qu-figures.js computes what cu2qu_math.py computes.
 
-Usage: check_js.py cu2qu.js
+Usage: check_js.py cu2qu-figures.js
 
 The figures are drawn by JavaScript, which has the formulas a second time.
 This runs them under node and compares the values with the Python ones: the
@@ -94,7 +94,7 @@ def main():
     assert worst < 1e-9, worst
     print("spline points, third differences and points of %d cubics: largest difference %.1e" % (len(cubics), worst))
     print("the bound for one quadratic: the same for %d cubics, and not applicable for the same %d" % (bounds, len(cubics) - bounds))
-    print("cu2qu.js agrees with cu2qu_math.py")
+    print("cu2qu-figures.js agrees with cu2qu_math.py")
 
 
 if __name__ == "__main__":

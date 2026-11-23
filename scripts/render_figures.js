@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Put the figures into the page, as they are before anything is moved.
 //
-// Usage: node render_figures.js page.html cu2qu.js [numbers.json] [--check]
+// Usage: node render_figures.js page.html cu2qu-figures.js [numbers.json] [--check]
 //
 // The page holds each figure between two comments,
 //
@@ -9,9 +9,9 @@
 //     ...
 //     <!-- /figure:NAME -->
 //
-// and this script replaces what is between them with the SVG that cu2qu.js
+// and this script replaces what is between them with the SVG that cu2qu-figures.js
 // draws for its default state, so that the page shows the figures without
-// scripts too. With scripts, cu2qu.js redraws them in place and makes them
+// scripts too. With scripts, cu2qu-figures.js redraws them in place and makes them
 // live. The numbers the captions quote are written to numbers.json, where
 // check_page.py compares them with the text.
 
@@ -22,7 +22,7 @@ const args = process.argv.slice(2);
 const check = args.includes("--check");
 const [page, lib, numbers] = args.filter((a) => !a.startsWith("--"));
 if (!page || !lib) {
-  console.error("usage: render_figures.js page.html cu2qu.js [numbers.json] [--check]");
+  console.error("usage: render_figures.js page.html cu2qu-figures.js [numbers.json] [--check]");
   process.exit(2);
 }
 const F = require(path.resolve(lib));
