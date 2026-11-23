@@ -2,16 +2,13 @@
 
 ## Before the note goes on the site
 
-- Behdad to read it. The title, the slug and the "About this note" paragraph
-  are his to word.
-- Put this repository on GitHub (Behdad). The page's Appendix B links to
-  `https://github.com/behdad/cu2qu-paper` and to files under
-  `blob/main/scripts/`; change the links if the name differs. Until it is
-  there, `check_page.py --links --repository-pending` lets those links fail.
-- The entry in `doc/index.html` is a plain one under 2026. The other papers
-  of the year are `featured-work` entries with a tagline; make it one if it
-  should be, for example with: "The error of cu2qu's spline in closed form:
-  the number of quadratics is computed, not searched for."
+- Behdad to read it. The title, the slug, the byline and the "About this
+  note" paragraph are his to word.
+- The homepage checkout has the note committed (three commits) and not
+  pushed; pushing and deploying are his.
+- The entry in `doc/index.html` is a plain one, first under 2026 (the index
+  is newest first; not featured, by Behdad's word), with his tagline: "The
+  math behind cu2qu's algorithm."
 - The stylesheet link in the page is `../style.css?v=589bd39f2d`. The value
   is the first ten digits of `git hash-object style.css` in the homepage
   checkout; it changes when the stylesheet does.

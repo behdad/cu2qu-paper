@@ -39,6 +39,20 @@ What was decided while writing the note, by whom, and why. Dates are 2026.
   (`github.com/behdad/cu2qu-paper`). For a while the scripts were to be
   published next to the page instead (`doc/cu2qu-files/`); that was dropped.
 
+## Who wrote it
+
+- Claude wrote the note; Behdad directed the work. When told the index entry
+  was a plain one that he might want to feature, he answered that the index
+  is in reverse chronological order, and that the note is not to be featured
+  "since you wrote it, not me". He gave it its tagline in the index: "The
+  math behind cu2qu's algorithm". So: the entry is plain and first under 2026;
+  the byline reads "Written by Claude, with Behdad Esfahbod"; "About this
+  note" says the derivations, code, measurements, figures and text are
+  Claude's, at his direction; and the few sentences that had him speaking in
+  the first person are now in the third person or the passive. The byline
+  was Claude's choice after that remark, not something he asked for in so
+  many words; it is his to change.
+
 ## The content
 
 - **Every number has a script.** Tables and quoted numbers are checked against
@@ -72,7 +86,5 @@ What was decided while writing the note, by whom, and why. Dates are 2026.
 
 ## For Behdad to decide
 
-- The title, the slug (`cu2qu`), and the wording of "About this note".
-- The name of this repository on GitHub: the page links to
-  `github.com/behdad/cu2qu-paper`.
-- How the note is listed in `doc/index.html`; see `todo.md`.
+- The title, the slug (`cu2qu`), and the wording of the byline and of "About
+  this note".
