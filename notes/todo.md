@@ -4,8 +4,9 @@
 
 - Behdad to read it. The title, the slug, the byline and the "About this
   note" paragraph are his to word.
-- The homepage checkout has the note committed (three commits) and not
-  pushed; pushing and deploying are his.
+- Pushing and deploying the homepage checkout are Behdad's. After a
+  deployment, `curl -sI https://behdad.org/doc/cu2qu` must say `text/html`
+  (not `text/javascript`), and the page must be looked at once in a browser.
 - The entry in `doc/index.html` is a plain one, first under 2026 (the index
   is newest first; not featured, by Behdad's word), with the note's subtitle
   as its tagline: "The error of cu2qu's spline in closed form."
@@ -16,20 +17,15 @@
   "proposed". Change the wording when they are merged, and the two reference
   entries with them.
 
-## Once the note is live
+## Done after the note went live (2026-11-23)
 
-Behdad: "after we publish, put links in fonttools / kurbo / harfbuzz (merged)
-PRs." One line added to each description, above the closing line:
-
-- fontTools 4452: "The derivation, the bounds for other weights and the
-  measurements are written up at https://behdad.org/doc/cu2qu."
-- kurbo 625, at the end: "The math is written up at
-  https://behdad.org/doc/cu2qu."
-- HarfBuzz 6879: "The construction and its error are written up at
-  https://behdad.org/doc/cu2qu."; 6880: "The derivation is written up at
-  https://behdad.org/doc/cu2qu#error."; 6881: "The bound is derived in
-  https://behdad.org/doc/cu2qu#single."; 6882: "The identity and the bound
-  are written up at https://behdad.org/doc/cu2qu#renderers."
+- The note was deployed at https://behdad.org/doc/cu2qu. The first deployment
+  had the script as `cu2qu.js`, which made the extensionless URL ambiguous
+  (see `decisions.md`); renamed to `cu2qu-figures.js`, to be deployed again.
+- At Behdad's word ("after we publish, put links in fonttools / kurbo /
+  harfbuzz (merged) PRs"), one line was added to the description of each of
+  fontTools 4452, kurbo 625 and HarfBuzz 6879, 6880, 6881 and 6882, pointing
+  to the note (6880, 6881 and 6882 at the sections they use).
 
 ## Found while writing, not acted on
 
