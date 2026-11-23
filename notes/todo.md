@@ -7,8 +7,8 @@
 - The homepage checkout has the note committed (three commits) and not
   pushed; pushing and deploying are his.
 - The entry in `doc/index.html` is a plain one, first under 2026 (the index
-  is newest first; not featured, by Behdad's word), with his tagline: "The
-  math behind cu2qu's algorithm."
+  is newest first; not featured, by Behdad's word), with the note's subtitle
+  as its tagline: "The error of cu2qu's spline in closed form."
 - The stylesheet link in the page is `../style.css?v=589bd39f2d`. The value
   is the first ten digits of `git hash-object style.css` in the homepage
   checkout; it changes when the stylesheet does.

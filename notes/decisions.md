@@ -44,8 +44,9 @@ What was decided while writing the note, by whom, and why. Dates are 2026.
 - Claude wrote the note; Behdad directed the work. When told the index entry
   was a plain one that he might want to feature, he answered that the index
   is in reverse chronological order, and that the note is not to be featured
-  "since you wrote it, not me". He gave it its tagline in the index: "The
-  math behind cu2qu's algorithm". So: the entry is plain and first under 2026;
+  "since you wrote it, not me". Its tagline in the index is the note's
+  subtitle, "The error of cu2qu's spline in closed form" (he first suggested
+  "The math behind cu2qu's algorithm", then chose the subtitle). So: the entry is plain and first under 2026;
   the byline reads "Written by Claude, with Behdad Esfahbod"; "About this
   note" says the derivations, code, measurements, figures and text are
   Claude's, at his direction; and the few sentences that had him speaking in
