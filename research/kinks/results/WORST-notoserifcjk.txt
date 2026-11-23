@@ -1,0 +1,42 @@
+glyph glyph36167  joint at segment 2828277: change by cu2qu 180.000 deg (cubic instance 180.000, quadratic 180.000, rounded 180.000; rounding alone 0.000)  tangent turns 180.00 deg between masters, at {'wght': 0.9}
+   master 0  in: line (779,306) (762,306)
+             out: cubic (762,306) (754,306) (752,309) (752,319) n=1 s=(1.2500,1.3000) |h|=(8.0,10.0)
+   master 1  in: line (759,315) (774,315)
+             out: cubic (774,315) (775,315) (773,319) (773,328) n=1 s=(-1.0000,1.4444) |h|=(1.0,9.0)
+
+glyph glyph35963  joint at segment 2808870: change by cu2qu 1.862 deg (cubic instance 0.000, quadratic 1.862, rounded 3.462; rounding alone 3.843)  tangent turns 18.43 deg between masters, at {'wght': 0.7}
+   master 0  in: cubic (872,300) (868,203) (862,159) (853,147) n=2 s=(1.3927,1.4921) |h|=(97.1,15.0)
+             out: cubic (853,147) (850,143) (847,141) (839,141) n=1 s=(1.5000,1.1875) |h|=(5.0,8.0)
+   master 1  in: cubic (823,312) (822,253) (821,227) (818,218) n=2 s=(1.4107,1.1964) |h|=(59.0,9.5)
+             out: cubic (818,218) (817,215) (815,215) (811,215) n=1 s=(1.0000,1.5000) |h|=(3.2,4.0)
+
+glyph uni9B21  joint at segment 3717988: change by cu2qu 1.404 deg (cubic instance 0.000, quadratic 1.404, rounded 2.613; rounding alone 2.208)  tangent turns 22.46 deg between masters, at {'wght': 0.5}
+   master 0  in: cubic (645,394) (639,369) (633,352) (628,345) n=1 s=(1.5181,1.5783) |h|=(25.7,8.6)
+             out: cubic (628,345) (623,338) (613,339) (599,339) n=2 s=(0.8571,1.7653) |h|=(8.6,14.0)
+   master 1  in: cubic (636,393) (624,364) (616,348) (608,343) n=1 s=(1.5116,1.2326) |h|=(31.4,9.4)
+             out: cubic (608,343) (600,338) (591,338) (575,338) n=2 s=(1.0000,1.5625) |h|=(9.4,16.0)
+
+glyph glyph64018  joint at segment 5652379: change by cu2qu 1.399 deg (cubic instance 1.931, quadratic 0.550, rounded 3.595; rounding alone 3.339)  tangent turns 11.31 deg between masters, at {'wght': 0.3}
+   master 0  in: cubic (51,622) (50,621) (51,618) (53,616) n=1 s=(2.0000,2.0000) |h|=(1.4,2.8)
+             out: cubic (53,616) (63,606) (76,595) (90,589) n=2 s=(1.9500,1.2500) |h|=(14.1,15.2)
+   master 1  in: cubic (42,626) (40,622) (40,619) (44,613) n=1 s=(1.4286,1.2143) |h|=(4.5,7.2)
+             out: cubic (44,613) (54,598) (72,580) (88,568) n=2 s=(1.6000,1.7500) |h|=(18.0,20.0)
+
+glyph uniC013  joint at segment 4568862: change by cu2qu 1.045 deg (cubic instance 0.418, quadratic 0.635, rounded 2.279; rounding alone 1.938)  tangent turns 12.53 deg between masters, at {'wght': 0.4}
+   master 0  in: cubic (797,200) (800,205) (801,217) (799,225) n=2 s=(1.9412,1.9118) |h|=(5.8,8.2)
+             out: cubic (799,225) (798,229) (795,232) (789,232) n=1 s=(1.7500,1.3750) |h|=(4.1,6.0)
+   master 1  in: cubic (792,176) (802,185) (804,215) (797,229) n=2 s=(2.1724,2.3892) |h|=(13.5,15.7)
+             out: cubic (797,229) (793,237) (788,239) (778,239) n=1 s=(1.2500,1.4000) |h|=(8.9,10.0)
+
+glyph glyph63791  joint at segment 5639630: change by cu2qu 0.915 deg (cubic instance 0.815, quadratic 0.103, rounded 2.840; rounding alone 2.873)  tangent turns 11.31 deg between masters, at {'wght': 0.4}
+   master 0  in: cubic (372,663) (375,663) (379,664) (381,666) n=1 s=(2.0000,1.5000) |h|=(3.0,2.8)
+             out: cubic (381,666) (384,669) (388,679) (388,689) n=1 s=(2.3333,1.6000) |h|=(4.2,10.0)
+   master 1  in: cubic (377,644) (381,644) (386,645) (388,648) n=1 s=(2.0833,1.3333) |h|=(4.0,3.6)
+             out: cubic (388,648) (392,654) (394,667) (394,693) n=1 s=(1.5000,1.3846) |h|=(7.2,26.0)
+
+glyph uniC8C3  joint at segment 4805223: change by cu2qu 0.897 deg (cubic instance 3.988, quadratic 4.883, rounded 5.955; rounding alone 2.370)  tangent turns 23.20 deg between masters, at {'wght': 0.5}
+   master 0  in: cubic (660,233) (665,233) (669,235) (671,240) n=1 s=(1.6400,1.4000) |h|=(5.0,5.4)
+             out: cubic (671,240) (673,245) (673,256) (672,263) n=2 s=(1.5789,2.1579) |h|=(5.4,7.1)
+   master 1  in: cubic (654,208) (661,208) (667,209) (672,214) n=1 s=(1.7143,1.2000) |h|=(7.0,7.1)
+             out: cubic (672,214) (682,224) (685,256) (677,270) n=2 s=(2.3545,2.3182) |h|=(14.1,16.1)
+

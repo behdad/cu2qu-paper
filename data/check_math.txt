@@ -1,0 +1,30 @@
+each piece's third difference is d3 / n^3                        max deviation 1.07e-13
+the two tangent candidates are d/2 apart                         max deviation 4.72e-14
+midpoint of consecutive halfway points = split point             max deviation 5.12e-14
+spline - cubic = d * phi_k(u), ramp and random weights           max deviation 9.02e-14
+first piece: u^2 (1 + g) - u^3                                   max deviation 2.78e-16
+pieces in between: (n-1-2k)/(4(n-1)) + c v - v^3                 max deviation 1.11e-16
+Phi(n) = largest |phi_k(u)| (n = 2..129, 200..2000)              max deviation 7.76e-10
+Phi(2) = 4/27, Phi(3) = 27/128, increasing to 1/4 + sqrt(3)/36   ok (0.298113)
+L(n) = n^3 / Phi(n) increases (n up to 20000)                    ok
+first piece is the worst for n <= 54, the second from 55         ok
+cbrt(4 r / 27) <= n <= ceil(cbrt(0.2981 r)),  r = |d3| / tol     ok
+phi_k(2/3), phi_k(1/3) identities of the lower bound             exact
+random weights with s_0 = 1: least max |phi| found               0.148148 >= 4/27 = 0.148148
+alternating weights, even n: max |phi| = 4/27                    ok
+n = 3, both tangents kept: best middle weight 0, 27/128          ok
+quadratic with the cubic's end points: error = sqrt(3)/36 |d3| at best max deviation 1.01e-07
+... and never less, for any off-curve point                      least ratio 0.048112, sqrt(3)/36 = 0.048113
+B(t) = Q(tau(t)) + rho(t) (a - z)                                exact, on a grid past its degree
+joint of an instance: u x v = (1-L) L (r2 - r1) (u1 x u2)        max deviation 8.92e-12
+any weights: max |phi| >= sqrt(3)/36; equal for all-zero weights least found 0.048125, sqrt(3)/36 = 0.048113
+phi_k at u = 1/2 -+ sqrt(3)/6, identities of the sqrt(3)/36 bound max deviation 1.11e-16
+n = 5, both tangents kept: best weights (1, a, 0, -a, -1)        a = -0.93339, max |phi| = 0.151879
+... and perturbed weights are no better                          least found 0.152027
+the ramp for n = 4 is (1, 1/3, -1/3, -1): 0.2353 against 4/27 = 0.1481 ok
+implied on-curve point k = C(k/n) + g_k d, g_k = (n-2k)/(4(n-1)) max deviation 4.32e-14
+end handles of the spline = 3/(2n) of the cubic's                max deviation 7.42e-14
+spline of an interpolated cubic = interpolated splines           max deviation 8.64e-14
+one quadratic: (q - c0) l1 = c1 - c0 and (c3 - q) l2 = c3 - c2   max deviation 1.60e-12
+quarter circle: bound 0.0607 R; the parabola is 0.0607 R outside at its middle ok
+all checks passed

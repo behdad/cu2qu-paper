@@ -1,0 +1,29 @@
+before: f3f799e1b6c090096d7dc9a6ca22f26dd25a4c81
+after:  4201aba561b1bb846c1f33f9b6b72753c0731cab
+compiled: False False
+77533 cubics
+
+tolerance 1
+  differs: [(842, 10), (820, 10), (737, 10), (721, 10)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  differs: [(441, 118), (457, 118), (542, 118), (568, 118)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  differs: [(763, -50), (777, -50), (856, -50), (872, -50)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  quadratics per cubic: before 2.3364, after 2.3364
+  results that differ: 3 of 77533
+  splines whose number is not the closed form's: before 3, after 0
+
+tolerance 0.5
+  differs: [(228, 452), (332, 452), (384, 360), (384, 240)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  differs: [(116, 240), (116, 360), (168, 452), (272, 452)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  differs: [(621, 564), (621, 541), (621, 485), (621, 460)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  differs: [(866, 8), (854, 8), (811, 8), (801, 8)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  differs: [(869, 13), (857, 13), (814, 13), (804, 13)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  differs: [(875, 45), (864, 45), (822, 45), (813, 45)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  differs: [(873, -2), (860, -2), (817, -2), (808, -2)]  |d3| / tolerance = 128: 4 -> 3 quadratics
+  quadratics per cubic: before 2.8380, after 2.8379
+  results that differ: 7 of 77533
+  splines whose number is not the closed form's: before 7, after 0
+
+tolerance 0.1
+  quadratics per cubic: before 4.8023, after 4.8023
+  results that differ: 0 of 77533
+  splines whose number is not the closed form's: before 0, after 0

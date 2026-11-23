@@ -1,0 +1,36 @@
+glyph glyph17523  joint at segment 928630: change by cu2qu 4.609 deg (cubic instance 0.000, quadratic 4.609, rounded 3.626; rounding alone 1.855)  tangent turns 33.69 deg between masters, at {'wght': 0.7}
+   master 0  in: cubic (838,-22) (828,-22) (820,-21) (813,-17) n=1 s=(1.6250,1.2500) |h|=(10.0,8.1)
+             out: cubic (813,-17) (806,-13) (803,9) (803,46) n=1 s=(1.4286,1.5483) |h|=(8.1,37.0)
+   master 1  in: cubic (841,58) (837,58) (833,60) (831,64) n=1 s=(1.7500,1.5000) |h|=(4.0,4.5)
+             out: cubic (831,64) (829,68) (829,81) (829,104) n=1 s=(1.0000,1.5652) |h|=(4.5,23.0)
+
+glyph uni5FDB  joint at segment 928588: change by cu2qu 4.609 deg (cubic instance 0.000, quadratic 4.609, rounded 3.626; rounding alone 1.855)  tangent turns 33.69 deg between masters, at {'wght': 0.7}
+   master 0  in: cubic (838,-22) (828,-22) (820,-21) (813,-17) n=1 s=(1.6250,1.2500) |h|=(10.0,8.1)
+             out: cubic (813,-17) (806,-13) (803,9) (803,46) n=1 s=(1.4286,1.5483) |h|=(8.1,37.0)
+   master 1  in: cubic (841,58) (837,58) (833,60) (831,64) n=1 s=(1.7500,1.5000) |h|=(4.0,4.5)
+             out: cubic (831,64) (829,68) (829,81) (829,104) n=1 s=(1.0000,1.5652) |h|=(4.5,23.0)
+
+glyph uni4C16  joint at segment 479212: change by cu2qu 2.726 deg (cubic instance 0.000, quadratic 2.726, rounded 3.691; rounding alone 1.948)  tangent turns 23.20 deg between masters, at {'wght': 0.6}
+   master 0  in: cubic (824,289) (816,289) (808,290) (803,292) n=1 s=(1.6875,1.5000) |h|=(8.0,5.4)
+             out: cubic (803,292) (798,294) (797,299) (797,312) n=1 s=(1.2000,1.3538) |h|=(5.4,13.0)
+   master 1  in: cubic (862,315) (857,315) (854,317) (852,319) n=1 s=(1.2000,2.0000) |h|=(5.0,2.8)
+             out: cubic (852,319) (850,321) (850,326) (850,333) n=1 s=(1.0000,1.7143) |h|=(2.8,7.0)
+
+glyph glyph26970  joint at segment 1480973: change by cu2qu 2.710 deg (cubic instance 0.000, quadratic 2.710, rounded 7.731; rounding alone 6.248)  tangent turns 24.78 deg between masters, at {'wght': 0.6}
+   master 0  in: cubic (923,6) (921,-9) (917,-17) (912,-21) n=1 s=(1.3582,1.6567) |h|=(15.1,6.4)
+             out: cubic (912,-21) (907,-25) (897,-26) (887,-26) n=2 s=(1.2500,1.8750) |h|=(6.4,10.0)
+   master 1  in: cubic (888,58) (886,40) (885,32) (883,28) n=1 s=(1.4286,1.0714) |h|=(18.1,4.5)
+             out: cubic (883,28) (881,24) (879,23) (876,23) n=2 s=(1.2500,1.5000) |h|=(4.5,3.0)
+
+glyph glyph62764  joint at segment 3655215: change by cu2qu 2.666 deg (cubic instance 0.000, quadratic 2.666, rounded 7.035; rounding alone 5.530)  tangent turns 19.44 deg between masters, at {'wght': 0.6}
+   master 0  in: cubic (696,149) (694,137) (690,130) (686,127) n=1 s=(1.3810,1.8095) |h|=(12.2,5.0)
+             out: cubic (686,127) (682,124) (673,123) (666,123) n=2 s=(1.3333,2.0952) |h|=(5.0,7.0)
+   master 1  in: cubic (697,192) (695,177) (694,170) (692,167) n=1 s=(1.4583,1.0417) |h|=(15.1,3.6)
+             out: cubic (692,167) (690,164) (688,163) (685,163) n=2 s=(1.3333,1.4444) |h|=(3.6,3.0)
+
+glyph uni9DF7  joint at segment 2831590: change by cu2qu 2.158 deg (cubic instance 5.194, quadratic 7.275, rounded 7.125; rounding alone 9.214)  tangent turns 29.74 deg between masters, at {'wght': 0.6}
+   master 0  in: cubic (396,486) (388,486) (381,486) (378,488) n=2 s=(1.8750,1.0000) |h|=(8.0,3.6)
+             out: cubic (378,488) (375,490) (374,496) (374,508) n=1 s=(1.3333,1.4444) |h|=(3.6,12.0)
+   master 1  in: cubic (376,497) (373,497) (371,497) (369,501) n=2 s=(1.6667,1.0000) |h|=(3.0,4.5)
+             out: cubic (369,501) (368,503) (368,510) (368,519) n=1 s=(1.0000,1.7778) |h|=(2.2,9.0)
+

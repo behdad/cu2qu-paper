@@ -1,0 +1,169 @@
+
+corpus: 77533 cubics
+--------------------
+  zero-length handle at an end (p1 == p0 or p2 == p3): 862 (1.11%)
+  straight (all four points collinear):                 1108 (1.43%)
+  |d3| percentiles 50/90/99/max: 27.7 131.6 336.0 1574.0
+
+end tangents: which cubics lose them (angle between the cubic's and the spline's end tangent > 1 degree)
+--------------------------------------------------------------------------------------------------------
+  fonttools_cu2qu        tol 1.0: >1deg    645  of which single-quad      4, zero-handle cubic    641, neither      0;  >10deg    335  >90deg     1;  multi-quad & nonzero handles: max 0.00e+00 deg
+  fonttools_cu2qu        tol 0.5: >1deg    637  of which single-quad      0, zero-handle cubic    637, neither      0;  >10deg    331  >90deg     1;  multi-quad & nonzero handles: max 0.00e+00 deg
+  fonttools_cu2qu        tol 0.1: >1deg    634  of which single-quad      0, zero-handle cubic    634, neither      0;  >10deg     28  >90deg    12;  multi-quad & nonzero handles: max 0.00e+00 deg
+  harfbuzz               tol 1.0: >1deg    645  of which single-quad      4, zero-handle cubic    641, neither      0;  >10deg    335  >90deg     1;  multi-quad & nonzero handles: max 0.00e+00 deg
+  harfbuzz               tol 0.5: >1deg    637  of which single-quad      0, zero-handle cubic    637, neither      0;  >10deg    331  >90deg     1;  multi-quad & nonzero handles: max 0.00e+00 deg
+  harfbuzz               tol 0.1: >1deg    601  of which single-quad      0, zero-handle cubic    601, neither      0;  >10deg      1  >90deg     1;  multi-quad & nonzero handles: max 0.00e+00 deg
+  kurbo_to_quads         tol 1.0: >1deg  44515  of which single-quad  19120, zero-handle cubic    779, neither  25270;  >10deg    987  >90deg    34;  multi-quad & nonzero handles: max 3.94e+01 deg
+  kurbo_to_quads         tol 0.5: >1deg  33389  of which single-quad   7256, zero-handle cubic    778, neither  25490;  >10deg    772  >90deg    34;  multi-quad & nonzero handles: max 3.94e+01 deg
+  kurbo_to_quads         tol 0.1: >1deg   8625  of which single-quad    230, zero-handle cubic    778, neither   7617;  >10deg    646  >90deg    34;  multi-quad & nonzero handles: max 3.48e+01 deg
+  cubic2quad_js          tol 1.0: >1deg    780  of which single-quad    331, zero-handle cubic    780, neither      0;  >10deg    346  >90deg     1;  multi-quad & nonzero handles: max 1.50e-05 deg
+  cubic2quad_js          tol 0.5: >1deg    778  of which single-quad    244, zero-handle cubic    778, neither      0;  >10deg    343  >90deg     1;  multi-quad & nonzero handles: max 1.50e-05 deg
+  cubic2quad_js          tol 0.1: >1deg    645  of which single-quad      5, zero-handle cubic    645, neither      0;  >10deg      1  >90deg     1;  multi-quad & nonzero handles: max 1.50e-05 deg
+  skia                   tol 1.0: >1deg    297  of which single-quad    138, zero-handle cubic      0, neither    159;  >10deg      2  >90deg     0;  multi-quad & nonzero handles: max 2.33e+01 deg
+  skia                   tol 0.5: >1deg     82  of which single-quad      0, zero-handle cubic      0, neither     82;  >10deg      0  >90deg     0;  multi-quad & nonzero handles: max 7.13e+00 deg
+  skia                   tol 0.1: >1deg      6  of which single-quad      0, zero-handle cubic      0, neither      6;  >10deg      0  >90deg     0;  multi-quad & nonzero handles: max 3.18e+00 deg
+  skia_cal               tol 1.0: >1deg   3172  of which single-quad   2500, zero-handle cubic     10, neither    672;  >10deg     36  >90deg     0;  multi-quad & nonzero handles: max 2.33e+01 deg
+  skia_cal               tol 0.5: >1deg    957  of which single-quad    636, zero-handle cubic      0, neither    321;  >10deg      6  >90deg     0;  multi-quad & nonzero handles: max 2.33e+01 deg
+  skia_cal               tol 0.1: >1deg     59  of which single-quad      0, zero-handle cubic      0, neither     59;  >10deg      0  >90deg     0;  multi-quad & nonzero handles: max 4.76e+00 deg
+  fontforge              tol 1.0: >1deg   2864  of which single-quad   1305, zero-handle cubic    571, neither   1123;  >10deg    193  >90deg     1;  multi-quad & nonzero handles: max 9.00e+01 deg
+  reimpl_truong_presub   tol 1.0: >1deg    645  of which single-quad      4, zero-handle cubic    641, neither      0;  >10deg    335  >90deg     1;  multi-quad & nonzero handles: max 0.00e+00 deg
+  reimpl_truong_presub   tol 0.5: >1deg    633  of which single-quad      0, zero-handle cubic    633, neither      0;  >10deg    331  >90deg     1;  multi-quad & nonzero handles: max 0.00e+00 deg
+  reimpl_truong_presub   tol 0.1: >1deg    585  of which single-quad      0, zero-handle cubic    585, neither      0;  >10deg      1  >90deg     1;  multi-quad & nonzero handles: max 0.00e+00 deg
+  oracle_tangent_implied tol 1.0: >1deg    168  of which single-quad    119, zero-handle cubic      1, neither     48;  >10deg    132  >90deg   128;  multi-quad & nonzero handles: max 1.80e+02 deg
+  oracle_tangent_implied tol 0.5: >1deg    127  of which single-quad     58, zero-handle cubic      1, neither     68;  >10deg     96  >90deg    92;  multi-quad & nonzero handles: max 1.80e+02 deg
+  oracle_tangent_implied tol 0.1: >1deg    126  of which single-quad      0, zero-handle cubic      1, neither    125;  >10deg    125  >90deg   121;  multi-quad & nonzero handles: max 1.80e+02 deg
+  oracle_tangent         tol 1.0: >1deg    161  of which single-quad    119, zero-handle cubic      1, neither     41;  >10deg    125  >90deg   121;  multi-quad & nonzero handles: max 1.80e+02 deg
+  oracle_tangent         tol 0.5: >1deg    108  of which single-quad     58, zero-handle cubic      1, neither     49;  >10deg     77  >90deg    73;  multi-quad & nonzero handles: max 1.80e+02 deg
+  oracle_tangent         tol 0.1: >1deg     91  of which single-quad      0, zero-handle cubic      1, neither     90;  >10deg     90  >90deg    86;  multi-quad & nonzero handles: max 1.80e+02 deg
+
+FontForge against its own thresholds (Hausdorff distance, font units)
+---------------------------------------------------------------------
+  > 1.0:   6558 cubics (8.46%)
+  > 1.5:     55 cubics (0.07%)
+  > 2.0:      5 cubics (0.01%)
+  > 3.0:      1 cubics (0.00%)
+  > 4.5:      0 cubics (0.00%)
+  max 4.395; mean 0.444; median 0.354
+
+true (Hausdorff) distance over equal-parameter distance, uniform-split methods
+------------------------------------------------------------------------------
+  fonttools_cu2qu        tol 1.0: H/eq mean 0.555 median 0.535 p10 0.091 p90 0.986 | n>1 only: mean 0.570 median 0.558;  H/tol mean 0.272; eq/tol mean 0.497
+  fonttools_cu2qu        tol 0.5: H/eq mean 0.576 median 0.572 p10 0.103 p90 0.989 | n>1 only: mean 0.581 median 0.580;  H/tol mean 0.339; eq/tol mean 0.594
+  fonttools_cu2qu        tol 0.1: H/eq mean 0.620 median 0.653 p10 0.125 p90 0.990 | n>1 only: mean 0.620 median 0.653;  H/tol mean 0.454; eq/tol mean 0.733
+  kurbo_to_quads         tol 1.0: H/eq mean 0.643 median 0.688 p10 0.139 p90 0.996 | n>1 only: mean 0.665 median 0.734;  H/tol mean 0.256; eq/tol mean 0.399
+  kurbo_to_quads         tol 0.5: H/eq mean 0.653 median 0.705 p10 0.143 p90 0.997 | n>1 only: mean 0.667 median 0.730;  H/tol mean 0.298; eq/tol mean 0.459
+  kurbo_to_quads         tol 0.1: H/eq mean 0.670 median 0.730 p10 0.153 p90 0.999 | n>1 only: mean 0.671 median 0.730;  H/tol mean 0.398; eq/tol mean 0.592
+  reimpl_truong_presub   tol 1.0: H/eq mean 0.566 median 0.555 p10 0.093 p90 0.991 | n>1 only: mean 0.581 median 0.575;  H/tol mean 0.213; eq/tol mean 0.397
+  reimpl_truong_presub   tol 0.5: H/eq mean 0.591 median 0.600 p10 0.111 p90 0.995 | n>1 only: mean 0.597 median 0.606;  H/tol mean 0.239; eq/tol mean 0.423
+  reimpl_truong_presub   tol 0.1: H/eq mean 0.636 median 0.671 p10 0.131 p90 0.998 | n>1 only: mean 0.636 median 0.671;  H/tol mean 0.322; eq/tol mean 0.508
+
+sanity: the Hausdorff distance can never exceed the equal-parameter distance (uniform-split methods)
+----------------------------------------------------------------------------------------------------
+  fonttools_cu2qu        tol 1.0: max(H - eq) = 7.420e-07 units; max eq/tol = 1.000000000
+  fonttools_cu2qu        tol 0.5: max(H - eq) = 7.420e-07 units; max eq/tol = 1.000000000
+  fonttools_cu2qu        tol 0.1: max(H - eq) = 7.420e-07 units; max eq/tol = 0.999980560
+  kurbo_to_quads         tol 1.0: max(H - eq) = 3.560e-07 units; max eq/tol = 0.999801051
+  kurbo_to_quads         tol 0.5: max(H - eq) = 3.560e-07 units; max eq/tol = 0.999842878
+  kurbo_to_quads         tol 0.1: max(H - eq) = 3.560e-07 units; max eq/tol = 0.999951400
+  lyon                   tol 1.0: max(H - eq) = 3.560e-07 units; max eq/tol = 0.999801051
+  lyon                   tol 0.5: max(H - eq) = 3.560e-07 units; max eq/tol = 0.999842878
+  lyon                   tol 0.1: max(H - eq) = 3.560e-07 units; max eq/tol = 0.999951400
+  harfbuzz               tol 1.0: max(H - eq) = 7.420e-07 units; max eq/tol = 1.000000000
+  harfbuzz               tol 0.5: max(H - eq) = 7.420e-07 units; max eq/tol = 1.000000000
+  harfbuzz               tol 0.1: max(H - eq) = 7.420e-07 units; max eq/tol = 0.999980560
+  reimpl_truong_presub   tol 1.0: max(H - eq) = 7.420e-07 units; max eq/tol = 1.000000000
+  reimpl_truong_presub   tol 0.5: max(H - eq) = 7.420e-07 units; max eq/tol = 1.000000000
+  reimpl_truong_presub   tol 0.1: max(H - eq) = 7.420e-07 units; max eq/tol = 0.999984950
+
+quadratics per cubic relative to fontTools cu2qu (same tolerance)
+-----------------------------------------------------------------
+  tol 1.0 harfbuzz                : total  181148 (1.000 x cu2qu); fewer on      3, same  77530, more on      0 cubics
+  tol 1.0 kurbo_to_quads          : total  130885 (0.723 x cu2qu); fewer on  46638, same  30895, more on      0 cubics
+  tol 1.0 lyon017                 : total  131196 (0.724 x cu2qu); fewer on  46638, same  30895, more on      0 cubics
+  tol 1.0 cubic2quad_js           : total  127132 (0.702 x cu2qu); fewer on  46608, same  30741, more on    184 cubics
+  tol 1.0 skia                    : total  295018 (1.629 x cu2qu); fewer on    705, same  17826, more on  59002 cubics
+  tol 1.0 skia_cal                : total  192894 (1.065 x cu2qu); fewer on   5752, same  54941, more on  16840 cubics
+  tol 1.0 fontforge               : total  124588 (0.688 x cu2qu); fewer on  49732, same  25852, more on   1949 cubics
+  tol 1.0 reimpl_truong_presub    : total  193999 (1.071 x cu2qu); fewer on    902, same  62881, more on  13750 cubics
+  tol 1.0 reimpl_colomitchi_half  : total  136323 (0.753 x cu2qu); fewer on  42252, same  35281, more on      0 cubics
+  tol 1.0 oracle_ramp             : total  132059 (0.729 x cu2qu); fewer on  43072, same  34461, more on      0 cubics
+  tol 1.0 oracle_truong           : total  140440 (0.775 x cu2qu); fewer on  39511, same  33265, more on   4757 cubics
+  tol 1.0 oracle_qm               : total  109857 (0.606 x cu2qu); fewer on  59988, same  17545, more on      0 cubics
+  tol 1.0 oracle_tangent_implied  : total  126584 (0.699 x cu2qu); fewer on  48239, same  28994, more on    300 cubics
+  tol 1.0 oracle_tangent          : total  123758 (0.683 x cu2qu); fewer on  49562, same  27807, more on    164 cubics
+  tol 0.5 harfbuzz                : total  220036 (1.000 x cu2qu); fewer on      7, same  77520, more on      6 cubics
+  tol 0.5 kurbo_to_quads          : total  153815 (0.699 x cu2qu); fewer on  53344, same  24189, more on      0 cubics
+  tol 0.5 lyon017                 : total  157448 (0.716 x cu2qu); fewer on  53344, same  24189, more on      0 cubics
+  tol 0.5 cubic2quad_js           : total  144233 (0.655 x cu2qu); fewer on  55543, same  21770, more on    220 cubics
+  tol 0.5 skia                    : total  363289 (1.651 x cu2qu); fewer on     74, same   8820, more on  68639 cubics
+  tol 0.5 skia_cal                : total  244126 (1.109 x cu2qu); fewer on   7162, same  43689, more on  26682 cubics
+  tol 0.5 reimpl_truong_presub    : total  238397 (1.083 x cu2qu); fewer on   4678, same  49779, more on  23076 cubics
+  tol 0.5 reimpl_colomitchi_half  : total  166275 (0.756 x cu2qu); fewer on  47463, same  30070, more on      0 cubics
+  tol 0.5 oracle_ramp             : total  163395 (0.743 x cu2qu); fewer on  44685, same  32848, more on      0 cubics
+  tol 0.5 oracle_truong           : total  174277 (0.792 x cu2qu); fewer on  41975, same  27858, more on   7700 cubics
+  tol 0.5 oracle_qm               : total  131658 (0.598 x cu2qu); fewer on  63584, same  13949, more on      0 cubics
+  tol 0.5 oracle_tangent_implied  : total  147819 (0.672 x cu2qu); fewer on  55485, same  21729, more on    319 cubics
+  tol 0.5 oracle_tangent          : total  140721 (0.640 x cu2qu); fewer on  57765, same  19542, more on    226 cubics
+  tol 0.1 harfbuzz                : total  372340 (1.000 x cu2qu); fewer on      0, same  77533, more on      0 cubics
+  tol 0.1 kurbo_to_quads          : total  235454 (0.632 x cu2qu); fewer on  71881, same   5652, more on      0 cubics
+  tol 0.1 lyon017                 : total  258696 (0.695 x cu2qu); fewer on  71881, same   5652, more on      0 cubics
+  tol 0.1 cubic2quad_js           : total  197277 (0.530 x cu2qu); fewer on  74202, same   3240, more on     91 cubics
+  tol 0.1 skia                    : total  620865 (1.667 x cu2qu); fewer on     74, same   1623, more on  75836 cubics
+  tol 0.1 skia_cal                : total  412050 (1.107 x cu2qu); fewer on  15192, same  28871, more on  33470 cubics
+  tol 0.1 reimpl_truong_presub    : total  364593 (0.979 x cu2qu); fewer on  22298, same  39079, more on  16156 cubics
+  tol 0.1 reimpl_colomitchi_half  : total  288658 (0.775 x cu2qu); fewer on  55336, same  22195, more on      2 cubics
+  tol 0.1 oracle_ramp             : total  286425 (0.769 x cu2qu); fewer on  47671, same  29862, more on      0 cubics
+  tol 0.1 oracle_truong           : total  284363 (0.764 x cu2qu); fewer on  50368, same  22082, more on   5083 cubics
+  tol 0.1 oracle_qm               : total  202405 (0.544 x cu2qu); fewer on  74667, same   2866, more on      0 cubics
+  tol 0.1 oracle_tangent_implied  : total  228193 (0.613 x cu2qu); fewer on  72475, same   4571, more on    487 cubics
+  tol 0.1 oracle_tangent          : total  191572 (0.515 x cu2qu); fewer on  74554, same   2708, more on    271 cubics
+
+extrema: cubics that start or end with a horizontal or vertical tangent at an extreme of their own bounding box
+---------------------------------------------------------------------------------------------------------------
+  53531 cubics (69.0%) are monotone with an H/V tangent at an end
+  fonttools_cu2qu        tol 1.0: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  fonttools_cu2qu        tol 0.5: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  fonttools_cu2qu        tol 0.1: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  harfbuzz               tol 1.0: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  harfbuzz               tol 0.5: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  harfbuzz               tol 0.1: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  kurbo_to_quads         tol 1.0: spline box differs from the cubic's by > 0.001 units on  17022 ( 31.8%), > 0.1 on   5140; mean 0.0275, max 0.766
+  kurbo_to_quads         tol 0.5: spline box differs from the cubic's by > 0.001 units on  16257 ( 30.4%), > 0.1 on   2470; mean 0.0146, max 0.417
+  kurbo_to_quads         tol 0.1: spline box differs from the cubic's by > 0.001 units on  13888 ( 25.9%), > 0.1 on      0; mean 0.0028, max 0.083
+  lyon                   tol 1.0: spline box differs from the cubic's by > 0.001 units on  17022 ( 31.8%), > 0.1 on   5140; mean 0.0275, max 0.766
+  lyon                   tol 0.5: spline box differs from the cubic's by > 0.001 units on  16257 ( 30.4%), > 0.1 on   2470; mean 0.0146, max 0.417
+  lyon                   tol 0.1: spline box differs from the cubic's by > 0.001 units on  13888 ( 25.9%), > 0.1 on      0; mean 0.0028, max 0.083
+  cubic2quad_js          tol 1.0: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  cubic2quad_js          tol 0.5: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  cubic2quad_js          tol 0.1: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  skia                   tol 1.0: spline box differs from the cubic's by > 0.001 units on    190 (  0.4%), > 0.1 on      0; mean 0.0001, max 0.042
+  skia                   tol 0.5: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  skia                   tol 0.1: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  skia_cal               tol 1.0: spline box differs from the cubic's by > 0.001 units on   1471 (  2.7%), > 0.1 on    125; mean 0.0010, max 0.250
+  skia_cal               tol 0.5: spline box differs from the cubic's by > 0.001 units on    613 (  1.1%), > 0.1 on      9; mean 0.0003, max 0.125
+  skia_cal               tol 0.1: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  fontforge              tol 1.0: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  reimpl_truong_presub   tol 1.0: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  reimpl_truong_presub   tol 0.5: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+  reimpl_truong_presub   tol 0.1: spline box differs from the cubic's by > 0.001 units on      0 (  0.0%), > 0.1 on      0; mean 0.0000, max 0.000
+
+how full is the tolerance budget: Hausdorff / tolerance
+-------------------------------------------------------
+  fonttools_cu2qu        tol 1.0: mean 0.272 median 0.227; share below 0.25:  53.7%  below 0.5:  83.0%  above 0.9:  0.8%
+  fonttools_cu2qu        tol 0.5: mean 0.339 median 0.324; share below 0.25:  41.7%  below 0.5:  74.6%  above 0.9:  1.5%
+  fonttools_cu2qu        tol 0.1: mean 0.454 median 0.474; share below 0.25:  26.3%  below 0.5:  53.6%  above 0.9:  3.7%
+  kurbo_to_quads         tol 1.0: mean 0.256 median 0.205; share below 0.25:  59.7%  below 0.5:  85.8%  above 0.9:  0.9%
+  kurbo_to_quads         tol 0.5: mean 0.298 median 0.251; share below 0.25:  49.8%  below 0.5:  81.7%  above 0.9:  1.1%
+  kurbo_to_quads         tol 0.1: mean 0.398 median 0.391; share below 0.25:  31.2%  below 0.5:  65.2%  above 0.9:  2.3%
+  cubic2quad_js          tol 1.0: mean 0.273 median 0.198; share below 0.25:  58.1%  below 0.5:  81.9%  above 0.9:  1.2%
+  cubic2quad_js          tol 0.5: mean 0.302 median 0.242; share below 0.25:  51.2%  below 0.5:  79.3%  above 0.9:  1.5%
+  cubic2quad_js          tol 0.1: mean 0.402 median 0.363; share below 0.25:  30.6%  below 0.5:  66.4%  above 0.9:  1.2%
+  skia                   tol 1.0: mean 0.070 median 0.051; share below 0.25:  98.5%  below 0.5: 100.0%  above 0.9:  0.0%
+  skia                   tol 0.5: mean 0.075 median 0.057; share below 0.25:  98.2%  below 0.5: 100.0%  above 0.9:  0.0%
+  skia                   tol 0.1: mean 0.082 median 0.059; share below 0.25:  97.7%  below 0.5: 100.0%  above 0.9:  0.0%
+  skia_cal               tol 1.0: mean 0.209 median 0.155; share below 0.25:  70.6%  below 0.5:  90.7%  above 0.9:  0.4%
+  skia_cal               tol 0.5: mean 0.235 median 0.174; share below 0.25:  64.3%  below 0.5:  89.1%  above 0.9:  0.7%
+  skia_cal               tol 0.1: mean 0.266 median 0.202; share below 0.25:  57.6%  below 0.5:  86.0%  above 0.9:  0.9%
+  reimpl_truong_presub   tol 1.0: mean 0.213 median 0.157; share below 0.25:  69.3%  below 0.5:  89.9%  above 0.9:  0.5%
+  reimpl_truong_presub   tol 0.5: mean 0.239 median 0.179; share below 0.25:  63.1%  below 0.5:  88.9%  above 0.9:  0.8%
+  reimpl_truong_presub   tol 0.1: mean 0.322 median 0.299; share below 0.25:  42.2%  below 0.5:  79.8%  above 0.9:  1.4%

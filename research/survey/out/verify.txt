@@ -1,0 +1,15 @@
+fonttools_cu2qu.1.0.bin: 2000 cubics: largest |harness - brute| = 9.484e-6 units (9.040e-4 relative); harness below brute by at most 8.976e-6 units
+fonttools_cu2qu.0.1.bin: 2000 cubics: largest |harness - brute| = 1.655e-6 units (1.222e-4 relative); harness below brute by at most 1.631e-6 units
+harfbuzz.0.5.bin: 2000 cubics: largest |harness - brute| = 5.885e-6 units (2.475e-4 relative); harness below brute by at most 5.807e-6 units
+kurbo_to_quads.1.0.bin: 2000 cubics: largest |harness - brute| = 1.258e-5 units (2.461e-4 relative); harness below brute by at most 1.201e-5 units
+kurbo_to_quads.0.1.bin: 2000 cubics: largest |harness - brute| = 5.092e-6 units (8.576e-4 relative); harness below brute by at most 4.924e-6 units
+lyon.0.5.bin: 2000 cubics: largest |harness - brute| = 1.258e-5 units (2.461e-4 relative); harness below brute by at most 1.201e-5 units
+lyon017.0.5.bin: 2000 cubics: largest |harness - brute| = 1.258e-5 units (2.461e-4 relative); harness below brute by at most 1.201e-5 units
+skia.1.0.bin: 2000 cubics: largest |harness - brute| = 5.885e-6 units (1.542e-4 relative); harness below brute by at most 5.807e-6 units
+skia_cal.0.1.bin: 2000 cubics: largest |harness - brute| = 1.655e-6 units (1.222e-4 relative); harness below brute by at most 1.631e-6 units
+cubic2quad_js.1.0.bin: 2000 cubics: largest |harness - brute| = 2.117e-5 units (9.927e-3 relative); harness below brute by at most 2.103e-5 units
+cubic2quad_js.0.1.bin: 2000 cubics: largest |harness - brute| = 5.559e-6 units (9.927e-3 relative); harness below brute by at most 5.550e-6 units
+fontforge.1.0.bin: 2000 cubics: largest |harness - brute| = 2.508e-5 units (7.919e-4 relative); harness below brute by at most 2.464e-5 units
+reimpl_truong_presub.0.5.bin: 2000 cubics: largest |harness - brute| = 5.885e-6 units (2.475e-4 relative); harness below brute by at most 5.807e-6 units
+oracle_ramp.1.0.bin: 2000 cubics: largest |harness - brute| = 2.508e-5 units (9.927e-3 relative); harness below brute by at most 2.464e-5 units
+oracle_tangent.0.5.bin: 2000 cubics: largest |harness - brute| = 2.117e-5 units (9.927e-3 relative); harness below brute by at most 2.103e-5 units

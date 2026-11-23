@@ -1,0 +1,46 @@
+Table 1.  Corpus, ramp.  Ratio of each bound to the measured Hausdorff distance, per n.
+          (cubics for which n was computed and the distance is > 1e-6)
+ n   cubics  (b) valid   (b) under |  (a)/(c):   5%    25%    50%    75%    95%  |  (b)/(c):  min       5%     25%     50%     75%     95%     99%
+ 1   74062    98.5%        0     |            1.00   1.20   3.39  15.18 140.86  |        1.000000  1.0000  1.0040  1.0243  1.0796  1.3227 16.3704
+ 2   76201    99.9%        0     |            1.00   1.16   1.88   3.14  15.26  |        1.000000  1.0001  1.0026  1.0106  1.0291  1.2144  1.6622
+ 3   68845    99.4%        0     |            1.00   1.10   1.68   2.58  13.27  |        1.000000  1.0002  1.0015  1.0045  1.0106  1.1111  1.5173
+ 4   56807   100.0%        0     |            1.00   1.08   1.51   2.26  12.16  |        1.000000  1.0001  1.0008  1.0021  1.0060  1.0624  1.2393
+ 5   38232    99.8%        0     |            1.00   1.07   1.42   1.95  11.61  |        1.000000  1.0001  1.0005  1.0013  1.0043  1.0437  1.1841
+ 6   22480   100.0%        0     |            1.00   1.08   1.42   1.84   9.77  |        1.000000  1.0001  1.0003  1.0010  1.0028  1.0267  1.1427
+ 7   12193   100.0%        0     |            1.00   1.09   1.64   1.76   8.15  |        1.000000  1.0001  1.0004  1.0006  1.0021  1.0257  1.1393
+ 8    7116   100.0%        0     |            1.00   1.21   1.70   1.71   6.99  |        1.000000  1.0001  1.0004  1.0004  1.0014  1.0259  1.1370
+ 9    4040   100.0%        0     |            1.00   1.49   1.67   1.67   6.15  |        1.000000  1.0002  1.0003  1.0003  1.0009  1.0224  1.1216
+10     780   100.0%        0     |            1.00   1.02   1.11   2.76  34.74  |        1.000003  1.0002  1.0008  1.0018  1.0101  1.0950  1.5517
+   at the true least n for tol 1.0: (a)/(c) median 2.817, 90% 60.138;  (b)/(c) median 1.0150, 90% 1.1246, 99% 2.334
+   at the true least n for tol 0.5: (a)/(c) median 2.391, 90% 59.234;  (b)/(c) median 1.0093, 90% 1.1310, 99% 1.909
+   at the true least n for tol 0.1: (a)/(c) median 1.707, 90% 38.193;  (b)/(c) median 1.0016, 90% 1.0916, 99% 1.405
+
+Table 2.  Corpus (77,533 cubics), ramp.  Mean quadratics per cubic; in brackets the saving against (a).
+measure                                                                          tol 1.0            tol 0.5            tol 0.1         
+(a) equal-parameter (cu2qu today)                                                2.3364 ( 0.0%)   2.8380 ( 0.0%)   4.8016 ( 0.0%)
+(b) closed form, product: n=1: M*F;  n>=2: Phi_k * max sin for every piece       1.8426 (21.1%)   2.2984 (19.0%)   3.9934 (16.8%)
+(b) closed form, simple: n=1: M*F;  n>=2: first/last piece maximised, one tang   1.7386 (25.6%)   2.1459 (24.4%)   3.7285 (22.3%)
+(b) closed form, final: n=1 and first/last piece with linear majorants, tangen   1.7336 (25.8%)   2.1370 (24.7%)   3.7178 (22.6%)
+(b) closed form, geo_n=1 only: geometric test for n = 1 only (n >= 2 as today)   1.9245 (17.6%)   2.4821 (12.5%)   4.5727 ( 4.8%)
+(b) closed form, geo_n>=2 only: geometric test for n >= 2 only (n = 1 as today   2.1215 ( 9.2%)   2.4480 (13.7%)   3.8790 (19.2%)
+(b*) same pointwise bounds maximised by dense sampling (not a formula)           1.7095 (26.8%)   2.1116 (25.6%)   3.6938 (23.1%)
+(c) true least n (measured Hausdorff distance)                                   1.7033 (27.1%)   2.1074 (25.7%)   3.6934 (23.1%)
+   (every (b) row was checked to never pick fewer quadratics than (c); (b*) picks fewer than (c) for 0 cubics at tol 1.0 (sampling of the maximum); (b*) picks fewer than (c) for 0 cubics at tol 0.5 (sampling of the maximum); (b*) picks fewer than (c) for 1 cubics at tol 0.1 (sampling of the maximum))
+
+Table 3.  Corpus, ramp.  How many cubics take n quadratics.
+  tol 1.0:     n =      1      2      3      4      5      6      7      8      9     10    more
+       (a)         4893  51068  13629   6726   1003    188     21      5      0      0      0
+       (b)        33850  32861   8982   1416    329     82      8      5      0      0      0
+       (c)        35496  31735   8602   1322    286     80      7      5      0      0      0
+       cubics where (b) needs more than (c): 2255 (2.91%);  fewer: 0
+  tol 0.5:     n =      1      2      3      4      5      6      7      8      9     10    more
+       (a)         1862  36246  21412  10534   6067   1051    234    111     11      5      0
+       (b)        23989  31351  12296   8127   1248    387     56     72      2      5      0
+       (c)        25303  30662  11891   7990   1197    357     68     58      2      5      0
+       cubics where (b) needs more than (c): 1979 (2.55%);  fewer: 0
+  tol 0.1:     n =      1      2      3      4      5      6      7      8      9     10    more
+       (a)          225   7520  12070  18604  15824  10349   5168   3187   3368    599    614
+       (b)         9997  16481  11802  13340  10832   7059   5917   1187    447    274    192
+       (c)        10461  16741  11464  13132  10737   6997   5921   1167    442    277    189
+       cubics where (b) needs more than (c): 1638 (2.11%);  fewer: 0
+

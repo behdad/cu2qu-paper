@@ -1,0 +1,12 @@
+optimiser value / grid-search value (1 = same; above 1 = the optimiser missed something)
+  n = 2, tangents kept, 40 corpus cubics: min 0.9833  median 0.9999  max 1.0074
+  n = 1, tangents free, 40 corpus cubics: min 0.9391  median 1.0019  max 1.0494
+  canonical shapes (grid, optimiser):
+    quarter circle R=500         n=2 kept:    0.9836    0.9834   n=1 free:    3.9607    3.9618
+    corpus bowl arc              n=2 kept:    0.1416    0.1425   n=1 free:    0.5265    0.5276
+    superellipse-like quarter    n=2 kept:    0.0693    0.0685   n=1 free:    0.2575    0.2568
+    S-curve                      n=2 kept:    1.4110    1.4114   n=1 free:   40.8248   40.8248
+    flat arc, long handles       n=2 kept:    0.3630    0.3630   n=1 free:    1.2307    1.2348
+    flat, one-sided handles      n=2 kept:    0.3062    0.3084   n=1 free:    0.6322    0.6362
+    near-cusp                    n=2 kept:   16.2629   16.4960   n=1 free:   30.7454   42.1765
+    hook (line into curve)       n=2 kept:    0.1130    0.1127   n=1 free:    0.3554    0.3562

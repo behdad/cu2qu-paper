@@ -1,0 +1,87 @@
+tolerance 1.0: closed-form n for the ramp differs from fontTools on 3 cubics, all exact ties
+tolerance 0.5: closed-form n for the ramp differs from fontTools on 7 cubics, all exact ties
+tolerance 0.1: closed-form n for the ramp differs from fontTools on 0 cubics, all exact ties
+77533 cubics.  Average quadratics per cubic:
+  scheme                                       n chosen by     tol 1.0     tol 0.5     tol 0.1        vs cu2qu
+  cu2qu (fontTools itself)                     as implemented  2.3364      2.8380      4.8023           +0.0%   +0.0%   +0.0%
+  ramp                                         formula         2.3364      2.8379      4.8023           -0.0%   -0.0%   +0.0%
+  optu (alternating / best odd)                formula         2.3225      2.7632      4.2914           -0.6%   -2.6%  -10.6%
+  pairs + one block of 5 for odd n             formula         2.3225      2.7632      4.3058           -0.6%   -2.6%  -10.3%
+  alternating, even n and 3 only               formula         2.3263      2.7986      4.5467           -0.4%   -1.4%   -5.3%
+  relax50 (s = +-0.5 at the ends)              formula         1.8359      2.2940      3.7802          -21.4%  -19.2%  -21.3%
+  zero (s = 0)                                 formula         1.6881      1.9839      3.0368          -27.7%  -30.1%  -36.8%
+  ramp                                         oracle          1.6716      2.0788      3.6755          -28.5%  -26.8%  -23.5%
+  optu (alternating / best odd)                oracle          1.6672      2.0589      3.3669          -28.6%  -27.5%  -29.9%
+  T at equal-parameter knots                   oracle          1.6026      1.8788      2.9123          -31.4%  -33.8%  -39.4%
+  T at closed-form (gamma) knots               oracle          1.5917      1.8388      2.7158          -31.9%  -35.2%  -43.4%
+  T at equal affine-arc knots                  oracle          1.6022      1.8536      2.6659          -31.4%  -34.7%  -44.5%
+  relax50                                      oracle          1.4533      1.8005      2.9989          -37.8%  -36.6%  -37.6%
+  zero (s = 0)                                 oracle          1.4169      1.6981      2.6106          -39.4%  -40.2%  -45.6%
+  TAN* (numerical optimum, tangents kept)      oracle          1.5430      1.7527      2.2990          -34.0%  -38.2%  -52.1%
+  FREE* (numerical optimum, tangents free)     oracle          1.1440      1.2526      1.7818          -51.0%  -55.9%  -62.9%
+
+Distribution of n (percent of cubics), tolerance 1.0 / 0.5 / 0.1:
+  cu2qu (fontTools itself)                     as implemented 
+      tol 1.0 :  n=1..8, 9+:    6.3  65.9  17.6   8.7   1.3   0.2   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:    2.4  46.8  27.6  13.6   7.8   1.4   0.3   0.1   0.0
+      tol 0.1 :  n=1..8, 9+:    0.3   9.7  15.6  24.0  20.4  13.3   6.7   4.1   5.9
+  ramp                                         formula        
+      tol 1.0 :  n=1..8, 9+:    6.3  65.9  17.6   8.7   1.3   0.2   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:    2.4  46.8  27.6  13.6   7.8   1.4   0.3   0.1   0.0
+      tol 0.1 :  n=1..8, 9+:    0.3   9.7  15.6  24.0  20.4  13.3   6.7   4.1   5.9
+  optu (alternating / best odd)                formula        
+      tol 1.0 :  n=1..8, 9+:    6.3  65.9  17.6   9.8   0.4   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:    2.4  46.8  27.6  19.2   3.4   0.4   0.1   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:    0.3   9.7  15.6  39.1  18.1   8.4   6.7   1.2   0.9
+  pairs + one block of 5 for odd n             formula        
+      tol 1.0 :  n=1..8, 9+:    6.3  65.9  17.6   9.8   0.4   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:    2.4  46.8  27.6  19.2   3.4   0.4   0.1   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:    0.3   9.7  15.6  39.1  18.1   8.4   5.3   2.6   0.9
+  alternating, even n and 3 only               formula        
+      tol 1.0 :  n=1..8, 9+:    6.3  65.9  17.6   9.8   0.0   0.4   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:    2.4  46.8  27.6  19.2   0.0   3.9   0.0   0.1   0.0
+      tol 0.1 :  n=1..8, 9+:    0.3   9.7  15.6  39.1   0.0  26.5   0.0   7.9   0.9
+  relax50 (s = +-0.5 at the ends)              formula        
+      tol 1.0 :  n=1..8, 9+:   38.6  44.7  11.3   5.3   0.1   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   20.4  43.7  23.3  11.7   0.8   0.2   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:    3.0  12.4  23.3  39.5  11.6   7.9   1.4   0.6   0.2
+  zero (s = 0)                                 formula        
+      tol 1.0 :  n=1..8, 9+:   38.6  54.1   7.0   0.2   0.0   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   20.4  62.5  15.6   1.3   0.2   0.0   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:    3.0  29.2  41.1  16.8   8.1   1.4   0.3   0.1   0.0
+  ramp                                         oracle         
+      tol 1.0 :  n=1..8, 9+:   49.0  37.8  11.1   1.7   0.4   0.1   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   35.5  36.7  15.3  10.3   1.5   0.5   0.1   0.1   0.0
+      tol 0.1 :  n=1..8, 9+:   15.4  19.7  14.8  16.9  13.8   9.0   7.6   1.5   1.2
+  optu (alternating / best odd)                oracle         
+      tol 1.0 :  n=1..8, 9+:   49.0  37.8  11.1   2.0   0.1   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   35.5  36.7  15.3  11.6   0.7   0.1   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:   15.4  19.7  14.8  27.5  11.8   8.6   1.3   0.5   0.3
+  T at equal-parameter knots                   oracle         
+      tol 1.0 :  n=1..8, 9+:   49.0  42.6   7.7   0.6   0.1   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   35.5  43.9  18.4   1.6   0.4   0.1   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:   15.4  24.8  30.0  17.0  10.3   1.3   0.8   0.2   0.2
+  T at closed-form (gamma) knots               oracle         
+      tol 1.0 :  n=1..8, 9+:   49.0  44.1   6.1   0.7   0.2   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   35.5  48.8  13.3   1.5   0.7   0.2   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:   15.4  37.5  24.3  11.9   7.7   1.4   0.9   0.4   0.3
+  T at equal affine-arc knots                  oracle         
+      tol 1.0 :  n=1..8, 9+:   49.0  43.7   6.2   0.8   0.2   0.1   0.1   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   35.5  47.9  14.3   1.2   0.6   0.2   0.1   0.1   0.1
+      tol 0.1 :  n=1..8, 9+:   15.4  36.3  29.1  14.3   2.0   1.0   0.6   0.4   1.0
+  relax50                                      oracle         
+      tol 1.0 :  n=1..8, 9+:   60.1  35.4   3.7   0.7   0.0   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   42.2  39.1  15.3   3.1   0.2   0.1   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:   12.8  30.1  18.9  24.7  11.0   1.7   0.6   0.1   0.1
+  zero (s = 0)                                 oracle         
+      tol 1.0 :  n=1..8, 9+:   60.1  38.3   1.5   0.1   0.0   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   42.2  46.4  10.7   0.5   0.1   0.0   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:   12.8  38.8  29.6  12.9   5.1   0.5   0.1   0.1   0.0
+  TAN* (numerical optimum, tangents kept)      oracle         
+      tol 1.0 :  n=1..8, 9+:   46.6  52.5   0.9   0.0   0.0   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   33.5  57.8   8.5   0.1   0.0   0.0   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:   13.9  52.7  23.9   8.7   0.7   0.1   0.0   0.0   0.0
+  FREE* (numerical optimum, tangents free)     oracle         
+      tol 1.0 :  n=1..8, 9+:   85.6  14.3   0.0   0.0   0.0   0.0   0.0   0.0   0.0
+      tol 0.5 :  n=1..8, 9+:   75.1  24.6   0.3   0.0   0.0   0.0   0.0   0.0   0.0
+      tol 0.1 :  n=1..8, 9+:   39.8  43.6  15.4   1.0   0.1   0.0   0.0   0.0   0.0

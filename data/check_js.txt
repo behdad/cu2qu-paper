@@ -1,0 +1,6 @@
+error factor and limit, n = 2..100, 150, 400, 1000: the same bits
+the three counts for 3007 values of |d3| / tolerance: the same
+phi at 2000 points: largest difference 5.6e-17
+spline points, third differences and points of 1000 cubics: largest difference 2.8e-14
+the bound for one quadratic: the same for 628 cubics, and not applicable for the same 372
+cu2qu.js agrees with cu2qu_math.py

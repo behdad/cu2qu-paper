@@ -1,0 +1,8 @@
+cubic2quad_js.1.0: 49599 interior joints between quadratics; on-curve point is the midpoint (to 1e-6) at 2084 (4.2%); distance from the midpoint: median 1.644, p90 9.878, max 221.718 units
+cubic2quad_js.0.1: 119744 interior joints between quadratics; on-curve point is the midpoint (to 1e-6) at 3817 (3.2%); distance from the midpoint: median 0.960, p90 4.395, max 135.359 units
+kurbo_to_quads.1.0: 53352 interior joints between quadratics; on-curve point is the midpoint (to 1e-6) at 53352 (100.0%); distance from the midpoint: median 0.000, p90 0.000, max 0.000 units
+lyon.0.1: 157921 interior joints between quadratics; on-curve point is the midpoint (to 1e-6) at 157921 (100.0%); distance from the midpoint: median 0.000, p90 0.000, max 0.000 units
+lyon017.1.0: 53663 interior joints between quadratics; on-curve point is the midpoint (to 1e-6) at 47574 (88.7%); distance from the midpoint: median 0.000, p90 7.790, max 73.758 units
+skia.1.0: 217485 interior joints between quadratics; on-curve point is the midpoint (to 1e-6) at 100088 (46.0%); distance from the midpoint: median 0.033, p90 0.138, max 83.652 units
+fontforge.1.0: 46492 interior joints between quadratics; on-curve point is the midpoint (to 1e-6) at 46303 (99.6%); distance from the midpoint: median 0.000, p90 0.000, max 172.871 units
+fonttools_cu2qu.1.0: 103618 interior joints between quadratics; on-curve point is the midpoint (to 1e-6) at 103618 (100.0%); distance from the midpoint: median 0.000, p90 0.000, max 0.000 units

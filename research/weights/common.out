@@ -1,0 +1,3 @@
+identity S - B = d phi_k(u), random weights, n = 1..24: worst relative discrepancy 2.04e-14
+s = +1 is B(t0) + B'(t0) l/2 and s = -1 is B(t1) - B'(t1) l/2: worst gap 4.55e-13
+ramp vs fontTools cubic_approx_spline on 20000 random cubics (n = 2..19): worst gap 3.87e-12

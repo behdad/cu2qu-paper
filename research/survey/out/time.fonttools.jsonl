@@ -1,0 +1,3 @@
+{"method": "fonttools_cu2qu_purepython", "tol": 1.0, "ns_per_cubic": 8169.1, "quads": 181151, "path": "/tmp/claude-1000/-home-behdad-harfbuzz/7a6a948d-c79c-4ca1-8b42-b271f66712b8/scratchpad/ft-old/Lib/fontTools/cu2qu/cu2qu.py"}
+{"method": "fonttools_cu2qu_purepython", "tol": 0.5, "ns_per_cubic": 10606.8, "quads": 220037, "path": "/tmp/claude-1000/-home-behdad-harfbuzz/7a6a948d-c79c-4ca1-8b42-b271f66712b8/scratchpad/ft-old/Lib/fontTools/cu2qu/cu2qu.py"}
+{"method": "fonttools_cu2qu_purepython", "tol": 0.1, "ns_per_cubic": 22413.4, "quads": 372340, "path": "/tmp/claude-1000/-home-behdad-harfbuzz/7a6a948d-c79c-4ca1-8b42-b271f66712b8/scratchpad/ft-old/Lib/fontTools/cu2qu/cu2qu.py"}

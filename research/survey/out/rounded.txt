@@ -1,0 +1,2 @@
+cu2qu at 1.0 then off-curves rounded: Hausdorff/tol mean 0.373 p99 1.008 max 1.452; cubics over tol 848 (over 1.1 tol: 311); end tangent off > 1 deg: 9790 ; tangent deg mean 0.459 p99 4.04
+cu2qu at 0.5 then off-curves rounded: Hausdorff/tol mean 0.602 p99 1.322 max 2.104; cubics over tol 6671 (over 1.1 tol: 3620); end tangent off > 1 deg: 12278 ; tangent deg mean 0.549 p99 4.97

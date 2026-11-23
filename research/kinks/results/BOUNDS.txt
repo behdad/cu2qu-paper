@@ -1,0 +1,21 @@
+psi (degrees between the end tangents)   largest |e1| / tolerance   at e2 / e1
+     0.001                           3.4641          -1.0000
+     1.000                           3.4638          -1.0000
+     5.000                           3.4575          -1.0000
+    10.000                           3.4378          -1.0000
+    20.000                           3.3596          -1.0000
+    30.000                           3.2321          -1.0000
+    45.000                           2.9568          -1.0000
+    60.000                           2.5981          -1.0000
+    75.000                           2.3294          -0.5176
+    90.000                           2.2500           0.0000
+   120.000                           2.5981           1.0000
+   150.000                           3.2321           1.0000
+   179.999                           3.4641           1.0000
+largest over all: 3.4641; 2 sqrt(3) = 3.4641; 9/4 = 2.2500
+
+against cu2qu, tolerance 1: quadratics for |e1| at 0.999 and 1.001 of the limit
+  psi  10.0  limit 3.4378  quadratics [1, 2]
+  psi  45.0  limit 2.9568  quadratics [1, 2]
+  psi  90.0  limit 2.2500  quadratics [1, 2]
+  psi 150.0  limit 3.2321  quadratics [1, 2]

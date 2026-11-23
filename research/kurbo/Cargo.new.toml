@@ -1,0 +1,15 @@
+[package]
+name = "kdiff-new"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "kdiff-new"
+path = "../main.rs"
+
+[dependencies]
+# The branch under test.
+kurbo = { path = "/home/behdad/kurbo/kurbo" }
+
+[workspace]

@@ -1,0 +1,49 @@
+equal-parameter error constants: max|C - S| * n^3 / |d3|  (two unrelated cubics)
+scheme                         n   const(cubic A)  const(cubic B)  closed form
+mid-point (s=0)                1   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)                2   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)                3   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)                4   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)                5   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)                6   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)                7   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)                8   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)                9   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)               10   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)               11   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+mid-point (s=0)               12   0.048112522     0.048112522     sqrt(3)/36 = 0.048112522
+cu2qu ramp                     2   0.148148148     0.148148148     Phi(n) = 0.148148148  limit |d3|/tol = 54.000
+cu2qu ramp                     3   0.210937500     0.210937500     Phi(n) = 0.210937500  limit |d3|/tol = 128.000
+cu2qu ramp                     4   0.235253772     0.235253772     Phi(n) = 0.235253772  limit |d3|/tol = 272.047
+cu2qu ramp                     5   0.248083044     0.248083044     Phi(n) = 0.248083044  limit |d3|/tol = 503.864
+cu2qu ramp                     6   0.256000000     0.256000000     Phi(n) = 0.256000000  limit |d3|/tol = 843.750
+cu2qu ramp                     7   0.261370456     0.261370456     Phi(n) = 0.261370456  limit |d3|/tol = 1312.314
+cu2qu ramp                     8   0.265252132     0.265252132     Phi(n) = 0.265252133  limit |d3|/tol = 1930.239
+cu2qu ramp                     9   0.268188477     0.268188477     Phi(n) = 0.268188477  limit |d3|/tol = 2718.238
+cu2qu ramp                    10   0.270487222     0.270487222     Phi(n) = 0.270487222  limit |d3|/tol = 3697.032
+cu2qu ramp                    11   0.272335648     0.272335648     Phi(n) = 0.272335648  limit |d3|/tol = 4887.351
+cu2qu ramp                    12   0.273854245     0.273854245     Phi(n) = 0.273854245  limit |d3|/tol = 6309.926
+Truong x m pieces (+1,-1,..)   2   0.148148148     0.148148148     4/27 = 0.148148148  limit |d3|/tol = 54.000
+Truong x m pieces (+1,-1,..)   4   0.148148148     0.148148148     4/27 = 0.148148148  limit |d3|/tol = 432.000
+Truong x m pieces (+1,-1,..)   6   0.148148148     0.148148148     4/27 = 0.148148148  limit |d3|/tol = 1458.000
+Truong x m pieces (+1,-1,..)   8   0.148148148     0.148148148     4/27 = 0.148148148  limit |d3|/tol = 3456.000
+Truong x m pieces (+1,-1,..)  10   0.148148148     0.148148148     4/27 = 0.148148148  limit |d3|/tol = 6750.000
+Truong x m pieces (+1,-1,..)  12   0.148148148     0.148148148     4/27 = 0.148148148  limit |d3|/tol = 11664.000
+Triolo/Groleau fixed 4         4   0.148148148     0.148148148
+Skia pattern (+1,0,..,0,-1)    2   0.148148148                     4/27 = 0.148148148 (first and last piece)
+Skia pattern (+1,0,..,0,-1)    4   0.148148148                     4/27 = 0.148148148 (first and last piece)
+Skia pattern (+1,0,..,0,-1)    8   0.148148148                     4/27 = 0.148148148 (first and last piece)
+Skia pattern (+1,0,..,0,-1)   16   0.148148148                     4/27 = 0.148148148 (first and last piece)
+
+identities (largest deviation, font units, on cubic A):
+  Truong (gamma=1/2) vs cu2qu ramp n=2:                 0.000e0
+  Triolo/Groleau fixed 4 vs family s=(+1,-1,+1,-1):     0.000e0
+  Triolo/Groleau fixed 4 vs Truong on two halves:       0.000e0
+  Triolo/Groleau fixed 4: on-curve implied (max dev):   0.000e0
+  mid-point spline n=2: on-curve points on the cubic:  0.000e0  (implied by construction)
+  mid-point spline n=3: on-curve points on the cubic:  0.000e0  (implied by construction)
+  mid-point spline n=5: on-curve points on the cubic:  5.859e-14  (implied by construction)
+  mid-point spline n=8: on-curve points on the cubic:  0.000e0  (implied by construction)
+  cu2qu ramp n=3: on-curve points off the cubic by      1.9550 = 0.1250 |d3|/n^3
+  cu2qu ramp n=4: on-curve points off the cubic by      1.0997 = 0.1667 |d3|/n^3
+  cu2qu ramp n=7: on-curve points off the cubic by      0.2565 = 0.2083 |d3|/n^3

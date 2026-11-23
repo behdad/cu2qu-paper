@@ -1,0 +1,15 @@
+[package]
+name = "kdiff-old"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "kdiff-old"
+path = "../main.rs"
+
+[dependencies]
+# Upstream main (a5f97ff), from a pristine clone.
+kurbo = { path = "/tmp/claude-1000/-home-behdad-harfbuzz/7a6a948d-c79c-4ca1-8b42-b271f66712b8/scratchpad/kurbo/kurbo" }
+
+[workspace]

@@ -1,0 +1,12 @@
+1. alternating on 2m pieces = m sub-cubics x cu2qu n=2: worst gap over 5000 random cubics, m = 1..8: 3.18e-12
+2. odd n: constants of simple patterns
+   optimal block of 5: +1.000000 -0.933394 -0.000000 +0.933394 -1.000000   Phi = 0.151879365
+   (+1, -1, 0, +1, -1): Phi = 0.164145047   closed form u^3 - 15u^2/8 + u at u = (15 - sqrt 33)/24: 0.164145047
+     n   LP optimum   pairs + optimal 5-block   pairs + (+1,-1,0,+1,-1)   pairs + (+1,0,-1)   ramp
+     5   0.151879     0.151879                 0.164145                  0.210938            0.248083
+     7   0.149384     0.151879                 0.164145                  0.210938            0.261370
+     9   0.148243     0.151879                 0.164145                  0.210938            0.268188
+    11   0.148180     0.151879                 0.164145                  0.210938            0.272336
+    13   0.148151     0.151879                 0.164145                  0.210938            0.275124
+    15   0.148149     0.151879                 0.164145                  0.210938            0.277127
+   block position does not matter: True

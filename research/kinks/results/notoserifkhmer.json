@@ -1,0 +1,986 @@
+{
+ "meta": {
+  "name": "notoserifkhmer",
+  "path": "/home/behdad/noto-source/src/NotoSerifKhmer.glyphs",
+  "font_number": -1,
+  "locations": [
+   {
+    "Weight": -1.0,
+    "Width": 0.0
+   },
+   {
+    "Weight": 0.0,
+    "Width": 0.0
+   },
+   {
+    "Weight": 1.0,
+    "Width": 0.0
+   },
+   {
+    "Weight": -1.0,
+    "Width": -1.0
+   },
+   {
+    "Weight": 0.0,
+    "Width": -1.0
+   },
+   {
+    "Weight": 1.0,
+    "Width": -1.0
+   }
+  ],
+  "upem": 1000,
+  "tol": 1.0,
+  "skipped": {},
+  "glyphs": 355,
+  "segments": 11669,
+  "seconds": 4.278733968734741
+ },
+ "masters": 6,
+ "cubics": 6811,
+ "n_hist": {
+  "1": 6,
+  "2": 3305,
+  "3": 2878,
+  "4": 611,
+  "5": 11
+ },
+ "points": 29418,
+ "samples": 9,
+ "samples_inside": 9,
+ "summary": {
+  "exactly smooth in all masters": {
+   "joints": 5602,
+   "next_to_single": 9,
+   "inside": {
+    "cubic instances: kink": {
+     "count": 5602,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "quadratic instances: kink": {
+     "count": 5602,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 9.53527798950202e-14,
+     "p100": 1.447505775030507e-12,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "rounded quadratic: kink": {
+     "count": 5602,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (all)": {
+     "count": 5602,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 9.660539035395294e-14,
+     "p100": 1.4495071809506044e-12,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (next to single)": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (no single)": {
+     "count": 5593,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 9.686118573882699e-14,
+     "p100": 1.4495071809506044e-12,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "  single + spline": {
+     "count": 6,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "  single + single": {
+     "count": 0
+    },
+    "  single + line": {
+     "count": 3,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (all)": {
+     "count": 5602,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 9.660539035395294e-14,
+     "p100": 1.4495071809506044e-12,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (next to single)": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "no-single variant vs cubic": {
+     "count": 5602,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (next to single), units": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (next to single), units": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (all), units": {
+     "count": 5602,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 1.8623097155322296e-14,
+     "p100": 1.142904749427471e-13,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "cu2qu more than rounding": 0
+   }
+  },
+  "smooth up to rounding": {
+   "joints": 6459,
+   "next_to_single": 9,
+   "inside": {
+    "cubic instances: kink": {
+     "count": 6459,
+     "p50": 0.0,
+     "p90": 0.5863778586831164,
+     "p99": 2.6147302611157053,
+     "p99.9": 4.267893300290812,
+     "p100": 5.221022444703321,
+     "gt0.1": 856,
+     "gt0.5": 719,
+     "gt1": 401
+    },
+    "quadratic instances: kink": {
+     "count": 6459,
+     "p50": 0.0,
+     "p90": 0.5863778586831164,
+     "p99": 2.6147302611157053,
+     "p99.9": 4.267893300290812,
+     "p100": 5.221022444703321,
+     "gt0.1": 856,
+     "gt0.5": 719,
+     "gt1": 401
+    },
+    "rounded quadratic: kink": {
+     "count": 6459,
+     "p50": 0.0,
+     "p90": 0.968209270089489,
+     "p99": 3.8140748342903543,
+     "p99.9": 7.125016348901798,
+     "p100": 7.125016348901798,
+     "gt0.1": 855,
+     "gt0.5": 805,
+     "gt1": 613
+    },
+    "change by cu2qu (all)": {
+     "count": 6459,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 1.0066969480250154e-13,
+     "p100": 1.4495071809506044e-12,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (next to single)": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (no single)": {
+     "count": 6450,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 1.0092549018737559e-13,
+     "p100": 1.4495071809506044e-12,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "  single + spline": {
+     "count": 6,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "  single + single": {
+     "count": 0
+    },
+    "  single + line": {
+     "count": 3,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (all)": {
+     "count": 6459,
+     "p50": 0.0,
+     "p90": 0.6651770661155751,
+     "p99": 2.6718288738437117,
+     "p99.9": 7.125016348901795,
+     "p100": 7.125016348901795,
+     "gt0.1": 853,
+     "gt0.5": 728,
+     "gt1": 476
+    },
+    "change by rounding (next to single)": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "no-single variant vs cubic": {
+     "count": 6459,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (next to single), units": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (next to single), units": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (all), units": {
+     "count": 6459,
+     "p50": 0.0,
+     "p90": 0.33732966908209827,
+     "p99": 1.0780534100836034,
+     "p99.9": 1.1953423734463589,
+     "p100": 1.1953423734463589,
+     "gt0.1": 832,
+     "gt0.5": 492,
+     "gt1": 66
+    },
+    "cu2qu more than rounding": 0
+   }
+  },
+  "marked smooth in all masters": {
+   "joints": 6455,
+   "next_to_single": 9,
+   "inside": {
+    "cubic instances: kink": {
+     "count": 6455,
+     "p50": 0.0,
+     "p90": 0.6203759155311428,
+     "p99": 2.7512449823445664,
+     "p99.9": 4.267893300290812,
+     "p100": 5.221022444703321,
+     "gt0.1": 872,
+     "gt0.5": 735,
+     "gt1": 413
+    },
+    "quadratic instances: kink": {
+     "count": 6455,
+     "p50": 0.0,
+     "p90": 0.6203759155311428,
+     "p99": 2.7512449823445664,
+     "p99.9": 4.267893300290812,
+     "p100": 5.221022444703321,
+     "gt0.1": 872,
+     "gt0.5": 735,
+     "gt1": 413
+    },
+    "rounded quadratic: kink": {
+     "count": 6455,
+     "p50": 0.0,
+     "p90": 0.968209270089489,
+     "p99": 3.8262870323028677,
+     "p99.9": 7.125016348901798,
+     "p100": 7.125016348901798,
+     "gt0.1": 871,
+     "gt0.5": 821,
+     "gt1": 623
+    },
+    "change by cu2qu (all)": {
+     "count": 6455,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 1.0078338164022047e-13,
+     "p100": 1.4495071809506044e-12,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (next to single)": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (no single)": {
+     "count": 6446,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 1.0103917702509452e-13,
+     "p100": 1.4495071809506044e-12,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "  single + spline": {
+     "count": 6,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "  single + single": {
+     "count": 0
+    },
+    "  single + line": {
+     "count": 3,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (all)": {
+     "count": 6455,
+     "p50": 0.0,
+     "p90": 0.6651770661155751,
+     "p99": 2.7415386281645118,
+     "p99.9": 7.125016348901795,
+     "p100": 7.125016348901795,
+     "gt0.1": 869,
+     "gt0.5": 743,
+     "gt1": 482
+    },
+    "change by rounding (next to single)": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "no-single variant vs cubic": {
+     "count": 6455,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by cu2qu (next to single), units": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (next to single), units": {
+     "count": 9,
+     "p50": 0.0,
+     "p90": 0.0,
+     "p99": 0.0,
+     "p99.9": 0.0,
+     "p100": 0.0,
+     "gt0.1": 0,
+     "gt0.5": 0,
+     "gt1": 0
+    },
+    "change by rounding (all), units": {
+     "count": 6455,
+     "p50": 0.0,
+     "p90": 0.3496533096519917,
+     "p99": 1.0780534100836034,
+     "p99.9": 1.1953423734463589,
+     "p100": 1.1953423734463589,
+     "gt0.1": 848,
+     "gt0.5": 500,
+     "gt1": 66
+    },
+    "cu2qu more than rounding": 0
+   }
+  }
+ },
+ "rules": {
+  "as is": {
+   "extra_points": 0,
+   "percent": 0.0,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "deviation <= 0 tol": {
+   "extra_points": 2,
+   "percent": 0.006798558705554423,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "deviation <= 0.01 tol": {
+   "extra_points": 2,
+   "percent": 0.006798558705554423,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "deviation <= 0.03 tol": {
+   "extra_points": 2,
+   "percent": 0.006798558705554423,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "deviation <= 0.1 tol": {
+   "extra_points": 0,
+   "percent": 0.0,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "deviation <= 0.25 tol": {
+   "extra_points": 0,
+   "percent": 0.0,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "deviation <= 0.5 tol": {
+   "extra_points": 0,
+   "percent": 0.0,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "deviation <= 1 tol": {
+   "extra_points": 0,
+   "percent": 0.0,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "fractions <= 0.1 tol": {
+   "extra_points": 6,
+   "percent": 0.020395676116663267,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "fractions <= 0.25 tol": {
+   "extra_points": 6,
+   "percent": 0.020395676116663267,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "fractions <= 0.5 tol": {
+   "extra_points": 6,
+   "percent": 0.020395676116663267,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "fractions <= 1 tol": {
+   "extra_points": 6,
+   "percent": 0.020395676116663267,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "fractions <= 2 tol": {
+   "extra_points": 3,
+   "percent": 0.010197838058331634,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "no single quadratic": {
+   "extra_points": 6,
+   "percent": 0.020395676116663267,
+   "exactly smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "smooth up to rounding": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ],
+   "marked smooth in all masters": [
+    0,
+    0,
+    0,
+    0.0,
+    0.0
+   ]
+  },
+  "linear single": {
+   "exactly smooth in all masters": {
+    "intersection, masters": [
+     0,
+     0,
+     0,
+     0.0
+    ],
+    "intersection, instances": [
+     0,
+     0,
+     0,
+     0.0
+    ],
+    "linear, masters": [
+     9,
+     9,
+     6,
+     5.29008120537128
+    ],
+    "linear, instances": [
+     9,
+     9,
+     6,
+     4.537772507906652
+    ]
+   },
+   "smooth up to rounding": {
+    "intersection, masters": [
+     0,
+     0,
+     0,
+     0.0
+    ],
+    "intersection, instances": [
+     0,
+     0,
+     0,
+     0.0
+    ],
+    "linear, masters": [
+     9,
+     9,
+     6,
+     5.29008120537128
+    ],
+    "linear, instances": [
+     9,
+     9,
+     6,
+     4.537772507906652
+    ]
+   },
+   "marked smooth in all masters": {
+    "intersection, masters": [
+     0,
+     0,
+     0,
+     0.0
+    ],
+    "intersection, instances": [
+     0,
+     0,
+     0,
+     0.0
+    ],
+    "linear, masters": [
+     9,
+     9,
+     6,
+     5.29008120537128
+    ],
+    "linear, instances": [
+     9,
+     9,
+     6,
+     4.537772507906652
+    ]
+   }
+  },
+  "deviation": {
+   "p50": 0.0,
+   "p90": 0.04040610178208836,
+   "p99": 0.040406101782088505,
+   "p99.9": 0.04040610178208852,
+   "max": 0.04040610178208852,
+   "zero": 4,
+   "count": 6
+  }
+ }
+}

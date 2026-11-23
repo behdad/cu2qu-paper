@@ -1,0 +1,15 @@
+ramp: closed form valid for 367327 (cubic, n) pairs, under-estimates 0
+zero: closed form valid for 232799 (cubic, n) pairs, under-estimates 0
+alt: closed form valid for 252944 (cubic, n) pairs, under-estimates 0
+
+Mean quadratics per cubic, corpus.  Savings are against the ramp with the equal-parameter test (cu2qu today).
+weighting                         measure                  tol 1.0           tol 0.5           tol 0.1
+ramp (cu2qu)                      (a) equal-parameter      2.3364 (  0.0%)   2.8380 (  0.0%)   4.8016 (  0.0%)
+ramp (cu2qu)                      (b) closed form          1.7336 ( 25.8%)   2.1370 ( 24.7%)   3.7178 ( 22.6%)
+ramp (cu2qu)                      (c) true least n         1.7033 ( 27.1%)   2.1074 ( 25.7%)   3.6934 ( 23.1%)
+alternating +1,-1 (even n)        (a) equal-parameter      2.5021 ( -7.1%)   3.0750 ( -8.3%)   4.7018 (  2.1%)
+alternating +1,-1 (even n)        (b) closed form          1.8635 ( 20.2%)   2.3082 ( 18.7%)   3.7216 ( 22.5%)
+alternating +1,-1 (even n)        (c) true least n         1.8114 ( 22.5%)   2.2478 ( 20.8%)   3.6670 ( 23.6%)
+s = 0 (tangents not kept)         (a) equal-parameter      1.6881 ( 27.7%)   1.9839 ( 30.1%)   3.0364 ( 36.8%)
+s = 0 (tangents not kept)         (b) closed form          1.4728 ( 37.0%)   1.7492 ( 38.4%)   2.6387 ( 45.0%)
+s = 0 (tangents not kept)         (c) true least n         1.4169 ( 39.4%)   1.6981 ( 40.2%)   2.6101 ( 45.6%)

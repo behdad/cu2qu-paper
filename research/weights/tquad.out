@@ -1,0 +1,11 @@
+closed-form estimate against the measured Hausdorff distance, T spline, whole corpus
+(cubics whose pieces all have a valid tangent intersection and whose measured distance is > 0.01):
+   knots   n   cubics   estimate/measured: 1%      10%     median   90%     99%     max   | share with all pieces valid
+   equal t  1   68384    0.906   0.966   1.011   1.040   1.060   1.190  |  0.902
+   equal t  2   62677    0.942   0.980   1.008   1.023   1.051   1.068  |  0.902
+   equal t  3   52056    0.948   0.980   1.005   1.014   1.025   1.087  |  0.902
+   equal t  4   34119    0.950   0.980   1.004   1.011   1.018   1.085  |  0.902
+   gamma    1   68384    0.906   0.966   1.011   1.040   1.060   1.190  |  0.902
+   gamma    2   59859    0.949   0.982   1.004   1.011   1.026   1.107  |  0.902
+   gamma    3   44413    0.955   0.984   1.003   1.006   1.024   1.077  |  0.902
+   gamma    4   24576    0.952   0.978   1.002   1.004   1.022   1.104  |  0.902

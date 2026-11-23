@@ -1,0 +1,21 @@
+corpus bowl arc
+    n   q_M at affine knots: Hausdorff   at equal piecewise parameter |  T at affine knots  |  s = 0 on equal pieces
+    2           0.39113                      2.4240           |       0.24861       |       0.31700
+    3           0.12108                      1.2180           |       0.04558       |       0.09443
+    4           0.05147                      0.7326           |       0.01429       |       0.03989
+    6           0.01522                      0.3511           |       0.00278       |       0.01182
+    8           0.00639                      0.2056           |       0.00088       |       0.00499
+hook (line into curve)
+    n   q_M at affine knots: Hausdorff   at equal piecewise parameter |  T at affine knots  |  s = 0 on equal pieces
+    2           1.24070                      9.0710           |       0.22789       |       0.84940
+    3           0.33289                      5.2172           |       0.04809       |       0.25188
+    4           0.14566                      3.4338           |       0.01575       |       0.10613
+    6           0.04507                      1.8150           |       0.00322       |       0.03136
+    8           0.01950                      1.1202           |       0.00104       |       0.01328
+flat, one-sided handles
+    n   q_M at affine knots: Hausdorff   at equal piecewise parameter |  T at affine knots  |  s = 0 on equal pieces
+    2           0.57499                     14.5325           |       0.55264       |       0.41874
+    3           0.20972                      9.0053           |       0.16326       |       0.12947
+    4           0.10069                      6.2558           |       0.06509       |       0.05576
+    6           0.03495                      3.6462           |       0.01667       |       0.01685
+    8           0.01623                      2.4329           |       0.00609       |       0.00718

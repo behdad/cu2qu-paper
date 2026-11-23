@@ -1,0 +1,6 @@
+{"method":"skia_convertCubicToQuads","tol":1,"ns_per_cubic":82.9,"quads":295018,"check":1.65421e+08}
+{"method":"skia_convertCubicToQuads","tol":3.375,"ns_per_cubic":55.7,"quads":192894,"check":1.65531e+08}
+{"method":"skia_convertCubicToQuads","tol":0.5,"ns_per_cubic":102.1,"quads":363289,"check":1.65365e+08}
+{"method":"skia_convertCubicToQuads","tol":1.6875,"ns_per_cubic":70.2,"quads":244126,"check":1.6546e+08}
+{"method":"skia_convertCubicToQuads","tol":0.1,"ns_per_cubic":171.1,"quads":620865,"check":1.65317e+08}
+{"method":"skia_convertCubicToQuads","tol":0.3375,"ns_per_cubic":116.4,"quads":412050,"check":1.65351e+08}

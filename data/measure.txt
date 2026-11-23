@@ -1,0 +1,43 @@
+corpus: 77533 cubics (data/cubics.json)
+|d3| percentiles 50 / 90 / 99 / max: 27.7 / 131.6 / 336.0 / 1574.0
+a control point on its end point: 862 (1.11%)
+
+one quadratic
+tolerance                                                         1.0        0.5        0.1
+fits at equal parameters (cu2qu's test)                    4893 (6.3%) 1865 (2.4%) 225 (0.3%)
+ruled out by |d3| > 36/sqrt(3) x tolerance                 47574 (61.4%) 61744 (79.6%) 75215 (97.0%)
+within tolerance by the bound on the distance of sec. 7    29650 (38.2%) 18938 (24.4%) 6699 (8.6%)
+fits although ruled out: 0
+
+quadratics per cubic
+tolerance                                                         1.0        0.5        0.1
+cu2qu: one if it fits at equal parameters, else the ramp       2.3364     2.8379     4.8023
+the same with the best weights (sec. 4)                        2.3225     2.7632     4.3058
+HarfBuzz: one by the bound of sec. 7, else the ramp            1.9977     2.5855     4.6728
+mid-point (kurbo to_quads, lyon)                               1.6881     1.9839     3.0368
+
+cu2qu, share of cubics by number of quadratics (1 / 2 / 3 / 4 / 5 and more), percent
+  tolerance 1.0: 6.3 / 65.9 / 17.6 / 8.7 / 1.6   (most: 8)
+  tolerance 0.5: 2.4 / 46.8 / 27.6 / 13.6 / 9.6   (most: 10)
+  tolerance 0.1: 0.3 / 9.7 / 15.6 / 24.0 / 50.4   (most: 17)
+  mid-point 1.0: 38.6 / 54.1 / 7.0 / 0.2 / 0.0   (most: 5)
+  mid-point 0.5: 20.4 / 62.5 / 15.6 / 1.3 / 0.2   (most: 6)
+  mid-point 0.1: 3.0 / 29.2 / 41.1 / 16.8 / 9.9   (most: 10)
+
+who can gain from better weights: cubics with |d3| > 128 x tolerance
+  tolerance 1.0: 7941 (10.2%)
+  tolerance 0.5: 18009 (23.2%)
+  tolerance 0.1: 57718 (74.4%)
+
+mid-point spline: angle between the cubic's end tangents and the spline's
+  tolerance 1.0: more than 0.1 / 1 / 5 degrees on 74983 (96.7%) / 44515 (57.4%) / 6139 (7.9%) cubics; median 1.20, mean 2.23 degrees
+  tolerance 0.5: more than 0.1 / 1 / 5 degrees on 74250 (95.8%) / 33389 (43.1%) / 2664 (3.4%) cubics; median 0.84, mean 1.69 degrees
+  tolerance 0.1: more than 0.1 / 1 / 5 degrees on 69389 (89.5%) / 8625 (11.1%) / 726 (0.9%) cubics; median 0.37, mean 1.01 degrees
+
+distance as sets of points (Hausdorff), measured
+tolerance                                                         1.0        0.5        0.1
+cu2qu's constructions, least n within tolerance                1.7033     2.1075     3.6942
+cu2qu's output: distance / tolerance, mean                      0.272      0.339      0.454
+one quadratic within tolerance                             35496 (45.8%) 25303 (32.6%) 10460 (13.5%)
+bound of sec. 7 against the measured distance: below it by at most 6.39e-14 units; bound / measured median 1.10, 90th percentile 3.31 (73135 cubics)
+measured distance above the equal-parameter distance by at most 3.27e-05 units (n >= 2)

@@ -1,0 +1,63 @@
+Table 1. Joints smooth up to rounding; instances: inside
+How much the angle between the two handles of a joint changes in instances, in degrees, as counts of joints.
+'c' = quadratic instance against cubic instance (what cu2qu does); 'r' = rounded quadratic against quadratic (what rounding to integers does);
+'units' = the largest c as a distance: how far the nearer off-curve point is from where it would leave the angle alone; c>r = joints where cu2qu does more than rounding.
+font                    M   cubics  single      % |   joints  by-sgl |  c>0.1  c>0.5    c>1   c max  units |   r>0.1   r>0.5     r>1   r max |   c>r
+tt-notosansitalic       2    40402   25625  63.4% |    38410   30263 |   2222    118      8   2.151  0.397 |   25612   18277   10104   18.43 |   230
+tt-notosans-exact       2    35972   35805  99.5% |    34126   34068 |      0      0      0   0.000  0.000 |   19319   16771   11636   17.85 |   275
+tt-notosans             2    35972   26068  72.5% |    34042   28940 |   1220     41      7   1.649  0.480 |   20147   12721    6543   15.71 |   131
+tt-notonaskharabic      2    17471    8324  47.6% |    14301    9515 |   1050    195     74  12.529  0.447 |    9349    7987    5989   26.76 |    70
+tt-adwaitasansitalic    6    13995   11947  85.4% |    13085   11799 |   1535     87     11   7.199  0.864 |   10506    3477    1267   18.32 |   102
+tt-adwaitasans          6    13726   11847  86.3% |    13511   12341 |   1292     80     19  12.529  0.852 |    8741    2652     923   18.43 |   116
+tt-vazirmatn            3     8600    7130  82.9% |     8427    7714 |    524     31     14 180.000  0.750 |    5097    1625     581   17.24 |    58
+tt-bitter               2     6679    5093  76.3% |     6372    5697 |    598     30      2   1.268  0.438 |    3713    1952     825    8.69 |    89
+TOTAL                       172817  131839  76.3% |   162274  140337 |   8441    582    135 180.000  0.864 |  102484   65462   37868         |  1071
+
+Table 2. Kinks at those joints in instances of the cubic masters, the quadratic masters and the rounded quadratic masters: joints over 0.1, 0.5 and 1 degree, and the largest
+font                   | cub>0.1    >0.5      >1     max |  qu>0.1    >0.5      >1     max | rnd>0.1    >0.5      >1     max
+tt-notosansitalic      |   21982   20385   16721   71.57 |   22416   20416   16738   71.57 |   24666   22180   17569   63.43
+tt-notosans-exact      |    1062     833     538   63.43 |    1062     833     538   63.43 |   20354   17592   12171   63.43
+tt-notosans            |   17222   15985   12950   71.57 |   17408   15996   12965   71.57 |   19724   17118   13105   63.43
+tt-notonaskharabic     |    8517    8026    7222   70.35 |    8657    8043    7234   68.70 |    8754    8215    7343   67.52
+tt-adwaitasansitalic   |   10648    7720    3719   45.00 |   10687    7729    3751   45.00 |   10794    8011    4006   45.00
+tt-adwaitasans         |    8853    6804    3175   36.87 |    8895    6798    3176   36.87 |    9007    6888    3315   45.00
+tt-vazirmatn           |    4945    3910    1877   36.56 |    4992    3922    1911  176.00 |    5316    3991    2124  176.33
+tt-bitter              |    3139    2895    2102   12.68 |    3253    2898    2108   12.68 |    3749    3139    2234   16.70
+TOTAL                  |   76368   66558   48304         |   77370   66635   48421         |  102364   87134   61867        
+
+Table 3. Candidate rules (samples inside): extra points, as % of all points, then joints smooth up to rounding that cu2qu still changes by more than 0.1 degree
+font                      points | as is                 | deviation <= 0 tol    | deviation <= 0.01 tol | deviation <= 0.03 tol | deviation <= 0.1 tol  | deviation <= 0.25 tol | deviation <= 0.5 tol  | deviation <= 1 tol    | fractions <= 0.1 tol  | fractions <= 0.25 tol | fractions <= 0.5 tol  | fractions <= 1 tol    | fractions <= 2 tol    | no single quadratic  
+tt-notosansitalic         115871 |       0  0.000%  2222 |   21870 18.874%     0 |   12404 10.705%     0 |    4866  4.199%   145 |     453  0.391%  1889 |       7  0.006%  2215 |       1  0.001%  2222 |       0  0.000%  2222 |   22408 19.339%     0 |   20569 17.752%    11 |   14031 12.109%   236 |    4692  4.049%  1217 |     110  0.095%  2162 |   25625 22.115%     0
+tt-notosans-exact          93044 |       0  0.000%     0 |   31444 33.795%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |       0  0.000%     0 |   35805 38.482%     0
+tt-notosans               102781 |       0  0.000%  1220 |   22079 21.482%     0 |   10167  9.892%     0 |    3186  3.100%   167 |     156  0.152%  1118 |       3  0.003%  1218 |       0  0.000%  1220 |       0  0.000%  1220 |   22365 21.760%     0 |   20584 20.027%    15 |   13558 13.191%   121 |    4102  3.991%   629 |      50  0.049%  1206 |   26068 25.363%     0
+tt-notonaskharabic         46050 |       0  0.000%  1050 |    6428 13.959%     0 |    3807  8.267%     0 |    1763  3.828%   134 |     267  0.580%   876 |      21  0.046%  1029 |       2  0.004%  1050 |       0  0.000%  1050 |    7016 15.236%     0 |    6340 13.768%    27 |    4129  8.966%   153 |    1252  2.719%   657 |      24  0.052%  1043 |    8324 18.076%     0
+tt-adwaitasansitalic       39544 |       0  0.000%  1535 |   11855 29.979%     0 |    9887 25.003%     3 |    4802 12.143%    86 |     688  1.740%  1088 |      36  0.091%  1514 |       0  0.000%  1535 |       0  0.000%  1535 |   11882 30.048%     0 |   11624 29.395%     6 |    8561 21.649%   229 |    1771  4.479%  1015 |       1  0.003%  1535 |   11947 30.212%     0
+tt-adwaitasans             38877 |       0  0.000%  1292 |   11602 29.843%     0 |    8962 23.052%     0 |    4083 10.502%    66 |     527  1.356%   928 |      43  0.111%  1267 |       1  0.003%  1291 |       0  0.000%  1292 |   11657 29.984%     0 |   11243 28.919%    11 |    7285 18.739%   191 |    1167  3.002%   852 |       1  0.003%  1291 |   11847 30.473%     0
+tt-vazirmatn               23583 |       0  0.000%   524 |    6813 28.889%     0 |    3984 16.894%     1 |    1632  6.920%    35 |     270  1.145%   335 |      20  0.085%   506 |       0  0.000%   524 |       0  0.000%   524 |    6906 29.284%     0 |    5853 24.819%    13 |    3064 12.992%    73 |     627  2.659%   299 |       2  0.008%   524 |    7130 30.234%     0
+tt-bitter                  24985 |       0  0.000%   598 |    4746 18.995%     0 |    3119 12.483%     0 |    1563  6.256%    40 |     253  1.013%   371 |       8  0.032%   587 |       0  0.000%   598 |       0  0.000%   598 |    4914 19.668%     0 |    4580 18.331%     0 |    3275 13.108%    52 |     999  3.998%   295 |       5  0.020%   594 |    5093 20.384%     0
+TOTAL                     484735 |       0  0.000%  8441 |  116837 24.103%     0 |   52330 10.796%     4 |   21895  4.517%   673 |    2614  0.539%  6605 |     138  0.028%  8336 |       4  0.001%  8440 |       0  0.000%  8441 |   87148 17.978%     0 |   80793 16.667%    83 |   53903 11.120%  1055 |   14610  3.014%  4964 |     193  0.040%  8355 |  131839 27.198%     0
+
+Table 4. The deviation that the rules test, for the single quadratics as given: over pairs of masters and the two ends,
+the distance of the off-curve point halfway between two masters from the end tangent of the cubic halfway between them, in font units
+font                     single     zero |      p50      p90      p99    p99.9      max
+tt-notosansitalic         25625     3755 |   0.0093   0.0465   0.1201   0.2208   0.5571
+tt-notosans-exact         35805     4361 |   0.0000   0.0000   0.0000   0.0000   0.0000
+tt-notosans               26068     3989 |   0.0063   0.0338   0.0877   0.1577   0.3194
+tt-notonaskharabic         8324     1896 |   0.0078   0.0541   0.1731   0.3206   0.5547
+tt-adwaitasansitalic      11947       92 |   0.0496   0.1547   0.3693   0.6218   0.8504
+tt-adwaitasans            11847      245 |   0.0423   0.1389   0.3696   0.8175   1.1190
+tt-vazirmatn               7130      317 |   0.0246   0.1146   0.4367   0.6354   0.9067
+tt-bitter                  5093      347 |   0.0163   0.0690   0.1712   0.2569   0.3450
+
+Table 5. Joints smooth up to rounding next to a single quadratic: change of the angle in the masters themselves and in instances,
+for the intersection of the end tangents (as is) and for a single quadratic that is linear in the control points, (3 (c1 + c2) - c0 - c3) / 4
+font                     joints | as is, masters >0.1 >1 max  | as is, instances            | linear, masters             | linear, instances          
+tt-notosansitalic         30263 |       0       0     0.000   |    2222       8     2.151   |   27687    4251    12.995   |   27444    3243    12.995  
+tt-notosans-exact         34068 |       0       0     0.000   |       0       0     0.000   |       0       0     0.000   |       0       0     0.000  
+tt-notosans               28940 |       0       0     0.000   |    1220       7     1.649   |   26216    3622    11.310   |   25925    2620    11.310  
+tt-notonaskharabic         9515 |       2       2   180.000   |    1050      74    12.529   |    8521    3594    15.803   |    8491    3224    13.940  
+tt-adwaitasansitalic      11799 |       0       0     0.000   |    1535      11     7.199   |   11434     877    15.255   |   11016     457    14.226  
+tt-adwaitasans            12341 |       0       0     0.000   |    1292      19    12.529   |   11863     867    15.255   |   11291     574    14.036  
+tt-vazirmatn               7714 |       1       1   180.000   |     524      14   180.000   |    6911     298    18.435   |    6779     229    18.435  
+tt-bitter                  5697 |       0       0     0.000   |     598       2     1.268   |    5220     710     3.862   |    5158     532     3.013  
+TOTAL                    140337 |       3       3   180.000   |    8441     135   180.000   |   97852   14219    18.435   |   96104   10879    18.435  

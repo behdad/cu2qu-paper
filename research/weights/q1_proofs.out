@@ -1,0 +1,30 @@
+A. chain inequalities, exact:
+   phi_k(2/3) = 4/27 + 4 g_{k+1}/9 + g_k/9 + (s_k - 1)/9      identity holds
+   phi_k(1/3) = -4/27 + g_{k+1}/9 + 4 g_k/9 + (s_k + 1)/9     identity holds
+   random search, s_0 = 1, n = 1..8, 200000 trials: least max|phi| found 0.148148148  (4/27 = 0.148148148)
+
+B. dual certificate for even n (exact rationals):
+   n =   2: all lambda > 0, identity exact;  lambda/lambda_mid = 1, 1
+   n =   4: all lambda > 0, identity exact;  lambda/lambda_mid = 3, 1, 1, 3
+   n =   6: all lambda > 0, identity exact;  lambda/lambda_mid = 29, 9, 1, 1, 9, 29
+   n =   8: all lambda > 0, identity exact;  lambda/lambda_mid = 113, 35, 3, 1, 1, 3 ...
+   n =  10: all lambda > 0, identity exact;  lambda/lambda_mid = 1101, 341, 29, 9, 1, 1 ...
+   n =  12: all lambda > 0, identity exact;  lambda/lambda_mid = 4291, 1329, 113, 35, 3, 1 ...
+   n =  20: all lambda > 0, identity exact;  lambda/lambda_mid = 6187619, 1916417, 162945, 50467, 4291, 1329 ...
+   n =  40: all lambda > 0, identity exact;  lambda/lambda_mid = 488580571483761, 151322198904163, 12866299819075, 3984924685953, 338821641089, 104939162051 ...
+   n = 100: all lambda > 0, identity exact;  lambda/lambda_mid = 240532674131974477210933190332169148099, 74497299488214761849237549447361012097, 6334196818893995196355381487016564865, 1961814789351793925845602470963582787, 166804985997340250571306174460316771, 51662507153407332895344449255133809 ...
+   transfer matrix over a pair [[-4, 13], [-13, 42]], eigenvalues 19 +- 6 sqrt(10) = 37.973665961010276 0.02633403898972375
+
+C. odd n: optimum minus 4/27, and the ratio between n and n + 4
+   n =  3: Phi - 4/27 = 6.279e-02   ratio to n-4:    -
+   n =  5: Phi - 4/27 = 3.731e-03   ratio to n-4:    -
+   n =  7: Phi - 4/27 = 1.235e-03   ratio to n-4: 50.825
+   n =  9: Phi - 4/27 = 9.494e-05   ratio to n-4: 39.302
+   n = 11: Phi - 4/27 = 3.225e-05   ratio to n-4: 38.304
+   n = 13: Phi - 4/27 = 2.498e-06   ratio to n-4: 38.011
+   n = 15: Phi - 4/27 = 8.492e-07   ratio to n-4: 37.983
+   n = 17: Phi - 4/27 = 6.577e-08   ratio to n-4: 37.973
+   n = 19: Phi - 4/27 = 2.236e-08   ratio to n-4: 37.975
+   n = 21: Phi - 4/27 = 1.736e-09   ratio to n-4: 37.891
+   n = 23: Phi - 4/27 = 6.132e-10   ratio to n-4: 36.463
+   (19 + 6 sqrt(10) = 37.9737)

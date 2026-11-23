@@ -1,0 +1,10 @@
+/usr/share/fonts/adobe-source-code-pro-fonts/SourceCodePro-Regular.otf
+  Version 2.042;hotconv 1.1.0;makeotfexe 2.6.0
+  units per em 1000, 1568 of 1568 glyphs, 9734 cubics, sha256 9f9664e2edf6f045...
+/usr/share/fonts/stix-fonts/STIXTwoMath-Regular.otf
+  Version 2.13 b171
+  units per em 1000, 3000 of 6760 glyphs, 28780 cubics, sha256 3a5f3f26f40d5698...
+/usr/share/fonts/google-noto-sans-sc-fonts/NotoSansSC-Regular.otf
+  Version 2.004;hotconv 1.0.118;makeotfexe 2.5.65603
+  units per em 1000, 3000 of 31036 glyphs, 39019 cubics, sha256 faa6c9df652116dd...
+total 77533 cubics

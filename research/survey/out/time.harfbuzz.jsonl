@@ -1,0 +1,3 @@
+{"method":"harfbuzz_hb_gpu_cu2qu","tol":1,"ns_per_cubic":79.0,"quads":181148,"check":1.65589e+08}
+{"method":"harfbuzz_hb_gpu_cu2qu","tol":0.5,"ns_per_cubic":89.9,"quads":220036,"check":1.65489e+08}
+{"method":"harfbuzz_hb_gpu_cu2qu","tol":0.1,"ns_per_cubic":129.1,"quads":372340,"check":1.65368e+08}

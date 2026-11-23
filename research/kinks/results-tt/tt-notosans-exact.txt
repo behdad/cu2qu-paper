@@ -1,0 +1,71 @@
+font tt-notosans-exact: 2 masters, tolerance 1, 2243 glyphs, 56905 segments, 35972 cubics
+quadratics per cubic: {1: 35805, 2: 167}
+points (one on-curve per segment, n off-curve per cubic): 93044
+== tt-notosans-exact
+joints 56905, with handles in all masters 56901; samples 9, of them inside the masters 9
+-- exactly smooth in all masters: 25017 joints, 24974 of them next to a single quadratic; samples inside the masters
+                                        joints       p50      p90      p99    p99.9      max      >0.1     >0.5       >1   (degrees)
+cubic instances: kink                    25017    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+quadratic instances: kink                25017    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+rounded quadratic: kink                  25017    0.0000   2.2359   5.5567  12.3381  17.8503     11870    10453     7627
+change by cu2qu (all)                    25017    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+change by cu2qu (next to single)         24974    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+change by cu2qu (no single)                 43    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+  single + spline                          133    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+  single + single                        22020    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+  single + line                           2821    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+change by rounding (all)                 25017    0.0000   2.2359   5.5567  12.3381  17.8503     11870    10453     7627
+change by rounding (next to single)      24974    0.0000   2.2320   5.4434  11.9203  17.8503     11852    10436     7611
+no-single variant vs cubic               25017    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+                                        joints       p50      p90      p99    p99.9      max      >0.1     >0.5       >1   (font units, sideways)
+change by cu2qu (next to single)         24974    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+change by rounding (next to single)      24974    0.0000   1.0599   1.3450   1.4137   1.4141     11717     9335     2588
+change by rounding (all)                 25017    0.0000   1.0588   1.3449   1.4137   1.4141     11733     9351     2590
+next to a single quadratic: cu2qu changes the angle more than rounding at 21 of 24974 (0.08%)
+largest difference between the no-single variant and the cubic instances: 0 degrees; with no single quadratic at the joint: 0
+-- smooth up to rounding: 34126 joints, 34068 of them next to a single quadratic; samples inside the masters
+                                        joints       p50      p90      p99    p99.9      max      >0.1     >0.5       >1   (degrees)
+cubic instances: kink                    34126    0.0000   0.0000   1.4658   3.6123  63.4349      1062      833      538
+quadratic instances: kink                34126    0.0000   0.0000   1.4658   3.6123  63.4349      1062      833      538
+rounded quadratic: kink                  34126    0.5549   2.3330   5.5960  11.9467  63.4349     20354    17592    12171
+change by cu2qu (all)                    34126    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+change by cu2qu (next to single)         34068    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+change by cu2qu (no single)                 58    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+  single + spline                          158    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+  single + single                        30369    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+  single + line                           3541    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+change by rounding (all)                 34126    0.4630   2.2697   5.5606  11.8769  17.8503     19319    16771    11636
+change by rounding (next to single)      34068    0.4628   2.2665   5.5275  11.2568  17.8503     19286    16739    11606
+no-single variant vs cubic               34126    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+                                        joints       p50      p90      p99    p99.9      max      >0.1     >0.5       >1   (font units, sideways)
+change by cu2qu (next to single)         34068    0.0000   0.0000   0.0000   0.0000   0.0000         0        0        0
+change by rounding (next to single)      34068    0.3717   1.1808   1.3574   1.4138   1.4141     19089    15238     4257
+change by rounding (all)                 34126    0.3716   1.1797   1.3570   1.4138   1.4141     19120    15263     4259
+next to a single quadratic: cu2qu changes the angle more than rounding at 275 of 34068 (0.81%)
+largest difference between the no-single variant and the cubic instances: 2.84e-14 degrees; with no single quadratic at the joint: 4.26e-13
+-- candidate rules for single quadratics (tolerance 1, 93044 points, 35805 single of 35972 cubics)
+rule                     +points       +%   then, change by cu2qu at joints exactly smooth in all masters: >0.1 >0.5 >1 max(deg) max(units) | smooth up to rounding: >0.1 >0.5 >1 max(deg) max(units)
+as is                          0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+deviation <= 0 tol         31444  33.795%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+deviation <= 0.01 tol          0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+deviation <= 0.03 tol          0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+deviation <= 0.1 tol           0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+deviation <= 0.25 tol          0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+deviation <= 0.5 tol           0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+deviation <= 1 tol             0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+fractions <= 0.1 tol           0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+fractions <= 0.25 tol          0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+fractions <= 0.5 tol           0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+fractions <= 1 tol             0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+fractions <= 2 tol             0   0.000%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+no single quadratic        35805  38.482%         0      0      0    0.000   0.000 |       0      0      0    0.000   0.000
+-- a linear single quadratic, off-curve point (3 (c1 + c2) - c0 - c3) / 4, for the same curves: change of the angle at joints, in the masters themselves and in instances
+exactly smooth in all masters    intersection, masters      joints    24974  >0.1       0  >0.5       0  >1       0  max    0.000
+exactly smooth in all masters    intersection, instances    joints    24974  >0.1       0  >0.5       0  >1       0  max    0.000
+exactly smooth in all masters    linear, masters            joints    24974  >0.1       0  >0.5       0  >1       0  max    0.000
+exactly smooth in all masters    linear, instances          joints    24974  >0.1       0  >0.5       0  >1       0  max    0.000
+smooth up to rounding            intersection, masters      joints    34068  >0.1       0  >0.5       0  >1       0  max    0.000
+smooth up to rounding            intersection, instances    joints    34068  >0.1       0  >0.5       0  >1       0  max    0.000
+smooth up to rounding            linear, masters            joints    34068  >0.1       0  >0.5       0  >1       0  max    0.000
+smooth up to rounding            linear, instances          joints    34068  >0.1       0  >0.5       0  >1       0  max    0.000
+deviation of the single quadratics, in units: p50 0.0000 p90 0.0000 p99 0.0000 p99.9 0.0000 max 0.0000; exactly zero for 4361 of 35805

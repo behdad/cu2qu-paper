@@ -1,0 +1,30 @@
+77533 cubics.  Average quadratics per cubic (n chosen by measured Hausdorff distance):
+  scheme                                   tol 1.0     tol 0.5     tol 0.1     
+  cu2qu as implemented                     2.3364      2.8380      4.8023      
+  ramp                                     1.6716      2.0788      3.6755      
+  optu                                     1.6672      2.0589      3.3669      
+  T equal-parameter knots                  1.6026      1.8788      2.9123      
+  T gamma knots                            1.5917      1.8388      2.7158      
+  T affine knots                           1.6022      1.8536      2.6659      
+  relax50                                  1.4533      1.8005      2.9989      
+  zero                                     1.4169      1.6981      2.6106      
+  TAN*  (numerical optimum, tangents kept) 1.5430      1.7527      2.2990      
+  FREE* (numerical optimum, tangents free) 1.1440      1.2526      1.7818      
+
+Distribution of n, percent (n = 1..6, 7+):
+  TAN*   tol 1.0 :  46.6  52.5   0.9   0.0   0.0   0.0   0.0
+  TAN*   tol 0.5 :  33.5  57.8   8.5   0.1   0.0   0.0   0.0
+  TAN*   tol 0.1 :  13.9  52.7  23.9   8.7   0.7   0.1   0.0
+  FREE*  tol 1.0 :  85.6  14.3   0.0   0.0   0.0   0.0   0.0
+  FREE*  tol 0.5 :  75.1  24.6   0.3   0.0   0.0   0.0   0.0
+  FREE*  tol 0.1 :  39.8  43.6  15.4   1.0   0.1   0.0   0.0
+
+Error of a scheme divided by the yardstick error at the same n (cubics where both were computed
+and the yardstick error is above 0.02 units): median, and 90th percentile
+  ramp                       vs TAN*   n=1:  1.00   1.00   n=2:  2.81   9.76   n=3:  5.37  12.36   n=4:  8.47  11.28 
+  optu                       vs TAN*   n=1:  1.00   1.00   n=2:  2.81   9.76   n=3:  5.37  12.36   n=4:  5.72   7.22 
+  T equal-parameter knots    vs TAN*   n=1:  1.00   1.00   n=2:  1.98   5.82   n=3:  2.64   5.88   n=4:  3.51   5.37 
+  T gamma knots              vs TAN*   n=1:  1.00   1.00   n=2:  1.67   2.36   n=3:  2.45   3.30   n=4:  3.51   5.07 
+  T affine knots             vs TAN*   n=1:  1.00   1.00   n=2:  1.75   2.49   n=3:  2.05   2.83   n=4:  2.09   5.27 
+  relax50                    vs FREE*  n=1:  2.79  13.07   n=2:  3.84  11.57   n=3:  5.00  10.01   n=4:  5.13   7.68 
+  zero                       vs FREE*  n=1:  2.79  13.07   n=2:  2.83   6.71   n=3:  2.74   4.35   n=4:  2.80   4.57 
